@@ -1,0 +1,7 @@
+"skeleton"
+{
+	"base"		"lilia"
+	"title"		"skeleton"
+	"author"	""
+	"menusystem" "1"
+}
