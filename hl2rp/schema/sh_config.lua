@@ -93,11 +93,7 @@ lia.config.EntitiesToBeRemoved = {
 }
 
 --Player Model T-posing Fixer
-lia.config.PlayerModelTposingFixer = {
-    ["models/player/Group03/female_03.mdl"] = "citizen_female",
-    ["models/player/Group01/male_02.mdl"] = "citizen_male",
-}
-
+lia.config.PlayerModelTposingFixer = {"models/player/Group03/female_03.mdl", "models/player/Group01/male_02.mdl", "models/player/player.mdl",}
 --Default Staff Ranks
 lia.config.DefaultStaff = {
     ["STEAMID"] = "RANK",
