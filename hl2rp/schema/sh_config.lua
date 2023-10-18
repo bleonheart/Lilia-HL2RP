@@ -109,39 +109,6 @@ lia.config.DuplicatorBlackList = {"lia_storage", "lia_money"}
 lia.config.BlockedCollideEntities = {"lia_item", "lia_money"}
 --Restricted Vehicles
 lia.config.RestrictedVehicles = {}
---Unloaded Modules
-lia.config.UnLoadedModules = {
-    ammosave = false,
-    bodygrouper = false,
-    chatbox = false,
-    cmenu = false,
-    corefiles = false,
-    crashscreen = false,
-    doors = false,
-    f1menu = false,
-    flashlight = false,
-    inventory = false,
-    interactionmenu = false,
-    mainmenu = false,
-    observer = false,
-    pac = false,
-    permakill = false,
-    radio = false,
-    raiseweapons = false,
-    recognition = false,
-    saveitems = false,
-    scoreboard = false,
-    serverblacklister = false,
-    skills = false,
-    spawnmenuitems = false,
-    spawns = false,
-    storage = false,
-    tying = false,
-    vendor = false,
-    weaponselector = false,
-    whitelist = false,
-}
-
 lia.config.ServerURLs = {
     ["Discord"] = "https://discord.gg/52MSnh39vw",
     ["Workshop"] = "https://steamcommunity.com/sharedfiles/filedetails/?id=2959728255"
