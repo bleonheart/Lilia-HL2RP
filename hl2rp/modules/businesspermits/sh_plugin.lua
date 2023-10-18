@@ -1,6 +1,6 @@
 PLUGIN.name = "Business Permits"
 PLUGIN.desc = "Adds business permits which are needed to purchase certain goods."
-PLUGIN.author = "Chessnut"
+PLUGIN.author = "STEAM_0:1:176123778"
 
 function PLUGIN:CanPlayerUseBusiness(client, uniqueID)
 	local itemTable = lia.item.list[uniqueID]

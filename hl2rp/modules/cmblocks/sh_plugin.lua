@@ -1,5 +1,5 @@
 PLUGIN.name = "Combine Locks"
-PLUGIN.author = "Chessnut"
+PLUGIN.author = "STEAM_0:1:176123778"
 PLUGIN.desc = "Adds Combine locks to doors."
 
 if (SERVER) then

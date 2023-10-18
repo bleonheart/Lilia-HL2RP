@@ -1,5 +1,5 @@
 PLUGIN.name = "Flashlight"
-PLUGIN.author = "Chessnut"
+PLUGIN.author = "STEAM_0:1:176123778"
 PLUGIN.desc = "Provides a flashlight item to regular flashlight usage."
 
 function PLUGIN:PlayerSwitchFlashlight(client, state)

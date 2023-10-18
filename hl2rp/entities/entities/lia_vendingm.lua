@@ -2,7 +2,7 @@ AddCSLuaFile()
 
 ENT.Type = "anim"
 ENT.PrintName = "Vending Machine"
-ENT.Author = "Chessnut"
+ENT.Author = "STEAM_0:1:176123778"
 ENT.Category = "HL2 RP"
 ENT.Spawnable = true
 ENT.AdminOnly = true

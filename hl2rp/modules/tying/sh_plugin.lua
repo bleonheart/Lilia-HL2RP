@@ -1,5 +1,5 @@
 PLUGIN.name = "Tying"
-PLUGIN.author = "Chessnut"
+PLUGIN.author = "STEAM_0:1:176123778"
 PLUGIN.desc = "Adds the ability to tie players."
 
 lia.util.include("sh_charsearch.lua")

@@ -1,5 +1,5 @@
 PLUGIN.name = "Shoot Locks"
-PLUGIN.author = "Chessnut"
+PLUGIN.author = "STEAM_0:1:176123778"
 PLUGIN.desc = "Shoot locks to open doors."
 
 local SHOOT_DISTANCE = 180

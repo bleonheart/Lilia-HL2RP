@@ -9,7 +9,7 @@ if (CLIENT) then
 	SWEP.Category = "HL2 RP"
 end
 
-SWEP.Author = "Chessnut"
+SWEP.Author = "STEAM_0:1:176123778"
 SWEP.Purpose = "To hold a suitcase around."
 SWEP.Spawnable = true
 SWEP.AdminOnly = true

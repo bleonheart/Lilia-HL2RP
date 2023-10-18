@@ -1,5 +1,5 @@
 PLUGIN.name = "Player Scanners Util"
-PLUGIN.author = "Chessnut"
+PLUGIN.author = "STEAM_0:1:176123778"
 PLUGIN.desc = "Adds functions that allow players to control scanners."
 lia.config.PictureDelay = 15
 if CLIENT then
