@@ -10,7 +10,7 @@ ENT.PhysgunDisable = true
 ENT.PhysgunAllowAdmin = true
 
 function ENT:SpawnFunction(client, trace)
-	local entity = ents.Create("nut_vendingm")
+	local entity = ents.Create("lia_vendingm")
 	entity:SetPos(trace.HitPos + Vector(0, 0, 48))
 
 	local angles = (entity:GetPos() - client:GetPos()):Angle()
@@ -23,7 +23,7 @@ function ENT:SpawnFunction(client, trace)
 	entity:Activate()
 
 	for k, v in pairs(ents.FindInBox(entity:LocalToWorld(entity:OBBMins()), entity:LocalToWorld(entity:OBBMaxs()))) do
-		if (v:GetClass() != "nut_vendingm" and v:GetModel() == "models/props_interiors/vendingmachinesoda01a.mdl") then
+		if (v:GetClass() != "lia_vendingm" and v:GetModel() == "models/props_interiors/vendingmachinesoda01a.mdl") then
 			entity:SetPos(v:GetPos())
 			entity:SetAngles(v:GetAngles())
 			SafeRemoveEntity(v)
@@ -94,7 +94,7 @@ if (SERVER) then
 		end
 
 		for k, v in pairs(ents.FindInBox(self:LocalToWorld(self:OBBMins()), self:LocalToWorld(self:OBBMaxs()))) do
-			if (v:GetClass() != "nut_vendingm" and v:GetModel() == "models/props_interiors/vendingmachinesoda01a.mdl") then
+			if (v:GetClass() != "lia_vendingm" and v:GetModel() == "models/props_interiors/vendingmachinesoda01a.mdl") then
 				self:SetPos(v:GetPos())
 				self:SetAngles(v:GetAngles())
 				SafeRemoveEntity(v)

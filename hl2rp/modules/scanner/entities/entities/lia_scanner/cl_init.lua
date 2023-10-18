@@ -60,7 +60,7 @@ function ENT:OnRemove()
     end
 end
 
-net.Receive("nutScannerFlash", function()
+net.Receive("liaScannerFlash", function()
     local entity = net.ReadEntity()
     if (IsValid(entity)) then
         local light = DynamicLight(entity:EntIndex())

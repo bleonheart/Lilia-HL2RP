@@ -20,7 +20,7 @@ ITEM.functions.use = { -- sorry, for name order.
 		local trace = util.TraceLine(data)
 
 		if (trace.HitPos) then
-			local note = ents.Create("nut_note")
+			local note = ents.Create("lia_note")
 			note:SetPos(trace.HitPos + trace.HitNormal * 10)
 			note:Spawn()
 

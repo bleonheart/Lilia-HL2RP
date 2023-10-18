@@ -1,9 +1,9 @@
 SCHEMA.objectives = SCHEMA.objectives or ""
 concommand.Add(
-    "nut_setupnexusdoors",
+    "lia_setupnexusdoors",
     function(client, command, arguments)
         if not IsValid(client) then
-            if not lia.plugin.list.doors then return MsgN("[NutScript] Door plugin is missing!") end
+            if not lia.plugin.list.doors then return MsgN("[Lilia] Door plugin is missing!") end
             local name = table.concat(arguments, " ")
             for _, entity in ipairs(ents.FindByClass("func_door")) do
                 if not entity:HasSpawnFlags(256) and not entity:HasSpawnFlags(1024) then
@@ -13,7 +13,7 @@ concommand.Add(
             end
 
             lia.plugin.list.doors:SaveDoorData()
-            MsgN("[NutScript] Nexus doors have been set up.")
+            MsgN("[Lilia] Nexus doors have been set up.")
         end
     end
 )

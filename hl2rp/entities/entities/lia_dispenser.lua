@@ -28,7 +28,7 @@ function ENT:SetupDataTables()
 end
 
 function ENT:SpawnFunction(client, trace)
-	local entity = ents.Create("nut_dispenser")
+	local entity = ents.Create("lia_dispenser")
 	entity:SetPos(trace.HitPos)
 	entity:SetAngles(trace.HitNormal:Angle())
 	entity:Spawn()
@@ -107,7 +107,7 @@ else
 		self:SetText(text)
 		self:SetDispColor(COLOR_RED)
 
-		timer.Create("nut_DispenserError"..self:EntIndex(), 1.5, 1, function()
+		timer.Create("lia_DispenserError"..self:EntIndex(), 1.5, 1, function()
 			if (IsValid(self)) then
 				self:SetText("INSERT ID")
 				self:SetDispColor(COLOR_GREEN)

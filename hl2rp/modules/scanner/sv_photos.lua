@@ -1,11 +1,11 @@
-util.AddNetworkString("nutScannerData")
-util.AddNetworkString("nutScannerPicture")
-util.AddNetworkString("nutScannerClearPicture")
+util.AddNetworkString("liaScannerData")
+util.AddNetworkString("liaScannerPicture")
+util.AddNetworkString("liaScannerClearPicture")
 
-net.Receive("nutScannerData", function(length, client)
-    if (IsValid(client.nutScn) and client:GetViewEntity() == client.nutScn and (client.nutNextPic or 0) < CurTime()) then
+net.Receive("liaScannerData", function(length, client)
+    if (IsValid(client.liaScn) and client:GetViewEntity() == client.liaScn and (client.liaNextPic or 0) < CurTime()) then
         local delay = lia.config.PictureDelay
-        client.nutNextPic = CurTime() + delay - 1
+        client.liaNextPic = CurTime() + delay - 1
 
         local length = net.ReadUInt(16)
         local data = net.ReadData(length)
@@ -24,7 +24,7 @@ net.Receive("nutScannerData", function(length, client)
         end
 
         if (#receivers > 0) then
-            net.Start("nutScannerData")
+            net.Start("liaScannerData")
                 net.WriteUInt(#data, 16)
                 net.WriteData(data, #data)
             net.Send(receivers)
@@ -36,11 +36,11 @@ net.Receive("nutScannerData", function(length, client)
     end
 end)
 
-net.Receive("nutScannerPicture", function(length, client)
-    if (not IsValid(client.nutScn)) then return end
-    if (client:GetViewEntity() ~= client.nutScn) then return end
-    if ((client.nutNextFlash or 0) >= CurTime()) then return end
+net.Receive("liaScannerPicture", function(length, client)
+    if (not IsValid(client.liaScn)) then return end
+    if (client:GetViewEntity() ~= client.liaScn) then return end
+    if ((client.liaNextFlash or 0) >= CurTime()) then return end
 
-    client.nutNextFlash = CurTime() + 1
-    client.nutScn:flash()
+    client.liaNextFlash = CurTime() + 1
+    client.liaScn:flash()
 end)

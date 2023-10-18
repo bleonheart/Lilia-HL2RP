@@ -5,7 +5,7 @@ PLUGIN.desc = "Shoot locks to open doors."
 local SHOOT_DISTANCE = 180
 
 function PLUGIN:EntityTakeDamage(entity, dmgInfo)
-	if (entity:GetClass() == "prop_door_rotating" and (entity.nutNextBreach or 0) < CurTime()) then
+	if (entity:GetClass() == "prop_door_rotating" and (entity.liaNextBreach or 0) < CurTime()) then
 		local handle = entity:LookupBone("handle")
 
 		if (handle and dmgInfo:IsBulletDamage()) then
@@ -51,18 +51,18 @@ function PLUGIN:EntityTakeDamage(entity, dmgInfo)
 				local name = client:UniqueID()..CurTime()
 				client:SetName(name)
 
-				entity.nutOldSpeed = entity.nutOldSpeed or entity:GetKeyValues().speed or 100
+				entity.liaOldSpeed = entity.liaOldSpeed or entity:GetKeyValues().speed or 100
 
-				entity:Fire("setspeed", entity.nutOldSpeed * 3.5)
+				entity:Fire("setspeed", entity.liaOldSpeed * 3.5)
 				entity:Fire("unlock")
 				entity:Fire("openawayfrom", name)
 				entity:EmitSound("physics/wood/wood_plank_break"..math.random(1, 4)..".wav", 100, 120)
 
-				entity.nutNextBreach = CurTime() + 1
+				entity.liaNextBreach = CurTime() + 1
 
 				timer.Simple(0.5, function()
 					if (IsValid(entity)) then
-						entity:Fire("setspeed", entity.nutOldSpeed)
+						entity:Fire("setspeed", entity.liaOldSpeed)
 					end
 				end)
 			end

@@ -3,7 +3,7 @@ local PICTURE_HEIGHT = PLUGIN.PICTURE_HEIGHT
 local PICTURE_WIDTH2 = PICTURE_WIDTH * 0.5
 local PICTURE_HEIGHT2 = PICTURE_HEIGHT * 0.5
 
-surface.CreateFont("nutScannerFont", {
+surface.CreateFont("liaScannerFont", {
     font = "Lucida Sans Typewriter",
     antialias = false,
     outline = true,
@@ -100,16 +100,16 @@ function PLUGIN:HUDPaint()
         local percent = math.Round(math.TimeFraction(self.lastPic - delay, self.lastPic, CurTime()), 2) * 100
         local glow = math.sin(RealTime() * 15)*25
 
-        draw.SimpleText("RE-CHARGING: "..percent.."%", "nutScannerFont", x, y - 24, Color(255 + glow, 100 + glow, 25, 250))
+        draw.SimpleText("RE-CHARGING: "..percent.."%", "liaScannerFont", x, y - 24, Color(255 + glow, 100 + glow, 25, 250))
     end
 
     local position = LocalPlayer():GetPos()
     local angle = LocalPlayer():GetAimVector():Angle()
 
-    draw.SimpleText("POS ("..math.floor(position[1])..", "..math.floor(position[2])..", "..math.floor(position[3])..")", "nutScannerFont", x + 8, y + 8, color_white)
-    draw.SimpleText("ANG ("..math.floor(angle[1])..", "..math.floor(angle[2])..", "..math.floor(angle[3])..")", "nutScannerFont", x + 8, y + 24, color_white)
-    draw.SimpleText("ID  ("..LocalPlayer():Name()..")", "nutScannerFont", x + 8, y + 40, color_white)
-    draw.SimpleText("ZM  ("..(math.Round(zoom / 40, 2) * 100).."%)", "nutScannerFont", x + 8, y + 56, color_white)
+    draw.SimpleText("POS ("..math.floor(position[1])..", "..math.floor(position[2])..", "..math.floor(position[3])..")", "liaScannerFont", x + 8, y + 8, color_white)
+    draw.SimpleText("ANG ("..math.floor(angle[1])..", "..math.floor(angle[2])..", "..math.floor(angle[3])..")", "liaScannerFont", x + 8, y + 24, color_white)
+    draw.SimpleText("ID  ("..LocalPlayer():Name()..")", "liaScannerFont", x + 8, y + 40, color_white)
+    draw.SimpleText("ZM  ("..(math.Round(zoom / 40, 2) * 100).."%)", "liaScannerFont", x + 8, y + 56, color_white)
 
     if (IsValid(self.lastViewEntity)) then
         data.start = self.lastViewEntity:GetPos()
@@ -124,7 +124,7 @@ function PLUGIN:HUDPaint()
             entity = "NULL"
         end
 
-        draw.SimpleText("TRG ("..entity..")", "nutScannerFont", x + 8, y + 72, color_white)
+        draw.SimpleText("TRG ("..entity..")", "liaScannerFont", x + 8, y + 72, color_white)
     end
 
     surface.SetDrawColor(235, 235, 235, 230)

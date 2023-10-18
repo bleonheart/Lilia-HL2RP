@@ -25,7 +25,7 @@ function ENT:SpawnFunction(client, trace)
 
 	local position, angles = self:getLockPos(client, door)
 
-	local entity = ents.Create("nut_cmblock")
+	local entity = ents.Create("lia_cmblock")
 	entity:SetPos(trace.HitPos)
 	entity:Spawn()
 	entity:Activate()
@@ -63,8 +63,8 @@ if (SERVER) then
 			return
 		end
 
-		if ((activator.nutNextLockUse or 0) < CurTime()) then
-			activator.nutNextLockUse = CurTime() + 1
+		if ((activator.liaNextLockUse or 0) < CurTime()) then
+			activator.liaNextLockUse = CurTime() + 1
 		else
 			return
 		end
@@ -86,7 +86,7 @@ if (SERVER) then
 		self:EmitSound("buttons/combine_button_locked.wav")
 		self:SetErroring(true)
 
-		timer.Create("nut_CombineLockErroring"..self:EntIndex(), 1, 2, function()
+		timer.Create("lia_CombineLockErroring"..self:EntIndex(), 1, 2, function()
 			if (IsValid(self)) then
 				self:SetErroring(false)
 			end
@@ -167,7 +167,7 @@ if (SERVER) then
 		self:SetErroring(true)
 		self:EmitSound("npc/turret_floor/ping.wav")
 
-		timer.Create("nutPing"..self:EntIndex(), 0.1, 1, function()
+		timer.Create("liaPing"..self:EntIndex(), 0.1, 1, function()
 			if (IsValid(self)) then
 				self:SetErroring(false)
 			end

@@ -3,7 +3,7 @@ include("shared.lua")
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 
-util.AddNetworkString("nutScannerFlash")
+util.AddNetworkString("liaScannerFlash")
 
 ENT.scanSounds = {
     "npc/scanner/scanner_scan1.wav",
@@ -172,7 +172,7 @@ function ENT:flash()
     self.flashSprite:SetColor(color_white)
     self:EmitSound("npc/scanner/scanner_photo1.wav")
 
-    net.Start("nutScannerFlash")
+    net.Start("liaScannerFlash")
         net.WriteEntity(self)
     net.SendPVS(self:GetPos())
 

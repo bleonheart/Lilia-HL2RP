@@ -137,7 +137,7 @@ rested the head of my bed. The plastering had here, in great
 measure, resisted the action of the fire—a fact which I attributed
 to its having been recently spread. About this wall a dense
 crowd were collected, and many persons seemed to be examining
-a particular portion of it with every minute and eager attention.
+a particular portion of it with every miliae and eager attention.
 The words "strange!" "singular!" and other similar expressions,
 excited my curiosity. I approached and saw, as if
 graven in bas-relief upon the white surface, the figure of a gigantic
@@ -171,7 +171,7 @@ my attention was suddenly drawn to some black object,
 reposing upon the head of one of the immense hogsheads of
 gin, or of rum, which constituted the chief furniture of the
 apartment. I had been looking steadily at the top of this
-hogshead for some minutes, and what now caused me surprise
+hogshead for some miliaes, and what now caused me surprise
 was the fact that I had not sooner perceived the object
 thereupon. I approached it, and touched it with my hand. It
 was a black cat—a very large one—fully as large as Pluto, and
@@ -199,7 +199,7 @@ hatred. I avoided the creature; a certain sense of shame, and
 the remembrance of my former deed of cruelty, preventing me
 from physically abusing it. I did not, for some weeks, strike, or
 otherwise violently ill-use it; but gradually—very gradually—I
-came to look upon it with unutterable loathing, and to flee silently
+came to look upon it with uliaterable loathing, and to flee silently
 from its odious presence, as from the breath of a
 pestilence.
 What added, no doubt, to my hatred of the beast, was the discovery,
@@ -248,7 +248,7 @@ destroyed—a brute beast to work out for me—for
 of insufferable woe! Alas! neither by day nor by night knew I
 the blessing of rest any more! During the former the creature
 left me no moment alone; and, in the latter, I started, hourly,
-from dreams of unutterable fear, to find the hot breath of the
+from dreams of uliaterable fear, to find the hot breath of the
 thing upon my face, and its vast weight—an incarnate nightmare
 that I had no power to shake off—incumbent eternally
 upon my heart!
@@ -277,7 +277,7 @@ and with entire deliberation, to the task of concealing the body.
 I knew that I could not remove it from the house, either by day
 or by night, without the risk of being observed by the neighbours.
 Many projects entered my mind. At one period I thought
-of cutting the corpse into minute fragments, and destroying
+of cutting the corpse into miliae fragments, and destroying
 them by fire. At another, I resolved to dig a grave for it in the
 floor of the cellar. Again, I deliberated about casting it in the
 well in the yard—about packing it in a box, as if merchandise,
@@ -305,7 +305,7 @@ could not be distinguished from the old, and with this I very
 carefully went over the new brickwork. When I had finished, I
 felt satisfied that all was right. The wall did not present the
 slightest appearance of having been disturbed. The rubbish on
-the floor was picked up with the minutest care. I looked around
+the floor was picked up with the miliaest care. I looked around
 triumphantly, and said to myself, "Here at least, then, my labor
 has not been in vain."
 My next step was to look for the beast which had been the

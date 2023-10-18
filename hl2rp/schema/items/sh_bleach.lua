@@ -7,7 +7,7 @@ ITEM.functions.Drink = {
 	sound = "npc/barnacle/barnacle_gulp2.wav",
 	onRun = function(item)
 		local client = item.player
-		timer.Create("nutBleach"..item:getID(), 5, 1, function()
+		timer.Create("liaBleach"..item:getID(), 5, 1, function()
 			client:Kill()
 		end)
 	end

@@ -17,7 +17,7 @@ if (CLIENT) then
 else
 	function FindNoteByID(id)
 		for k, v in ipairs(ents.GetAll()) do
-			if (v:GetClass() == "nut_note" and v.id == id) then
+			if (v:GetClass() == "lia_note" and v.id == id) then
 				return v
 			end
 		end
@@ -35,7 +35,7 @@ else
 	end)
 
 	function PLUGIN:EntityRemoved(entity)
-		if (!lia.shuttingDown and entity and IsValid(entity) and entity:GetClass() == "nut_note" and entity.id) then
+		if (!lia.shuttingDown and entity and IsValid(entity) and entity:GetClass() == "lia_note" and entity.id) then
 			if WRITINGDATA[entity.id] then
 				WRITINGDATA[entity.id] = nil
 			end
@@ -70,7 +70,7 @@ else
 
 		if (savedTable.noteEntities) then
 			for k, v in ipairs(savedTable.noteEntities) do
-				local note = ents.Create("nut_note")
+				local note = ents.Create("lia_note")
 				note:SetPos(v.pos)
 				note:SetAngles(v.ang)
 				note:Spawn()
@@ -89,7 +89,7 @@ else
 		saveTable.noteEntities = {}
 
 		for _, v in ipairs(ents.GetAll()) do
-			if (v:GetClass() == "nut_note") then
+			if (v:GetClass() == "lia_note") then
 				table.insert(saveTable.noteEntities, {pos = v:GetPos(), ang = v:GetAngles(), id = v.id, owner = v:getOwner()})
 				table.insert(validNotes, v.id)
 			end

@@ -63,7 +63,7 @@ end
 function SCHEMA:CharacterLoaded(character)
 	if character == LocalPlayer():getChar() then
 		if self:isCombineFaction(character:getFaction()) then
-			vgui.Create("nutCombineDisplay")
+			vgui.Create("liaCombineDisplay")
 		elseif IsValid(lia.gui.combine) then
 			lia.gui.combine:Remove()
 		end

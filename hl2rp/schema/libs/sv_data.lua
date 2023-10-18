@@ -4,7 +4,7 @@ end
 
 function SCHEMA:saveVendingMachines()
     local data = {}
-    for k, v in ipairs(ents.FindByClass("nut_vendingm")) do
+    for k, v in ipairs(ents.FindByClass("lia_vendingm")) do
         data[#data + 1] = {v:GetPos(), v:GetAngles(), v:getNetVar("stocks"), v:getNetVar("active")}
     end
 
@@ -13,7 +13,7 @@ end
 
 function SCHEMA:saveDispensers()
     local data = {}
-    for k, v in ipairs(ents.FindByClass("nut_dispenser")) do
+    for k, v in ipairs(ents.FindByClass("lia_dispenser")) do
         data[#data + 1] = {v:GetPos(), v:GetAngles(), v:GetDisabled() == true and true or nil}
     end
 
@@ -27,7 +27,7 @@ end
 function SCHEMA:loadVendingMachines()
     local data = lia.data.get("vendingm") or {}
     for k, v in ipairs(data) do
-        local entity = ents.Create("nut_vendingm")
+        local entity = ents.Create("lia_vendingm")
         entity:SetPos(v[1])
         entity:SetAngles(v[2])
         entity:Spawn()
@@ -38,7 +38,7 @@ end
 
 function SCHEMA:loadDispensers()
     for k, v in ipairs(lia.data.get("dispensers") or {}) do
-        local entity = ents.Create("nut_dispenser")
+        local entity = ents.Create("lia_dispenser")
         entity:SetPos(v[1])
         entity:SetAngles(v[2])
         entity:Spawn()

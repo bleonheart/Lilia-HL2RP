@@ -211,7 +211,7 @@ function SCHEMA:PlayerHurt(client, attacker, health, damage)
 		end
 
 		if delay then
-			client.nutHealthCheck = CurTime() + delay
+			client.liaHealthCheck = CurTime() + delay
 		end
 	end
 end
@@ -227,7 +227,7 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:PlayerTick(client)
-	if client:isCombine() and client:Alive() and (client.nutHealthCheck or 0) < CurTime() then
+	if client:isCombine() and client:Alive() and (client.liaHealthCheck or 0) < CurTime() then
 		local delay = 60
 		if client:Health() <= 10 then
 			delay = 10
@@ -240,7 +240,7 @@ function SCHEMA:PlayerTick(client)
 			client:addDisplay("Local unit is advised to seek medical attention when possible", Color(255, 175, 0))
 		end
 
-		client.nutHealthCheck = CurTime() + delay
+		client.liaHealthCheck = CurTime() + delay
 	end
 end
 

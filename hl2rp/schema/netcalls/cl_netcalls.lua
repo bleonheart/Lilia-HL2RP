@@ -10,7 +10,7 @@ netstream.Hook(
 netstream.Hook(
 	"plyData",
 	function(...)
-		vgui.Create("nutData"):setData(...)
+		vgui.Create("liaData"):setData(...)
 	end
 )
 
@@ -18,7 +18,7 @@ netstream.Hook(
 netstream.Hook(
 	"obj",
 	function(...)
-		vgui.Create("nutObjective"):setData(...)
+		vgui.Create("liaObjective"):setData(...)
 	end
 )
 

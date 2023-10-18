@@ -8,7 +8,7 @@ ITEM.permit = "elec"
 
 local DESC = "A radio that allows you to communicate with others far away.\n"
 	.."Power: %s\n"
-	.."Frequency: <font=nutRadioFont>%s</font>"
+	.."Frequency: <font=liaRadioFont>%s</font>"
 
 function ITEM:getDesc()
 	return Format(

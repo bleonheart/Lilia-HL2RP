@@ -9,18 +9,18 @@ function PANEL:Init()
 
 	lia.gui.combine = self
 	self:SetSize(580, 360)
-	self:SetPos(cookie.GetNumber("nutCombineX", ScrW() - self:GetWide()), cookie.GetNumber("nutCombineY", ScrH() * 0.5 - self:GetTall() * 0.5))
+	self:SetPos(cookie.GetNumber("liaCombineX", ScrW() - self:GetWide()), cookie.GetNumber("liaCombineY", ScrH() * 0.5 - self:GetTall() * 0.5))
 	self:SetMouseInputEnabled(true)
 	self:SetTitle("Combine Display Locator")
 	self:MakePopup()
 	self:SetScreenLock(true)
 	self:ShowCloseButton(false)
 	self:SetVisible(false)
-	self:SetAlpha(math.max(cookie.GetNumber("nutCombineAlpha", 255) * 255), 1)
-	self.mult = cookie.GetNumber("nutCombineMult", 0.5)
+	self:SetAlpha(math.max(cookie.GetNumber("liaCombineAlpha", 255) * 255), 1)
+	self.mult = cookie.GetNumber("liaCombineMult", 0.5)
 	self.alpha = self:Add("DAlphaBar")
 	self.alpha:Dock(LEFT)
-	self.alpha:SetValue(cookie.GetNumber("nutCombineAlpha", 1))
+	self.alpha:SetValue(cookie.GetNumber("liaCombineAlpha", 1))
 	self.alpha.OnChange = function(this, value)
 		self:SetAlpha(math.max(value * 255, 1))
 	end
@@ -44,7 +44,7 @@ function PANEL:Init()
 		self.photos:Dock(TOP)
 		self.photos:SetText("View Photos")
 		self.photos.DoClick = function()
-			RunConsoleCommand("nut_photocache")
+			RunConsoleCommand("lia_photocache")
 		end
 	end
 
@@ -65,15 +65,15 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function PANEL:saveData()
-	cookie.Set("nutCombineX", self.x)
-	cookie.Set("nutCombineY", self.y)
-	cookie.Set("nutCombineAlpha", self:GetAlpha() / 255)
-	cookie.Set("nutCombineMult", self.mult)
+	cookie.Set("liaCombineX", self.x)
+	cookie.Set("liaCombineY", self.y)
+	cookie.Set("liaCombineAlpha", self:GetAlpha() / 255)
+	cookie.Set("liaCombineMult", self.mult)
 end
 
 --------------------------------------------------------------------------------------------------------
-vgui.Register("nutCombineDisplay", PANEL, "DFrame")
+vgui.Register("liaCombineDisplay", PANEL, "DFrame")
 if IsValid(lia.gui.combine) then
-	vgui.Create("nutCombineDisplay")
+	vgui.Create("liaCombineDisplay")
 end
 --------------------------------------------------------------------------------------------------------

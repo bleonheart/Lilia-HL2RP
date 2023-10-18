@@ -6,7 +6,7 @@ if (SERVER) then
 	function PLUGIN:SaveData()
 		local data = {}
 
-		for k, v in ipairs(ents.FindByClass("nut_cmblock")) do
+		for k, v in ipairs(ents.FindByClass("lia_cmblock")) do
 			if (IsValid(v.door)) then
 				data[#data + 1] = {v.door:MapCreationID(), v.door:WorldToLocal(v:GetPos()), v.door:WorldToLocalAngles(v:GetAngles()), v:GetLocked() == true and true or nil}
 			end
@@ -22,7 +22,7 @@ if (SERVER) then
 			local door = ents.GetMapCreatedEntity(v[1])
 
 			if (IsValid(door) and door:isDoor()) then
-				local entity = ents.Create("nut_cmblock")
+				local entity = ents.Create("lia_cmblock")
 				entity:SetPos(door:GetPos())
 				entity:Spawn()
 				entity:setDoor(door, door:LocalToWorld(v[2]), door:LocalToWorldAngles(v[3]))

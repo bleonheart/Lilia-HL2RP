@@ -2,13 +2,13 @@
 netstream.Hook(
 	"dataCls",
 	function(client, text)
-		local target = client.nutDataTarget
+		local target = client.liaDataTarget
 		if text and IsValid(target) and target:getChar() and hook.Run("CanPlayerEditData", client, target) then
 			target:getChar():setData("txt", text:sub(1, 750))
 			client:EmitSound("buttons/combine_button7.wav", 60, 150)
 		end
 
-		client.nutDataTarget = nil
+		client.liaDataTarget = nil
 	end
 )
 

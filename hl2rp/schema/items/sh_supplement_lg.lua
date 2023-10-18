@@ -1,5 +1,5 @@
 ITEM.name = "Large Food Supplement"
-ITEM.desc = "A jar of gray substance, packed with a lot of nutrients."
+ITEM.desc = "A jar of gray substance, packed with a lot of liarients."
 ITEM.model = "models/props_lab/jar01a.mdl"
 ITEM.healthRestore = 50
 ITEM.restore = 100

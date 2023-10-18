@@ -21,14 +21,14 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function CLASS:onLeave(client)
-	if IsValid(client.nutScn) then
+	if IsValid(client.liaScn) then
 		local data = {}
-		data.start = client.nutScn:GetPos()
+		data.start = client.liaScn:GetPos()
 		data.endpos = data.start - Vector(0, 0, 1024)
-		data.filter = {client, client.nutScn}
+		data.filter = {client, client.liaScn}
 		local position = util.TraceLine(data).HitPos
-		client.nutScn.spawn = position
-		client.nutScn:Remove()
+		client.liaScn.spawn = position
+		client.liaScn:Remove()
 	end
 end
 

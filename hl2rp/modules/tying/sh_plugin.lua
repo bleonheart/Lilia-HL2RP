@@ -10,19 +10,19 @@ if (SERVER) then
 	end
 
 	function PLUGIN:PlayerUse(client, entity)
-		if (!client:getNetVar("restricted") and entity:IsPlayer() and entity:getNetVar("restricted") and !entity.nutBeingUnTied) then
-			entity.nutBeingUnTied = true
+		if (!client:getNetVar("restricted") and entity:IsPlayer() and entity:getNetVar("restricted") and !entity.liaBeingUnTied) then
+			entity.liaBeingUnTied = true
 			entity:setAction("@beingUntied", 5)
 
 			client:setAction("@unTying", 5)
 			client:doStaredAction(entity, function()
 				entity:setRestricted(false)
-				entity.nutBeingUnTied = false
+				entity.liaBeingUnTied = false
 
 				client:EmitSound("npc/roller/blade_in.wav")
 			end, 5, function()
 				if (IsValid(entity)) then
-					entity.nutBeingUnTied = false
+					entity.liaBeingUnTied = false
 					entity:setAction()
 				end
 

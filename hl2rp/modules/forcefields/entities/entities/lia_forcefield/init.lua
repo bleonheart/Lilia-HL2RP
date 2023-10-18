@@ -15,7 +15,7 @@ function ENT:SpawnFunction(client, trace)
 	angles.r = 0
 	angles:RotateAroundAxis(angles:Up(), 270)
 
-	local entity = ents.Create("nut_forcefield")
+	local entity = ents.Create("lia_forcefield")
 	entity:SetPos(trace.HitPos + Vector(0, 0, 40))
 	entity:SetAngles(angles:SnapTo("y", 90))
 	entity:Spawn()
@@ -109,7 +109,7 @@ function ENT:OnRemove()
 		self.buzzer = nil
 	end
 
-	if (!lia.shuttingDown and !self.nutIsSafe) then
+	if (!lia.shuttingDown and !self.liaIsSafe) then
 		PLUGIN:saveForceFields()
 	end
 end
@@ -154,7 +154,7 @@ function ENT:Use(activator)
 	end
 end
 
-hook.Add("ShouldCollide", "nut_Forcefields", function(a, b)
+hook.Add("ShouldCollide", "lia_Forcefields", function(a, b)
 	local client
 	local entity
 
@@ -166,7 +166,7 @@ hook.Add("ShouldCollide", "nut_Forcefields", function(a, b)
 		entity = a
 	end
 
-	if (IsValid(entity) and entity:GetClass() == "nut_forcefield") then
+	if (IsValid(entity) and entity:GetClass() == "lia_forcefield") then
 		if (IsValid(client)) then
 			if (client:isCombine() or client:Team() == FACTION_ADMIN) then
 				return false
@@ -179,7 +179,7 @@ hook.Add("ShouldCollide", "nut_Forcefields", function(a, b)
 	end
 end)
 
-hook.Add("KeyPress", "nut_ForceUse", function(client, key)
+hook.Add("KeyPress", "lia_ForceUse", function(client, key)
 	local data = {}
 		data.start = client:GetShootPos()
 		data.endpos = data.start + client:GetAimVector()*84
@@ -187,7 +187,7 @@ hook.Add("KeyPress", "nut_ForceUse", function(client, key)
 	local trace = util.TraceLine(data)
 	local entity = trace.Entity
 
-	if (key == IN_USE and IsValid(entity) and entity:GetClass() == "nut_forcefield") then
+	if (key == IN_USE and IsValid(entity) and entity:GetClass() == "lia_forcefield") then
 		entity:Use(client, client, USE_ON, 1)
 	end
 end)

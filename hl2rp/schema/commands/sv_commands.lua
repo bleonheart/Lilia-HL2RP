@@ -41,7 +41,7 @@ lia.command.add(
 			local target = lia.command.findPlayer(client, table.concat(arguments, " "))
 			if IsValid(target) and target:getChar() then
 				if not hook.Run("CanPlayerViewData", client, target) then return "@noViewData" end
-				client.nutDataTarget = target
+				client.liaDataTarget = target
 				netstream.Start(client, "plyData", target:getChar():getData("txt"), target:Name() .. " [" .. target:getDigits() .. "]", hook.Run("CanPlayerEditData", client, target))
 			end
 		end
@@ -91,12 +91,12 @@ lia.command.add(
 	{
 		syntax = "<string text>",
 		onRun = function(client, arguments)
-			if (client.nutNextReq or 0) < CurTime() then
+			if (client.liaNextReq or 0) < CurTime() then
 				local text = table.concat(arguments, " ")
 				local item = client:getChar():getInv():hasItem("request")
 				if item then
 					if text:find("%S") then
-						client.nutNextReq = CurTime() + 5
+						client.liaNextReq = CurTime() + 5
 						lia.chat.send(client, "request", "[" .. item:getData("name", client:Name()) .. ", " .. item:getData("id", "ERROR") .. "] " .. text)
 
 						return client:EmitSound("buttons/combine_button5.wav", 50, 40)
@@ -105,7 +105,7 @@ lia.command.add(
 					return "@noReqDev"
 				end
 
-				client.nutNextReq = CurTime() + 1
+				client.liaNextReq = CurTime() + 1
 				client:EmitSound("buttons/combine_button3.wav", 75, 150)
 			end
 		end

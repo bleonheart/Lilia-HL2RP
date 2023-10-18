@@ -9,7 +9,7 @@ function PLUGIN:takePicture()
     if ((self.lastPic or 0) < CurTime()) then
         self.lastPic = CurTime() + lia.config.PictureDelay
 
-        net.Start("nutScannerPicture")
+        net.Start("liaScannerPicture")
         net.SendToServer()
 
         timer.Simple(0.1, function()
@@ -29,7 +29,7 @@ function PLUGIN:PostRender()
             y = ScrH()*0.5 - PICTURE_HEIGHT2
         }))
 
-        net.Start("nutScannerData")
+        net.Start("liaScannerData")
             net.WriteUInt(#data, 16)
             net.WriteData(data, #data)
         net.SendToServer()
@@ -39,7 +39,7 @@ function PLUGIN:PostRender()
 end
 
 
-net.Receive("nutScannerData", function()
+net.Receive("liaScannerData", function()
     local data = net.ReadData(net.ReadUInt(16))
     data = util.Base64Encode(util.Decompress(data))
 
@@ -88,13 +88,13 @@ net.Receive("nutScannerData", function()
     CURRENT_PHOTO = panel
 end)
 
-net.Receive("nutScannerClearPicture", function()
+net.Receive("liaScannerClearPicture", function()
     if (IsValid(CURRENT_PHOTO)) then
         CURRENT_PHOTO:Remove()
     end
 end)
 
-concommand.Add("nut_photocache", function()
+concommand.Add("lia_photocache", function()
     local frame = vgui.Create("DFrame")
     frame:SetTitle("Photo Cache")
     frame:SetSize(480, 360)

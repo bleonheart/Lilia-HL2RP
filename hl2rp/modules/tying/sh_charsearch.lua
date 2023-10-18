@@ -57,20 +57,20 @@ if (SERVER) then
 		end
 
 		target:getChar():getInv():addAccessRule(searcherCanAccess)
-		target.nutSearchAccessRule = searcherCanAccess
+		target.liaSearchAccessRule = searcherCanAccess
 
 		target:getChar():getInv():sync(client)
 	end
 
 	function PLUGIN:ns2RemoveInventorySearchPermissions(client, target)
-		local rule = target.nutSearchAccessRule
+		local rule = target.liaSearchAccessRule
 		if (rule) then
 			target:getChar():getInv():removeAccessRule(rule)
 		end
 	end
 
 	function PLUGIN:searchPlayer(client, target)
-		if (IsValid(target:getNetVar("searcher")) or IsValid(client.nutSearchTarget)) then
+		if (IsValid(target:getNetVar("searcher")) or IsValid(client.liaSearchTarget)) then
 			client:notifyLocalized("This person is already being searched.")
 			return false
 		end
@@ -89,7 +89,7 @@ if (SERVER) then
 		-- Show the inventory menu to the searcher.
 		netstream.Start(client, "searchPly", target, target:getChar():getInv():getID())
 
-		client.nutSearchTarget = target
+		client.liaSearchTarget = target
 		target:setNetVar("searcher", client)
 
 		return true
@@ -102,7 +102,7 @@ if (SERVER) then
 	end
 
 	function PLUGIN:stopSearching(client)
-		local target = client.nutSearchTarget
+		local target = client.liaSearchTarget
 
 		if (IsValid(target) and target:getNetVar("searcher") == client) then
 			if (lia.version) then
@@ -112,7 +112,7 @@ if (SERVER) then
 			end
 
 			target:setNetVar("searcher", nil)
-			client.nutSearchTarget = nil
+			client.liaSearchTarget = nil
 
 			netstream.Start(client, "searchExit")
 		end
@@ -176,13 +176,13 @@ else
 				return netstream.Start("searchExit")
 			end
 
-			lia.gui.inv1 = vgui.Create("nutInventory")
+			lia.gui.inv1 = vgui.Create("liaInventory")
 			lia.gui.inv1:ShowCloseButton(true)
 			lia.gui.inv1:setInventory(LocalPlayer():getChar():getInv())
 
 			PLUGIN.searchPanels[#PLUGIN.searchPanels + 1] = lia.gui.inv1
 
-			local panel = vgui.Create("nutInventory")
+			local panel = vgui.Create("liaInventory")
 			panel:ShowCloseButton(true)
 			panel:SetTitle(target:Name())
 			panel:setInventory(inventory)

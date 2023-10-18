@@ -129,18 +129,18 @@ function SWEP:PrimaryAttack()
 		if (IsValid(entity)) then
 			if (entity:IsPlayer()) then
 				if (self:GetActivated()) then
-					entity.nutStuns = (entity.nutStuns or 0) + 1
+					entity.liaStuns = (entity.liaStuns or 0) + 1
 
 					timer.Simple(10, function()
-						entity.nutStuns = math.max(entity.nutStuns - 1, 0)
+						entity.liaStuns = math.max(entity.liaStuns - 1, 0)
 					end)
 				end
 
 				entity:ViewPunch(Angle(-20, math.random(-15, 15), math.random(-10, 10)))
 
-				if (self:GetActivated() and entity.nutStuns > (hook.Run("PlayerGetStunThreshold", entity, self.Owner) or 3)) then
+				if (self:GetActivated() and entity.liaStuns > (hook.Run("PlayerGetStunThreshold", entity, self.Owner) or 3)) then
 					entity:setRagdolled(true, 60)
-					entity.nutStuns = 0
+					entity.liaStuns = 0
 
 					return
 				end
