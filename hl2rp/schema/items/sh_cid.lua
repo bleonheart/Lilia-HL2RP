@@ -28,13 +28,13 @@ ITEM.functions.Assign = {
 			local position = client:getItemDropPos()
 			local function onFail(err)
 				print(err)
-				nut.item.spawn(item.uniqueID, position, onSuccess)
+				lia.item.spawn(item.uniqueID, position, onSuccess)
 			end
 
 			local x, y, itemID = entity:getChar():getInv():add(item.uniqueID)
 
 			-- New add method returns a promise (x) that resolves to the item.
-			if (nut.version) then
+			if (lia.version) then
 				x:next(onSuccess):catch(onFail)
 				return true
 			end
@@ -44,7 +44,7 @@ ITEM.functions.Assign = {
 			if (x == false) then
 				onFail()
 			else
-				onSuccess(nut.item.instances[itemID])
+				onSuccess(lia.item.instances[itemID])
 			end
 			return true
 		end

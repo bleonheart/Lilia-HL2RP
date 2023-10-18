@@ -85,7 +85,7 @@ function SWEP:PrimaryAttack()
 
 			local model = string.lower(self.Owner:GetModel())
 			
-			if (nut.anim.getModelClass(model) == "metrocop") then
+			if (lia.anim.getModelClass(model) == "metrocop") then
 				self.Owner:forceSequence(sequence, nil, nil, true)
 			end
 		end
@@ -225,7 +225,7 @@ function SWEP:SecondaryAttack()
 			local model = string.lower(self.Owner:GetModel())
 			local owner = self.Owner
 
-			if (nut.anim.getModelClass(model) == "metrocop") then
+			if (lia.anim.getModelClass(model) == "metrocop") then
 				self.Owner:forceSequence("pushplayer")
 			end
 		end

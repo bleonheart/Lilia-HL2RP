@@ -7,7 +7,7 @@ PHOTO_CACHE = PHOTO_CACHE or {}
 
 function PLUGIN:takePicture()
     if ((self.lastPic or 0) < CurTime()) then
-        self.lastPic = CurTime() + nut.config.get("pictureDelay", 15)
+        self.lastPic = CurTime() + lia.config.PictureDelay
 
         net.Start("nutScannerPicture")
         net.SendToServer()

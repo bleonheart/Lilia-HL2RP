@@ -1,14 +1,14 @@
 --------------------------------------------------------------------------------------------------------
-nut.voice = {}
+lia.voice = {}
 --------------------------------------------------------------------------------------------------------
-nut.voice.list = {}
+lia.voice.list = {}
 --------------------------------------------------------------------------------------------------------
-nut.voice.checks = nut.voice.checks or {}
+lia.voice.checks = lia.voice.checks or {}
 --------------------------------------------------------------------------------------------------------
-nut.voice.chatTypes = {}
+lia.voice.chatTypes = {}
 --------------------------------------------------------------------------------------------------------
-function nut.voice.defineClass(class, onCheck, onModify, global)
-	nut.voice.checks[class] = {
+function lia.voice.defineClass(class, onCheck, onModify, global)
+	lia.voice.checks[class] = {
 		class = class:lower(),
 		onCheck = onCheck,
 		onModify = onModify,
@@ -17,9 +17,9 @@ function nut.voice.defineClass(class, onCheck, onModify, global)
 end
 
 --------------------------------------------------------------------------------------------------------
-function nut.voice.getClass(client)
+function lia.voice.getClass(client)
 	local definitions = {}
-	for k, v in pairs(nut.voice.checks) do
+	for k, v in pairs(lia.voice.checks) do
 		if v.onCheck(client) then
 			definitions[#definitions + 1] = v
 		end
@@ -29,18 +29,18 @@ function nut.voice.getClass(client)
 end
 
 --------------------------------------------------------------------------------------------------------
-function nut.voice.register(class, key, replacement, source, max)
+function lia.voice.register(class, key, replacement, source, max)
 	class = class:lower()
-	nut.voice.list[class] = nut.voice.list[class] or {}
-	nut.voice.list[class][key:lower()] = {
+	lia.voice.list[class] = lia.voice.list[class] or {}
+	lia.voice.list[class][key:lower()] = {
 		replacement = replacement,
 		source = source
 	}
 end
 
 --------------------------------------------------------------------------------------------------------
-function nut.voice.getVoiceList(class, text, delay)
-	local info = nut.voice.list[class]
+function lia.voice.getVoiceList(class, text, delay)
+	local info = lia.voice.list[class]
 	if not info then return end
 	local output = {}
 	local original = string.Explode(" ", text)

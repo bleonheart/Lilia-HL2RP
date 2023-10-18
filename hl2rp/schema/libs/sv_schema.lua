@@ -43,7 +43,7 @@ end
 function SCHEMA:PostPlayerLoadout(client)
 	if client:isCombine() then
 		if client:Team() == FACTION_CP then
-			for k, v in ipairs(nut.class.list) do
+			for k, v in ipairs(lia.class.list) do
 				if client:getChar():joinClass(k) then break end
 			end
 
@@ -54,8 +54,8 @@ function SCHEMA:PostPlayerLoadout(client)
 
 		hook.Run("PlayerRankChanged", client)
 		client:addDisplay("Local unit protection measures active at " .. client:Armor() .. "%")
-		if nut.plugin.list.scanner and client:isCombineRank(self.scnRanks) then
-			nut.plugin.list.scanner:createScanner(client, client:getCombineRank() == "CLAW.SCN")
+		if lia.plugin.list.scanner and client:isCombineRank(self.scnRanks) then
+			lia.plugin.list.scanner:createScanner(client, client:getCombineRank() == "CLAW.SCN")
 		end
 	end
 end
@@ -88,7 +88,7 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:PlayerSwitchFlashlight(client, enabled)
-	if nut.plugin.list.scanner then return end
+	if lia.plugin.list.scanner then return end
 	if client:isCombine() then return true end
 end
 
@@ -124,7 +124,7 @@ end
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:OnCharVarChanged(character, key, oldValue, value)
 	if key == "name" and IsValid(character:getPlayer()) and character:getPlayer():isCombine() then
-		for k, v in ipairs(nut.class.list) do
+		for k, v in ipairs(lia.class.list) do
 			if character:joinClass(k, true) then break end
 		end
 
@@ -169,14 +169,14 @@ function SCHEMA:GetPlayerDeathSound(client)
 			queue[#queue + 1] = {table.Random(self.beepSounds[client:Team()] and self.beepSounds[client:Team()].off or self.beepSounds[FACTION_CP].off), nil, 0.25}
 			for k, v in ipairs(player.GetAll()) do
 				if v:isCombine() then
-					nut.util.emitQueuedSounds(v, queue, 2, nil, v == client and 100 or 65)
+					lia.util.emitQueuedSounds(v, queue, 2, nil, v == client and 100 or 65)
 				end
 			end
 		end
 
 		local location = "unknown location"
-		if nut.area and client.getArea then
-			local area = nut.area.getArea(client:getArea())
+		if lia.area and client.getArea then
+			local area = lia.area.getArea(client:getArea())
 			if area then
 				location = area.name or location
 			end
@@ -246,9 +246,9 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:PlayerMessageSend(client, chatType, message, anonymous, receivers)
-	if not nut.voice.chatTypes[chatType] then return end
-	for _, definition in ipairs(nut.voice.getClass(client)) do
-		local sounds, message = nut.voice.getVoiceList(definition.class, message)
+	if not lia.voice.chatTypes[chatType] then return end
+	for _, definition in ipairs(lia.voice.getClass(client)) do
+		local sounds, message = lia.voice.getVoiceList(definition.class, message)
 		if sounds then
 			local volume = 80
 			if chatType == "w" then

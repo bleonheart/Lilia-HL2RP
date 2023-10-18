@@ -96,7 +96,7 @@ function PLUGIN:HUDPaint()
     local x, y = scrW - PICTURE_WIDTH2, scrH - PICTURE_HEIGHT2
 
     if (self.lastPic and self.lastPic >= CurTime()) then
-        local delay = nut.config.get("pictureDelay", 15)
+        local delay = lia.config.PictureDelay
         local percent = math.Round(math.TimeFraction(self.lastPic - delay, self.lastPic, CurTime()), 2) * 100
         local glow = math.sin(RealTime() * 15)*25
 

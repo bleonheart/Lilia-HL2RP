@@ -109,7 +109,7 @@ function ENT:OnRemove()
 		self.buzzer = nil
 	end
 
-	if (!nut.shuttingDown and !self.nutIsSafe) then
+	if (!lia.shuttingDown and !self.nutIsSafe) then
 		PLUGIN:saveForceFields()
 	end
 end

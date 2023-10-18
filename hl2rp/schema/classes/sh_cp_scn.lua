@@ -11,7 +11,7 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function CLASS:onSet(client)
-	local scanner = nut.plugin.list.scanner
+	local scanner = lia.plugin.list.scanner
 	if scanner then
 		scanner:createScanner(client, client:getCombineRank() == "CLAW.SCN")
 	else

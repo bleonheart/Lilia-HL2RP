@@ -166,13 +166,13 @@ if (SERVER) then
 			if (!activator:getChar():hasMoney(price)) then
 				self:EmitSound("buttons/button2.wav")
 
-				return activator:notify("You need "..nut.currency.get(price).." to purchase this selection.")
+				return activator:notify("You need "..lia.currency.get(price).." to purchase this selection.")
 			end
 
 			local position = self:GetPos()
 			local f, r, u = self:GetForward(), self:GetRight(), self:GetUp()
 
-			nut.item.spawn(item, position + f*19 + r*4 + u*-26, function(item, entity)
+			lia.item.spawn(item, position + f*19 + r*4 + u*-26, function(item, entity)
 				stocks[button] = stocks[button] - 1
 
 				if (stocks[button] < 1) then
@@ -184,13 +184,13 @@ if (SERVER) then
 
 				activator:getChar():takeMoney(price)
 				activator:getChar():takeMoney(price)
-				activator:notify("You have spent "..nut.currency.get(price).." on this vending machine.")
+				activator:notify("You have spent "..lia.currency.get(price).." on this vending machine.")
 			end)
 		end
 	end
 
 	function ENT:OnRemove()
-		if (!nut.shuttingDown) then
+		if (!lia.shuttingDown) then
 			SCHEMA:saveVendingMachines()
 		end
 	end

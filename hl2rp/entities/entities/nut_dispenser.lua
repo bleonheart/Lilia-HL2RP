@@ -134,7 +134,7 @@ else
 		timer.Simple(1.2, function()
 			if (IsValid(self) and IsValid(entity)) then
 				entity:Remove()
-				nut.item.spawn("ration", entity:GetPos(), nil, entity:GetAngles())
+				lia.item.spawn("ration", entity:GetPos(), nil, entity:GetAngles())
 			end
 		end)
 	end
@@ -252,7 +252,7 @@ else
 	end
 
 	function ENT:OnRemove()
-		if (!nut.shuttingDown) then
+		if (!lia.shuttingDown) then
 			SCHEMA:saveDispensers()
 		end
 	end

@@ -36,8 +36,8 @@ end
 --------------------------------------------------------------------------------------------------------
 function playerMeta:getRank()
 	for k, v in ipairs(team.GetPlayers(FACTION_CP)) do
-		local eliteRanks = string.Explode(",", nut.config.get("rankElite", "RCT"):gsub("%s", ""))
-		local unitRanks = string.Explode(",", nut.config.get("rankUnit", "RCT"):gsub("%s", ""))
+		local eliteRanks = string.Explode(",", lia.config.get("rankElite", "RCT"):gsub("%s", ""))
+		local unitRanks = string.Explode(",", lia.config.get("rankUnit", "RCT"):gsub("%s", ""))
 		local name = string.PatternSafe(v:Name())
 		for k, v in ipairs(eliteRanks) do
 			if name:find(v) then return CLASS_CP_ELITE end

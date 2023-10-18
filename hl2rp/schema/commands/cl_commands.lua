@@ -1,11 +1,11 @@
-nut.command.add(
+lia.command.add(
 	"doorkick",
 	{
 		onRun = function(client, arguments) end
 	}
 )
 
-nut.command.add(
+lia.command.add(
 	"data",
 	{
 		syntax = "<string name>",
@@ -13,14 +13,14 @@ nut.command.add(
 	}
 )
 
-nut.command.add(
+lia.command.add(
 	"objectives",
 	{
 		onRun = function(client, arguments) end
 	}
 )
 
-nut.command.add(
+lia.command.add(
 	"setpriority",
 	{
 		syntax = "<number id> [bool status]",
@@ -28,7 +28,7 @@ nut.command.add(
 	}
 )
 
-nut.command.add(
+lia.command.add(
 	"request",
 	{
 		syntax = "<string text>",

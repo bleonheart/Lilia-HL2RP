@@ -26,7 +26,7 @@ ITEM.functions.Open = {
 					client:getChar() and
 					not client:getChar():getInv():add(v)
 				) then
-					nut.item.spawn(v, position)
+					lia.item.spawn(v, position)
 				end
 			end
 		end)

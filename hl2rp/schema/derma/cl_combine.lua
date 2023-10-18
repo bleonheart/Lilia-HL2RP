@@ -2,12 +2,12 @@
 local PANEL = {}
 --------------------------------------------------------------------------------------------------------
 function PANEL:Init()
-	if IsValid(nut.gui.combine) then
-		nut.gui.combine:saveData()
-		nut.gui.combine:Remove()
+	if IsValid(lia.gui.combine) then
+		lia.gui.combine:saveData()
+		lia.gui.combine:Remove()
 	end
 
-	nut.gui.combine = self
+	lia.gui.combine = self
 	self:SetSize(580, 360)
 	self:SetPos(cookie.GetNumber("nutCombineX", ScrW() - self:GetWide()), cookie.GetNumber("nutCombineY", ScrH() * 0.5 - self:GetTall() * 0.5))
 	self:SetMouseInputEnabled(true)
@@ -39,7 +39,7 @@ function PANEL:Init()
 		SCHEMA.displays = {}
 	end
 
-	if nut.plugin.list.scanner then
+	if lia.plugin.list.scanner then
 		self.photos = self:Add("DButton")
 		self.photos:Dock(TOP)
 		self.photos:SetText("View Photos")
@@ -73,7 +73,7 @@ end
 
 --------------------------------------------------------------------------------------------------------
 vgui.Register("nutCombineDisplay", PANEL, "DFrame")
-if IsValid(nut.gui.combine) then
+if IsValid(lia.gui.combine) then
 	vgui.Create("nutCombineDisplay")
 end
 --------------------------------------------------------------------------------------------------------

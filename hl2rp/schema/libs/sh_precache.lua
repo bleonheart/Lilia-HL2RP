@@ -21,7 +21,7 @@ for k, v in pairs(SCHEMA.painSounds) do
 end
 
 for k, v in pairs(SCHEMA.rankModels) do
-	nut.anim.setModelClass(v, "metrocop")
+	lia.anim.setModelClass(v, "metrocop")
 	player_manager.AddValidModel("combine", v)
 	util.PrecacheModel(v)
 end

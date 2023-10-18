@@ -2,7 +2,7 @@
 SCHEMA.displays = {}
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:HUDPaint()
-	if LocalPlayer():isCombine() and not IsValid(nut.gui.char) then
+	if LocalPlayer():isCombine() and not IsValid(lia.gui.char) then
 		if not self.overlay then
 			self.overlay = Material("effects/combine_binocoverlay")
 			self.overlay:SetFloat("$alpha", "0.3")
@@ -12,7 +12,7 @@ function SCHEMA:HUDPaint()
 		surface.SetDrawColor(255, 255, 255)
 		surface.SetMaterial(self.overlay)
 		surface.DrawTexturedRect(0, 0, ScrW(), ScrH())
-		local panel = nut.gui.combine
+		local panel = lia.gui.combine
 		if IsValid(panel) then
 			local x, y = panel:GetPos()
 			local w, h = panel:GetSize()
@@ -55,7 +55,7 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:OnChatReceived(client, chatType, text, anonymous)
-	local class = nut.chat.classes[chatType]
+	local class = lia.chat.classes[chatType]
 	if client:isCombine() and class and class.filter == "ic" then return "<:: " .. text .. " ::>" end
 end
 
@@ -64,23 +64,23 @@ function SCHEMA:CharacterLoaded(character)
 	if character == LocalPlayer():getChar() then
 		if self:isCombineFaction(character:getFaction()) then
 			vgui.Create("nutCombineDisplay")
-		elseif IsValid(nut.gui.combine) then
-			nut.gui.combine:Remove()
+		elseif IsValid(lia.gui.combine) then
+			lia.gui.combine:Remove()
 		end
 	end
 end
 
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:OnContextMenuOpen()
-	if IsValid(nut.gui.combine) then
-		nut.gui.combine:SetVisible(true)
+	if IsValid(lia.gui.combine) then
+		lia.gui.combine:SetVisible(true)
 	end
 end
 
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:OnContextMenuClose()
-	if IsValid(nut.gui.combine) then
-		nut.gui.combine:SetVisible(false)
+	if IsValid(lia.gui.combine) then
+		lia.gui.combine:SetVisible(false)
 	end
 end
 

@@ -5,7 +5,7 @@ PLUGIN.desc = "You can write stuffs."
 NOTELIMIT = 1000
 WRITINGDATA = WRITINGDATA or {}
 
-nut.util.include("cl_vgui.lua")
+lia.util.include("cl_vgui.lua")
 
 if (CLIENT) then
 	netstream.Hook("receiveNote", function(id, contents, write)
@@ -35,7 +35,7 @@ else
 	end)
 
 	function PLUGIN:EntityRemoved(entity)
-		if (!nut.shuttingDown and entity and IsValid(entity) and entity:GetClass() == "nut_note" and entity.id) then
+		if (!lia.shuttingDown and entity and IsValid(entity) and entity:GetClass() == "nut_note" and entity.id) then
 			if WRITINGDATA[entity.id] then
 				WRITINGDATA[entity.id] = nil
 			end
@@ -65,7 +65,7 @@ else
 
 	function PLUGIN:LoadData()
 		local savedTable = self:getData() or {}
-		local noteItem = nut.item.list["note"]
+		local noteItem = lia.item.list["note"]
 		WRITINGDATA = savedTable.noteData
 
 		if (savedTable.noteEntities) then

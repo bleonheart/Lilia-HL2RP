@@ -53,7 +53,7 @@ if (SERVER) then
 			self.door:Fire("unlock")
 		end
 
-		if (!nut.shuttingDown) then
+		if (!lia.shuttingDown) then
 			PLUGIN:SaveData()
 		end
 	end

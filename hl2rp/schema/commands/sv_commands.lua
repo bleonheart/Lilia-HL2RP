@@ -1,4 +1,4 @@
-nut.command.add(
+lia.command.add(
 	"doorkick",
 	{
 		onRun = function(client, arguments)
@@ -33,12 +33,12 @@ nut.command.add(
 	}
 )
 
-nut.command.add(
+lia.command.add(
 	"data",
 	{
 		syntax = "<string name>",
 		onRun = function(client, arguments)
-			local target = nut.command.findPlayer(client, table.concat(arguments, " "))
+			local target = lia.command.findPlayer(client, table.concat(arguments, " "))
 			if IsValid(target) and target:getChar() then
 				if not hook.Run("CanPlayerViewData", client, target) then return "@noViewData" end
 				client.nutDataTarget = target
@@ -48,7 +48,7 @@ nut.command.add(
 	}
 )
 
-nut.command.add(
+lia.command.add(
 	"objectives",
 	{
 		onRun = function(client, arguments)
@@ -61,7 +61,7 @@ nut.command.add(
 	}
 )
 
-nut.command.add(
+lia.command.add(
 	"setpriority",
 	{
 		syntax = "<number id> [bool status]",
@@ -73,7 +73,7 @@ nut.command.add(
 				status = nil
 			end
 
-			for k2, v2 in pairs(nut.item.instances) do
+			for k2, v2 in pairs(lia.item.instances) do
 				if v2.uniqueID == "cid" and v2:getData("id", 0) == id then
 					v2:setData("cwu", status)
 
@@ -86,7 +86,7 @@ nut.command.add(
 	}
 )
 
-nut.command.add(
+lia.command.add(
 	"request",
 	{
 		syntax = "<string text>",
@@ -97,7 +97,7 @@ nut.command.add(
 				if item then
 					if text:find("%S") then
 						client.nutNextReq = CurTime() + 5
-						nut.chat.send(client, "request", "[" .. item:getData("name", client:Name()) .. ", " .. item:getData("id", "ERROR") .. "] " .. text)
+						lia.chat.send(client, "request", "[" .. item:getData("name", client:Name()) .. ", " .. item:getData("id", "ERROR") .. "] " .. text)
 
 						return client:EmitSound("buttons/combine_button5.wav", 50, 40)
 					end

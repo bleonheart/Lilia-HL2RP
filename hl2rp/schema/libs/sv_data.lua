@@ -1,5 +1,5 @@
 function SCHEMA:saveObjectives()
-    nut.data.set("objectives", self.objectives, false, true)
+    lia.data.set("objectives", self.objectives, false, true)
 end
 
 function SCHEMA:saveVendingMachines()
@@ -8,7 +8,7 @@ function SCHEMA:saveVendingMachines()
         data[#data + 1] = {v:GetPos(), v:GetAngles(), v:getNetVar("stocks"), v:getNetVar("active")}
     end
 
-    nut.data.set("vendingm", data)
+    lia.data.set("vendingm", data)
 end
 
 function SCHEMA:saveDispensers()
@@ -17,15 +17,15 @@ function SCHEMA:saveDispensers()
         data[#data + 1] = {v:GetPos(), v:GetAngles(), v:GetDisabled() == true and true or nil}
     end
 
-    nut.data.set("dispensers", data)
+    lia.data.set("dispensers", data)
 end
 
 function SCHEMA:loadObjectives()
-    self.objectives = nut.data.get("objectives", "", false, true)
+    self.objectives = lia.data.get("objectives", "", false, true)
 end
 
 function SCHEMA:loadVendingMachines()
-    local data = nut.data.get("vendingm") or {}
+    local data = lia.data.get("vendingm") or {}
     for k, v in ipairs(data) do
         local entity = ents.Create("nut_vendingm")
         entity:SetPos(v[1])
@@ -37,7 +37,7 @@ function SCHEMA:loadVendingMachines()
 end
 
 function SCHEMA:loadDispensers()
-    for k, v in ipairs(nut.data.get("dispensers") or {}) do
+    for k, v in ipairs(lia.data.get("dispensers") or {}) do
         local entity = ents.Create("nut_dispenser")
         entity:SetPos(v[1])
         entity:SetAngles(v[2])

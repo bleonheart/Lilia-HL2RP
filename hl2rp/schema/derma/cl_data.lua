@@ -2,11 +2,11 @@
 local PANEL = {}
 --------------------------------------------------------------------------------------------------------
 function PANEL:Init()
-	if IsValid(nut.gui.data) then
-		nut.gui.data:Remove()
+	if IsValid(lia.gui.data) then
+		lia.gui.data:Remove()
 	end
 
-	nut.gui.data = self
+	lia.gui.data = self
 	self:SetSize(280, 380)
 	self:MakePopup()
 	self:Center()

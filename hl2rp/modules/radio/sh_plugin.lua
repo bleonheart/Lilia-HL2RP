@@ -14,7 +14,7 @@ local langTable = {
 }
 
 function PLUGIN:PluginLoaded()
-	table.Merge(nut.lang.stored[langkey], langTable)
+	table.Merge(lia.lang.stored[langkey], langTable)
 end
 
 if (CLIENT) then
@@ -139,7 +139,7 @@ else
 			local item
 
 			if (id) then
-				item = nut.item.instances[id]
+				item = lia.item.instances[id]
 			else
 				item = inv:hasItem("radio")
 			end
@@ -156,7 +156,7 @@ else
 	end)
 
 	/* Do we need it?
-	nut.command.add("freq", {
+	lia.command.add("freq", {
 		syntax = "<string name> [string flags]",
 		onRun = function(client, arguments)
 			local inv = client:getChar():getInv()
@@ -200,7 +200,7 @@ local function endChatter(listener)
 	end)
 end
 
-nut.chat.register("radio", {
+lia.chat.register("radio", {
 	format = "%s says in radio: \"%s\"",
 	font = "nutRadioFont",
 	onGetColor = function(speaker, text)
@@ -208,7 +208,7 @@ nut.chat.register("radio", {
 	end,
 	onCanHear = function(speaker, listener)
 		local dist = speaker:GetPos():Distance(listener:GetPos())
-		local speakRange = nut.config.get("chatRange", 280)
+		local speakRange = lia.config.ChatRange
 		local listenerEnts = ents.FindInSphere(listener:GetPos(), speakRange)
 		local listenerInv = listener:getChar():getInv()
 		local freq
@@ -267,7 +267,7 @@ nut.chat.register("radio", {
 	end,
 	onCanSay = function(speaker, text)
 		local schar = speaker:getChar()
-		local speakRange = nut.config.get("chatRange", 280)
+		local speakRange = lia.config.ChatRange
 		local speakEnts = ents.FindInSphere(speaker:GetPos(), speakRange)
 		local speakerInv = schar:getInv()
 		local freq

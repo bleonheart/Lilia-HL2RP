@@ -29,10 +29,10 @@ netstream.Hook(
 		if index then
 			local client = Entity(index)
 			if IsValid(client) then
-				nut.util.emitQueuedSounds(client, sounds, nil, nil, volume)
+				lia.util.emitQueuedSounds(client, sounds, nil, nil, volume)
 			end
 		else
-			nut.util.emitQueuedSounds(LocalPlayer(), sounds, nil, nil, volume)
+			lia.util.emitQueuedSounds(LocalPlayer(), sounds, nil, nil, volume)
 		end
 	end
 )

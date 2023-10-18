@@ -80,7 +80,7 @@ if (SERVER) then
 			return false
 		end
 
-		if (nut.version) then
+		if (lia.version) then
 			self:ns2SetupInventorySearch(client, target)
 		else
 			self:ns1SetupInventorySearch(client, target)
@@ -105,7 +105,7 @@ if (SERVER) then
 		local target = client.nutSearchTarget
 
 		if (IsValid(target) and target:getNetVar("searcher") == client) then
-			if (nut.version) then
+			if (lia.version) then
 				PLUGIN:ns2RemoveInventorySearchPermissions(client, target)
 			else
 				PLUGIN:ns1RemoveInventorySearchPermissions(client, target)
@@ -130,9 +130,9 @@ else
 		end
 	end
 
-	if (nut.version) then
+	if (lia.version) then
 		netstream.Hook("searchPly", function(target, id)
-			local targetInv = nut.inventory.instances[id]
+			local targetInv = lia.inventory.instances[id]
 			if (not targetInv) then
 				return netstream.Start("searchExit")
 			end
@@ -170,42 +170,42 @@ else
 		end)
 	else
 		netstream.Hook("searchPly", function(target, index)
-			local inventory = nut.item.inventories[index]
+			local inventory = lia.item.inventories[index]
 
 			if (!inventory) then
 				return netstream.Start("searchExit")
 			end
 
-			nut.gui.inv1 = vgui.Create("nutInventory")
-			nut.gui.inv1:ShowCloseButton(true)
-			nut.gui.inv1:setInventory(LocalPlayer():getChar():getInv())
+			lia.gui.inv1 = vgui.Create("nutInventory")
+			lia.gui.inv1:ShowCloseButton(true)
+			lia.gui.inv1:setInventory(LocalPlayer():getChar():getInv())
 
-			PLUGIN.searchPanels[#PLUGIN.searchPanels + 1] = nut.gui.inv1
+			PLUGIN.searchPanels[#PLUGIN.searchPanels + 1] = lia.gui.inv1
 
 			local panel = vgui.Create("nutInventory")
 			panel:ShowCloseButton(true)
 			panel:SetTitle(target:Name())
 			panel:setInventory(inventory)
-			panel:MoveLeftOf(nut.gui.inv1, 4)
+			panel:MoveLeftOf(lia.gui.inv1, 4)
 			panel.OnClose = function(this)
-				if (IsValid(nut.gui.inv1) and !IsValid(nut.gui.menu)) then
-					nut.gui.inv1:Remove()
+				if (IsValid(lia.gui.inv1) and !IsValid(lia.gui.menu)) then
+					lia.gui.inv1:Remove()
 				end
 
 				netstream.Start("searchExit")
 			end
 
-			local oldClose = nut.gui.inv1.OnClose
-			nut.gui.inv1.OnClose = function()
-				if (IsValid(panel) and !IsValid(nut.gui.menu)) then
+			local oldClose = lia.gui.inv1.OnClose
+			lia.gui.inv1.OnClose = function()
+				if (IsValid(panel) and !IsValid(lia.gui.menu)) then
 					panel:Remove()
 				end
 
 				netstream.Start("searchExit")
-				nut.gui.inv1.OnClose = oldClose
+				lia.gui.inv1.OnClose = oldClose
 			end
 
-			nut.gui["inv"..index] = panel	
+			lia.gui["inv"..index] = panel	
 			PLUGIN.searchPanels[#PLUGIN.searchPanels + 1] = panel
 		end)
 	end
@@ -220,7 +220,7 @@ else
 	end)
 end
 
-nut.command.add("charsearch", {
+lia.command.add("charsearch", {
 	onRun = function(client, arguments)
 		local data = {}
 			data.start = client:GetShootPos()

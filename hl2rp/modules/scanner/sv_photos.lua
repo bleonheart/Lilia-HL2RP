@@ -4,7 +4,7 @@ util.AddNetworkString("nutScannerClearPicture")
 
 net.Receive("nutScannerData", function(length, client)
     if (IsValid(client.nutScn) and client:GetViewEntity() == client.nutScn and (client.nutNextPic or 0) < CurTime()) then
-        local delay = nut.config.get("pictureDelay", 15)
+        local delay = lia.config.PictureDelay
         client.nutNextPic = CurTime() + delay - 1
 
         local length = net.ReadUInt(16)
