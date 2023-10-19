@@ -12,6 +12,7 @@ if CLIENT then
         draw.SimpleText(item.ammoAmount, "DermaDefault", w, h - 5, color_white, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM, 1, color_black)
     end
 end
+
 --------------------------------------------------------------------------------------------------------
 ITEM.functions.use = {
     name = "Load",
@@ -21,7 +22,6 @@ ITEM.functions.use = {
         local client = item.player
         weapon = client:GetActiveWeapon()
         if not IsValid(weapon) then return false end
-
         for p, q in pairs(ignoreTable) do
             if weapon:GetClass() == q then
                 client:PrintMessage(HUD_PRINTTALK, "This weapon may not be resupplied.")

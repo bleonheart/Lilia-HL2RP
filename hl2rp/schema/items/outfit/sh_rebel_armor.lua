@@ -1,3 +1,4 @@
+--------------------------------------------------------------------------------------------------------
 ITEM.name = "Resistance Armor"
 ITEM.desc = "Clothing fit for the Resistance."
 ITEM.replacements = {
@@ -8,3 +9,4 @@ ITEM.replacements = {
 ITEM.armor = 25
 ITEM.price = 100
 ITEM.flag = "y"
+--------------------------------------------------------------------------------------------------------

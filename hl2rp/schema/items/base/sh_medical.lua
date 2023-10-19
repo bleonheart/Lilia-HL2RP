@@ -13,16 +13,21 @@ ITEM.functions.use = {
     sound = "items/medshot4.wav",
     onRun = function(item)
         local client = item.player
-
-        timer.Create(client:SteamID() .. "_healing_" .. item.uniqueID, item.TimePerTick, item.Ticks, function()
-            if (client:Health() + item.HealPerTick) >= client:GetMaxHealth() then
-                client:SetHealth(client:GetMaxHealth())
-            else
-                client:SetHealth(client:Health() + item.HealPerTick)
+        timer.Create(
+            client:SteamID() .. "_healing_" .. item.uniqueID,
+            item.TimePerTick,
+            item.Ticks,
+            function()
+                if (client:Health() + item.HealPerTick) >= client:GetMaxHealth() then
+                    client:SetHealth(client:GetMaxHealth())
+                else
+                    client:SetHealth(client:Health() + item.HealPerTick)
+                end
             end
-        end)
+        )
     end
 }
+
 --------------------------------------------------------------------------------------------------------
 ITEM.functions.target = {
     name = "Target",
@@ -30,23 +35,25 @@ ITEM.functions.target = {
     onRun = function(item)
         local client = item.player
         local target = client:GetEyeTrace().Entity
-
         if not (target:Alive() or IsValid(target) and target:IsPlayer()) then
             client:notify("Target not valid! You must be looking at it!")
 
             return
         else
-            timer.Create(target:SteamID() .. "_healing_" .. item.uniqueID, item.TimePerTick, item.Ticks, function()
-                if (target:Health() + item.HealPerTick) >= target:GetMaxHealth() then
-                    target:SetHealth(target:GetMaxHealth())
-                else
-                    target:SetHealth(target:Health() + item.HealPerTick)
+            timer.Create(
+                target:SteamID() .. "_healing_" .. item.uniqueID,
+                item.TimePerTick,
+                item.Ticks,
+                function()
+                    if (target:Health() + item.HealPerTick) >= target:GetMaxHealth() then
+                        target:SetHealth(target:GetMaxHealth())
+                    else
+                        target:SetHealth(target:Health() + item.HealPerTick)
+                    end
                 end
-            end)
+            )
         end
     end,
-    onCanRun = function(item)
-        return not IsValid(item.entity)
-    end
+    onCanRun = function(item) return not IsValid(item.entity) end
 }
 --------------------------------------------------------------------------------------------------------
