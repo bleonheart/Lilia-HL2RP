@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:SaveData()
+function MODULE:SaveData()
     local data = {}
     for k, v in ipairs(ents.FindByClass("lia_cmblock")) do
         if IsValid(v.door) then
@@ -11,7 +11,7 @@ function PLUGIN:SaveData()
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:LoadData()
+function MODULE:LoadData()
     local data = self:getData() or {}
     for k, v in ipairs(data) do
         local door = ents.GetMapCreatedEntity(v[1])

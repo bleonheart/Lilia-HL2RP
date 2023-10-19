@@ -39,7 +39,7 @@ function PANEL:Init()
 		SCHEMA.displays = {}
 	end
 
-	if lia.plugin.list.scanner then
+	if lia.module.list.scanner then
 		self.photos = self:Add("DButton")
 		self.photos:Dock(TOP)
 		self.photos:SetText("View Photos")

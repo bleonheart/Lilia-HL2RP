@@ -54,8 +54,8 @@ function SCHEMA:PostPlayerLoadout(client)
 
 		hook.Run("PlayerRankChanged", client)
 		client:addDisplay("Local unit protection measures active at " .. client:Armor() .. "%")
-		if lia.plugin.list.scanner and client:isCombineRank(self.scnRanks) then
-			lia.plugin.list.scanner:createScanner(client, client:getCombineRank() == "CLAW.SCN")
+		if lia.module.list.scanner and client:isCombineRank(self.scnRanks) then
+			lia.module.list.scanner:createScanner(client, client:getCombineRank() == "CLAW.SCN")
 		end
 	end
 end
@@ -88,7 +88,7 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function SCHEMA:PlayerSwitchFlashlight(client, enabled)
-	if lia.plugin.list.scanner then return end
+	if lia.module.list.scanner then return end
 	if client:isCombine() then return true end
 end
 

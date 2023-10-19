@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------------
-local PLUGIN = PLUGIN
+local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------
 ENT.Type = "anim"
 --------------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ function ENT:SpawnFunction(client, trace)
     entity:Spawn()
     entity:Activate()
     entity:setDoor(door, position, angles)
-    PLUGIN:SaveData()
+    MODULE:SaveData()
 
     return entity
 end

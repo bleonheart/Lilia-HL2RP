@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------------
-local PLUGIN = PLUGIN
+local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------
 local modes = {}
 --------------------------------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ function ENT:SpawnFunction(client, trace)
 	entity:SetPos(trace.HitPos + Vector(0, 0, 40))
 	entity:SetAngles(angles:SnapTo("y", 90))
 	entity:Spawn()
-	PLUGIN:saveForceFields()
+	MODULE:saveForceFields()
 
 	return entity
 end
@@ -124,7 +124,7 @@ function ENT:OnRemove()
 	end
 
 	if not lia.shuttingDown and not self.liaIsSafe then
-		PLUGIN:saveForceFields()
+		MODULE:saveForceFields()
 	end
 end
 
@@ -161,7 +161,7 @@ function ENT:Use(activator)
 
 		self:EmitSound("buttons/combine_button5.wav", 140, 100 + (self.mode - 1) * 15)
 		activator:ChatPrint("Changed barrier mode to: " .. modes[self.mode][2])
-		PLUGIN:saveForceFields()
+		MODULE:saveForceFields()
 	else
 		self:EmitSound("buttons/combine_button3.wav")
 	end

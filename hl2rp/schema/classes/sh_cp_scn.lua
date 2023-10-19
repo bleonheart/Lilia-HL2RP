@@ -11,11 +11,11 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function CLASS:onSet(client)
-	local scanner = lia.plugin.list.scanner
+	local scanner = lia.module.list.scanner
 	if scanner then
 		scanner:createScanner(client, client:getCombineRank() == "CLAW.SCN")
 	else
-		client:ChatPrint("The server is missing the 'scanner' plugin.")
+		client:ChatPrint("The server is missing the 'scanner' module.")
 	end
 end
 

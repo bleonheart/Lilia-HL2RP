@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:LoadData()
+function MODULE:LoadData()
     local savedTable = self:getData() or {}
     local noteItem = lia.item.list["note"]
     WRITINGDATA = savedTable.noteData
@@ -18,7 +18,7 @@ function PLUGIN:LoadData()
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:SaveData()
+function MODULE:SaveData()
     local saveTable = {}
     local validNotes = {}
     saveTable.noteEntities = {}
@@ -55,7 +55,7 @@ function FindNoteByID(id)
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:EntityRemoved(entity)
+function MODULE:EntityRemoved(entity)
     if not lia.shuttingDown and entity and IsValid(entity) and entity:GetClass() == "lia_note" and entity.id then
         if WRITINGDATA[entity.id] then
             WRITINGDATA[entity.id] = nil
@@ -64,7 +64,7 @@ function PLUGIN:EntityRemoved(entity)
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:OnNoteSpawned(note, item, load)
+function MODULE:OnNoteSpawned(note, item, load)
     note:SetModel(item.model)
     note:PhysicsInit(SOLID_VPHYSICS)
     note:SetMoveType(MOVETYPE_VPHYSICS)

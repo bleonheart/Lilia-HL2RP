@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------------------------------
-local PICTURE_WIDTH = PLUGIN.PICTURE_WIDTH
+local PICTURE_WIDTH = MODULE.PICTURE_WIDTH
 --------------------------------------------------------------------------------------------------------
-local PICTURE_HEIGHT = PLUGIN.PICTURE_HEIGHT
+local PICTURE_HEIGHT = MODULE.PICTURE_HEIGHT
 --------------------------------------------------------------------------------------------------------
 local PICTURE_WIDTH2 = PICTURE_WIDTH * 0.5
 --------------------------------------------------------------------------------------------------------
@@ -9,7 +9,7 @@ local PICTURE_HEIGHT2 = PICTURE_HEIGHT * 0.5
 --------------------------------------------------------------------------------------------------------
 PHOTO_CACHE = PHOTO_CACHE or {}
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:takePicture()
+function MODULE:takePicture()
     if (self.lastPic or 0) < CurTime() then
         self.lastPic = CurTime() + lia.config.PictureDelay
         net.Start("liaScannerPicture")
@@ -24,7 +24,7 @@ function PLUGIN:takePicture()
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:PostRender()
+function MODULE:PostRender()
     if self.startPicture then
         local data = util.Compress(
             render.Capture(

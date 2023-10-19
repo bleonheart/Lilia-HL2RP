@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:saveForceFields()
+function MODULE:saveForceFields()
     local buffer = {}
     for k, v in pairs(ents.FindByClass("lia_forcefield")) do
         buffer[#buffer + 1] = {
@@ -13,7 +13,7 @@ function PLUGIN:saveForceFields()
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:LoadData()
+function MODULE:LoadData()
     local buffer = self:getData() or {}
     for k, v in ipairs(buffer) do
         local entity = ents.Create("lia_forcefield")

@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------------------------------
-local PICTURE_WIDTH = PLUGIN.PICTURE_WIDTH
+local PICTURE_WIDTH = MODULE.PICTURE_WIDTH
 --------------------------------------------------------------------------------------------------------
-local PICTURE_HEIGHT = PLUGIN.PICTURE_HEIGHT
+local PICTURE_HEIGHT = MODULE.PICTURE_HEIGHT
 --------------------------------------------------------------------------------------------------------
 local PICTURE_WIDTH2 = PICTURE_WIDTH * 0.5
 --------------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ local blackAndWhite = {
 }
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:CalcView(client, origin, angles, fov)
+function MODULE:CalcView(client, origin, angles, fov)
     local entity = client:GetViewEntity()
     if IsValid(entity) and entity:GetClass():find("scanner") then
         view.angles = client:GetAimVector():Angle()
@@ -49,13 +49,13 @@ function PLUGIN:CalcView(client, origin, angles, fov)
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:InputMouseApply(command, x, y, angle)
+function MODULE:InputMouseApply(command, x, y, angle)
     zoom = math.Clamp(zoom + command:GetMouseWheel() * 1.5, 0, 40)
     deltaZoom = Lerp(FrameTime() * 2, deltaZoom, zoom)
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:PreDrawOpaqueRenderables()
+function MODULE:PreDrawOpaqueRenderables()
     local viewEntity = LocalPlayer():GetViewEntity()
     if IsValid(self.lastViewEntity) and self.lastViewEntity ~= viewEntity then
         self.lastViewEntity:SetNoDraw(false)
@@ -77,17 +77,17 @@ function PLUGIN:PreDrawOpaqueRenderables()
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:ShouldDrawCrosshair()
+function MODULE:ShouldDrawCrosshair()
     if hidden then return false end
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:AdjustMouseSensitivity()
+function MODULE:AdjustMouseSensitivity()
     if hidden then return 0.3 end
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:HUDPaint()
+function MODULE:HUDPaint()
     if not hidden then return end
     local scrW, scrH = surface.ScreenWidth() * 0.5, surface.ScreenHeight() * 0.5
     local x, y = scrW - PICTURE_WIDTH2, scrH - PICTURE_HEIGHT2
@@ -142,14 +142,14 @@ function PLUGIN:HUDPaint()
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:RenderScreenspaceEffects()
+function MODULE:RenderScreenspaceEffects()
     if not hidden then return end
     blackAndWhite["$pp_colour_brightness"] = -0.05 + math.sin(RealTime() * 5) * 0.01
     DrawColorModify(blackAndWhite)
 end
 
 --------------------------------------------------------------------------------------------------------
-function PLUGIN:PlayerBindPress(client, bind, pressed)
+function MODULE:PlayerBindPress(client, bind, pressed)
     bind = bind:lower()
     if bind:find("attack") and pressed and hidden and IsValid(self.lastViewEntity) then
         self:takePicture()
