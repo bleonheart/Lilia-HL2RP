@@ -35,7 +35,7 @@ lia.chat.register(
         onGetColor = function(speaker, text) return Color(100, 255, 50) end,
         onCanHear = function(speaker, listener)
             local dist = speaker:GetPos():Distance(listener:GetPos())
-            local speakRange = lia.config.get("chatRange", 280)
+            local speakRange = lia.config.ChatRange
             local listenerEnts = ents.FindInSphere(listener:GetPos(), speakRange)
             local listenerInv = listener:getChar():getInv()
             local freq
@@ -80,7 +80,7 @@ lia.chat.register(
         end,
         onCanSay = function(speaker, text)
             local schar = speaker:getChar()
-            local speakRange = lia.config.get("chatRange", 280)
+            local speakRange = lia.config.ChatRange
             local speakEnts = ents.FindInSphere(speaker:GetPos(), speakRange)
             local speakerInv = schar:getInv()
             local freq
