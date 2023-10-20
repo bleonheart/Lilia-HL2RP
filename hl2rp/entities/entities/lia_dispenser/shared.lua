@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------------------------------
 ENT.Type = "anim"
 ENT.PrintName = "Ration Dispenser"
-ENT.Author = "STEAM_0:1:176123778"
+ENT.Author = "@liliaplayer > Discord"
 ENT.Category = "HL2 RP"
 ENT.Spawnable = true
 ENT.AdminOnly = true
