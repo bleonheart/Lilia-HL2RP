@@ -27,6 +27,7 @@ end
 --------------------------------------------------------------------------------------------------------
 function FACTION:onTransfered(client, oldFaction)
 	local digits
+	if oldFaction == nil then return end
 	local inventory = client:getChar():getInv()
 	if oldFaction.index == FACTION_CITIZEN and inventory then
 		for _, item in pairs(inventory:getItems()) do
