@@ -1,7 +1,1 @@
-"skeleton"
-{
-	"base"		"lilia"
-	"title"		"skeleton"
-	"author"	""
-	"menusystem" "1"
-}
+﻿goto"skeleton"{"base"}"lilia""title""skeleton""author""""menusystem""1"

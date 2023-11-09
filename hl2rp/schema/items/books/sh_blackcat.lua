@@ -1,4 +1,4 @@
-ITEM.name = "The Black Cat"
+﻿ITEM.name = "The Black Cat"
 ITEM.desc = "A dark colored book with the black cat on it."
 ITEM.price = 25
 ITEM.contents = [[

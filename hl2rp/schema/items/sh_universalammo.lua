@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 ITEM.name = "Box of Ammunition"
 ITEM.model = "models/Items/BoxSRounds.mdl"
 ITEM.ammoAmount = 60 -- amount of the ammo
@@ -26,7 +26,6 @@ ITEM.functions.use = {
             if weapon:GetClass() == q then
                 client:PrintMessage(HUD_PRINTTALK, "This weapon may not be resupplied.")
                 client:EmitSound("Player.DenyWeaponSelection")
-
                 return false
             end
         end
@@ -34,7 +33,6 @@ ITEM.functions.use = {
         client:GiveAmmo(item.ammoAmount, weapon:GetPrimaryAmmoType(), false)
         client:PrintMessage(HUD_PRINTTALK, "You picked up some ammo.")
         client:EmitSound("items/ammo_pickup.wav", 110)
-
         return true
     end,
 }

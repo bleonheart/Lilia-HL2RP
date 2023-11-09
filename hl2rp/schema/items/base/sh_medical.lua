@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 ITEM.name = "Aid Items"
 ITEM.desc = "Heals you bruh."
 ITEM.model = "models/weapons/w_package.mdl"
@@ -37,7 +37,6 @@ ITEM.functions.target = {
         local target = client:GetEyeTrace().Entity
         if not (target:Alive() or IsValid(target) and target:IsPlayer()) then
             client:notify("Target not valid! You must be looking at it!")
-
             return
         else
             timer.Create(

@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------------------------
 AddCSLuaFile()
 --------------------------------------------------------------------------------------------------------------------------
 SWEP.PrintName = "Suitcase"
@@ -31,35 +31,35 @@ SWEP.LowerAngles = Angle(15, -10, -20)
 SWEP.IsAlwaysLowered = true
 --------------------------------------------------------------------------------------------------------------------------
 function SWEP:Initialize()
-	self:SetHoldType(self.HoldType)
+    self:SetHoldType(self.HoldType)
 end
 
 --------------------------------------------------------------------------------------------------------------------------
 function SWEP:GetViewModelPosition(position, angles)
-	return position + angles:Right() * 10 + angles:Forward() * 20, angles
+    return position + angles:Right() * 10 + angles:Forward() * 20, angles
 end
 
 --------------------------------------------------------------------------------------------------------------------------
 function SWEP:DrawWorldModel()
-	if not self.dummy then
-		self.dummy = ClientsideModel("models/weapons/w_suitcase_passenger.mdl")
-		self.dummy:SetModelScale(0.85, 0)
-	end
+    if not self.dummy then
+        self.dummy = ClientsideModel("models/weapons/w_suitcase_passenger.mdl")
+        self.dummy:SetModelScale(0.85, 0)
+    end
 
-	self.dummy:SetNoDraw(false)
-	local info = self:GetAttachment(1)
-	local position, angles
-	if info then
-		position, angles = info.Pos, info.Ang
-	else
-		position, angles = self.Owner:GetShootPos(), self.Owner:EyeAngles()
-	end
+    self.dummy:SetNoDraw(false)
+    local info = self:GetAttachment(1)
+    local position, angles
+    if info then
+        position, angles = info.Pos, info.Ang
+    else
+        position, angles = self.Owner:GetShootPos(), self.Owner:EyeAngles()
+    end
 
-	angles:RotateAroundAxis(angles:Right(), 80)
-	angles:RotateAroundAxis(angles:Up(), 70)
-	self.dummy:SetPos(position - angles:Forward() * 4 + angles:Up() * 7 + angles:Right() * 0)
-	self.dummy:SetAngles(angles)
-	self.dummy:DrawModel()
-	self.dummy:SetNoDraw(true)
+    angles:RotateAroundAxis(angles:Right(), 80)
+    angles:RotateAroundAxis(angles:Up(), 70)
+    self.dummy:SetPos(position - angles:Forward() * 4 + angles:Up() * 7 + angles:Right() * 0)
+    self.dummy:SetAngles(angles)
+    self.dummy:DrawModel()
+    self.dummy:SetNoDraw(true)
 end
 --------------------------------------------------------------------------------------------------------------------------
