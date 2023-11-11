@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 local PICTURE_WIDTH = MODULE.PICTURE_WIDTH
 --------------------------------------------------------------------------------------------------------
 local PICTURE_HEIGHT = MODULE.PICTURE_HEIGHT
@@ -14,12 +14,7 @@ function MODULE:takePicture()
         self.lastPic = CurTime() + lia.config.PictureDelay
         net.Start("liaScannerPicture")
         net.SendToServer()
-        timer.Simple(
-            0.1,
-            function()
-                self.startPicture = true
-            end
-        )
+        timer.Simple(0.1, function() self.startPicture = true end)
     end
 end
 

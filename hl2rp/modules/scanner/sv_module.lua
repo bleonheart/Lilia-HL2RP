@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 local SCANNER_SOUNDS = {"npc/scanner/scanner_blip1.wav", "npc/scanner/scanner_scan1.wav", "npc/scanner/scanner_scan2.wav", "npc/scanner/scanner_scan4.wav", "npc/scanner/scanner_scan5.wav", "npc/scanner/combat_scan1.wav", "npc/scanner/combat_scan2.wav", "npc/scanner/combat_scan3.wav", "npc/scanner/combat_scan4.wav", "npc/scanner/combat_scan5.wav", "npc/scanner/cbot_servoscared.wav", "npc/scanner/cbot_servochatter.wav"}
 --------------------------------------------------------------------------------------------------------
 function MODULE:createScanner(client, isClawScanner)
@@ -6,9 +6,7 @@ function MODULE:createScanner(client, isClawScanner)
     local entity = ents.Create("lia_scanner")
     if not IsValid(entity) then return end
     for _, scanner in ipairs(ents.FindByClass("lia_scanner")) do
-        if scanner:GetPilot() == client then
-            scanner:SetPilot(NULL)
-        end
+        if scanner:GetPilot() == client then scanner:SetPilot(NULL) end
     end
 
     entity:SetPos(client:GetPos())
@@ -17,13 +15,9 @@ function MODULE:createScanner(client, isClawScanner)
     entity:Spawn()
     entity:Activate()
     entity:setPilot(client)
-    if isClawScanner then
-        entity:setClawScanner()
-    end
-
+    if isClawScanner then entity:setClawScanner() end
     entity:setNetVar("player", client)
     client.liaScn = entity
-
     return entity
 end
 
@@ -48,7 +42,6 @@ end
 function MODULE:DoPlayerDeath(client)
     if IsValid(client.liaScn) then
         client:AddDeaths(1)
-
         return false
     end
 end
@@ -79,9 +72,7 @@ function MODULE:KeyPress(client, key)
             end
         end
 
-        if source then
-            client.liaScn:EmitSound(source)
-        end
+        if source then client.liaScn:EmitSound(source) end
     end
 end
 
@@ -116,7 +107,6 @@ function MODULE:PlayerSwitchFlashlight(client, enabled)
     end
 
     scanner:EmitSound("npc/turret_floor/click1.wav", 50, pitch)
-
     return false
 end
 
@@ -137,8 +127,6 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function MODULE:PlayerRankChanged(client)
-    if IsValid(client.liaScn) then
-        client:Spawn()
-    end
+    if IsValid(client.liaScn) then client:Spawn() end
 end
 --------------------------------------------------------------------------------------------------------

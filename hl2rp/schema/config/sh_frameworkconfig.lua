@@ -1,4 +1,4 @@
--- General Gameplay Settings
+﻿-- General Gameplay Settings
 lia.config.EquipDelay = 2 -- Delay OnEquip
 lia.config.DropDelay = 2 -- Delay OnDrop
 lia.config.TakeDelay = 2 -- Delay OnTake

@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 function MODULE:EntityTakeDamage(entity, dmgInfo)
     if entity:GetClass() == "prop_door_rotating" and (entity.liaNextBreach or 0) < CurTime() then
         local handle = entity:LookupBone("handle")
@@ -17,7 +17,6 @@ function MODULE:EntityTakeDamage(entity, dmgInfo)
                     effect:SetOrigin(position)
                     effect:SetScale(10)
                     util.Effect("GlassImpact", effect, true, true)
-
                     return
                 end
             end
@@ -37,14 +36,7 @@ function MODULE:EntityTakeDamage(entity, dmgInfo)
                 entity:Fire("openawayfrom", name)
                 entity:EmitSound("physics/wood/wood_plank_break" .. math.random(1, 4) .. ".wav", 100, 120)
                 entity.liaNextBreach = CurTime() + 1
-                timer.Simple(
-                    0.5,
-                    function()
-                        if IsValid(entity) then
-                            entity:Fire("setspeed", entity.liaOldSpeed)
-                        end
-                    end
-                )
+                timer.Simple(0.5, function() if IsValid(entity) then entity:Fire("setspeed", entity.liaOldSpeed) end end)
             end
         end
     end

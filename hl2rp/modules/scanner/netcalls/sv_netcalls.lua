@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 util.AddNetworkString("liaScannerData")
 --------------------------------------------------------------------------------------------------------
 util.AddNetworkString("liaScannerPicture")
@@ -27,9 +27,7 @@ net.Receive(
                 net.WriteUInt(#data, 16)
                 net.WriteData(data, #data)
                 net.Send(receivers)
-                if SCHEMA.addDisplay then
-                    SCHEMA:addDisplay("Prepare to receive visual download...")
-                end
+                if SCHEMA.addDisplay then SCHEMA:addDisplay("Prepare to receive visual download...") end
             end
         end
     end

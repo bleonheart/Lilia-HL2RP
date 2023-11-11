@@ -1,4 +1,4 @@
----------------------------------------------------------------------------------------------------------------------------------------------
+﻿---------------------------------------------------------------------------------------------------------------------------------------------
 AddCSLuaFile("cl_init.lua")
 --------------------------------------------------------------------------------------------------------------------------
 AddCSLuaFile("shared.lua")
@@ -12,7 +12,6 @@ function ENT:SpawnFunction(client, trace)
     entity:Spawn()
     entity:Activate()
     SCHEMA:saveDispensers()
-
     return entity
 end
 
@@ -183,14 +182,7 @@ function ENT:Use(activator)
                     item:setData("nextTime", os.time() + 300)
                     self:SetText("ID OKAY")
                     self:EmitSound("buttons/button14.wav", 100, 50)
-                    timer.Simple(
-                        1,
-                        function()
-                            if IsValid(self) then
-                                self:dispense(amount)
-                            end
-                        end
-                    )
+                    timer.Simple(1, function() if IsValid(self) then self:dispense(amount) end end)
                 end
             end
         )
@@ -203,8 +195,6 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function ENT:OnRemove()
-    if not lia.shuttingDown then
-        SCHEMA:saveDispensers()
-    end
+    if not lia.shuttingDown then SCHEMA:saveDispensers() end
 end
 --------------------------------------------------------------------------------------------------------
