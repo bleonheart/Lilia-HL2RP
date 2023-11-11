@@ -1,4 +1,6 @@
 ----------------------------------------------------------------------------------------------
+local PIM = PIM
+----------------------------------------------------------------------------------------------
 PIM_Frame = nil
 ----------------------------------------------------------------------------------------------
 function MODULE:OpenPIM()
@@ -59,7 +61,7 @@ function MODULE:OpenPIM()
     local visibleOptionsCount = 0
     local traceEnt = LocalPlayer():GetEyeTrace().Entity
     for name, opt in pairs(PIM.options) do
-        if opt.shouldShow(LocalPlayer(), traceEnt) and traceEnt:IsPlayer() then
+        if opt.shouldShow(LocalPlayer(), traceEnt) and traceEnt:IsPlayer() and PIM:CheckDistance(LocalPlayer(), traceEnt) then
             visibleOptionsCount = visibleOptionsCount + 1
             local p = frame.list:Add("DButton")
             p:SetText(name)

@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------
-lia.config.MaxInteractionDistance = 200
+lia.config.MaxInteractionDistance = 250 * 250
 ----------------------------------------------------------------------------------------------
 lia.config.CarSearchRadius = 150
 ----------------------------------------------------------------------------------------------
@@ -10,11 +10,7 @@ timer.Simple(
             "Give Money",
             {
                 serverRun = false,
-                shouldShow = function(client, target)
-                    if target:IsPlayer() and PIM:CheckDistance(client, target) then return true end
-
-                    return false
-                end,
+                shouldShow = function(client, target) return IsValid(target) and client:getChar():getMoney() > 0 end,
                 onRun = function(client, target)
                     if not target:IsPlayer() then return end
                     local frame = vgui.Create("WolfFrame")
@@ -76,7 +72,7 @@ timer.Simple(
             "Open Detailed Description",
             {
                 runServer = true,
-                shouldShow = function(client, target) return hook.Run("IsValidTarget", target) end,
+                shouldShow = function(client, target) return IsValid(target) end,
                 onRun = function(client, target)
                     if SERVER then
                         net.Start("OpenDetailedDescriptions")
@@ -117,7 +113,7 @@ timer.Simple(
                     local ourChar = client:getChar()
                     local tarCharID = target:getChar():getID()
 
-                    return not hook.Run("IsCharRecognized", ourChar, tarCharID)
+                    return not hook.Run("IsCharRecognized", ourChar, tarCharID) and lia.config.FakeNamesEnabled
                 end,
                 onRun = function(client, target)
                     if CLIENT then
