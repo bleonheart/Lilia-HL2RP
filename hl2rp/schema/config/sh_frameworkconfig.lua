@@ -1,4 +1,4 @@
-lia.config.AutoWorkshopDownloader = true -- Automatically download missing workshop content
+﻿lia.config.AutoWorkshopDownloader = true -- Automatically download missing workshop content
 lia.config.MaxCharacters = 3 -- Maximum number of characters per player
 lia.config.invW = 11 -- Inventory width
 lia.config.invH = 4 -- Inventory height
