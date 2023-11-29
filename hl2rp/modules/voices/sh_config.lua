@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
 lia.voice.register("combine", "0", "Zero.", "npc/metropolice/vo/zero.wav")
 lia.voice.register("combine", "1", "One.", "npc/metropolice/vo/one.wav")
 lia.voice.register("combine", "10", "Ten.", "npc/metropolice/vo/ten.wav")

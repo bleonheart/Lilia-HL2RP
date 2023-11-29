@@ -1,4 +1,4 @@
-﻿---------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
 AddCSLuaFile("cl_init.lua")
 ---------------------------------------------------------------------------------------------------------------------------------------------
 AddCSLuaFile("shared.lua")
@@ -25,6 +25,7 @@ function ENT:SpawnFunction(client, trace)
     end
 
     SCHEMA:saveVendingMachines()
+
     return entity
 end
 
@@ -53,6 +54,7 @@ function ENT:Initialize()
             self:SetPos(v:GetPos())
             self:SetAngles(v:GetAngles())
             SafeRemoveEntity(v)
+
             return
         end
     end
@@ -88,10 +90,12 @@ function ENT:Use(activator)
                     self:setNetVar("stocks", stocks)
                 end
             )
+
             return
         else
             self:setNetVar("active", not self:getNetVar("active"))
             self:EmitSound(self:getNetVar("active") and "buttons/combine_button1.wav" or "buttons/combine_button2.wav")
+
             return
         end
     end
@@ -110,6 +114,7 @@ function ENT:Use(activator)
 
         if not activator:getChar():hasMoney(price) then
             self:EmitSound("buttons/button2.wav")
+
             return activator:notify("You need " .. lia.currency.get(price) .. " to purchase this selection.")
         end
 
@@ -120,7 +125,10 @@ function ENT:Use(activator)
             position + f * 19 + r * 4 + u * -26,
             function(item, entity)
                 stocks[button] = stocks[button] - 1
-                if stocks[button] < 1 then self:EmitSound("buttons/button6.wav") end
+                if stocks[button] < 1 then
+                    self:EmitSound("buttons/button6.wav")
+                end
+
                 self:setNetVar("stocks", stocks)
                 self:EmitSound("buttons/button4.wav", Angle(0, 0, 90))
                 activator:getChar():takeMoney(price)
@@ -133,6 +141,8 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function ENT:OnRemove()
-    if not lia.shuttingDown then SCHEMA:saveVendingMachines() end
+    if not lia.shuttingDown then
+        SCHEMA:saveVendingMachines()
+    end
 end
 --------------------------------------------------------------------------------------------------------

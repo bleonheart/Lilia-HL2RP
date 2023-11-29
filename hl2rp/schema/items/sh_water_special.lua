@@ -1,9 +1,9 @@
-﻿--------------------------------------------------------------------------------------------------------
-ITEM.name = "Special Water"
 --------------------------------------------------------------------------------------------------------
-ITEM.desc = "A blue can of plain water."
+ITEM.name = "Soda"
 --------------------------------------------------------------------------------------------------------
-ITEM.model = "models/props_junk/popcan01a.mdl"
+ITEM.desc = "A rare soda brand drink approved by the benefactors."
+--------------------------------------------------------------------------------------------------------
+ITEM.model = "models/hlvr/food/can_1.mdl"
 --------------------------------------------------------------------------------------------------------
 ITEM.healthRestore = 20
 --------------------------------------------------------------------------------------------------------
@@ -16,12 +16,12 @@ ITEM.skin = 1
 ITEM.price = 20
 --------------------------------------------------------------------------------------------------------
 ITEM.functions.Drink = {
-    icon = "icon16/cup.png",
-    sound = "items/battery_pickup.wav",
-    onRun = function(item)
-        item.player:SetHealth(math.min(item.player:Health() + item.restore, 100))
-        item.player:setLocalVar("stm", math.min(item.player:getLocalVar("stm", 100) + item.restore, 100))
-    end
+	icon = "icon16/cup.png",
+	sound = "items/battery_pickup.wav",
+	onRun = function(item)
+		item.player:SetHealth(math.min(item.player:Health() + item.restore, 100))
+		item.player:setLocalVar("stm", math.min(item.player:getLocalVar("stm", 100) + item.restore, 100))
+	end
 }
 
 --------------------------------------------------------------------------------------------------------

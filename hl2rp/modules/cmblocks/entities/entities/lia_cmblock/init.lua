@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
 local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------------------------
 AddCSLuaFile("cl_init.lua")
@@ -13,13 +13,20 @@ function ENT:Initialize()
     self:PhysicsInit(SOLID_VPHYSICS)
     self:SetCollisionGroup(COLLISION_GROUP_WEAPON)
     self:SetUseType(SIMPLE_USE)
-    self.onDoorRestored = function(self, door) self:toggle(false) end
+    self.onDoorRestored = function(self, door)
+        self:toggle(false)
+    end
 end
 
 --------------------------------------------------------------------------------------------------------------------------
 function ENT:OnRemove()
-    if IsValid(self.door) then self.door:Fire("unlock") end
-    if not lia.shuttingDown then MODULE:SaveData() end
+    if IsValid(self.door) then
+        self.door:Fire("unlock")
+    end
+
+    if not lia.shuttingDown then
+        MODULE:SaveData()
+    end
 end
 
 --------------------------------------------------------------------------------------------------------------------------
@@ -31,8 +38,9 @@ function ENT:Use(activator)
         return
     end
 
-    if not activator:isCombine() and activator:Team() ~= FACTION_ADMIN then
+    if not activator:isCombine() and activator:Team() ~= FACTION_STAFF then
         self:error()
+
         return
     end
 
@@ -47,7 +55,16 @@ end
 function ENT:error()
     self:EmitSound("buttons/combine_button_locked.wav")
     self:SetErroring(true)
-    timer.Create("lia_CombineLockErroring" .. self:EntIndex(), 1, 2, function() if IsValid(self) then self:SetErroring(false) end end)
+    timer.Create(
+        "lia_CombineLockErroring" .. self:EntIndex(),
+        1,
+        2,
+        function()
+            if IsValid(self) then
+                self:SetErroring(false)
+            end
+        end
+    )
 end
 
 --------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +82,9 @@ function ENT:toggle(override)
     if not self:GetLocked() then
         self:EmitSound("buttons/combine_button7.wav")
         self.door:Fire("unlock")
-        if IsValid(partner) then partner:Fire("unlock") end
+        if IsValid(partner) then
+            partner:Fire("unlock")
+        end
     else
         self:EmitSound("buttons/combine_button2.wav")
         self.door:Fire("close")
@@ -82,11 +101,15 @@ function ENT:getLockPos(client, door)
     local index, index2 = door:LookupBone("handle")
     local normal = client:GetEyeTrace().HitNormal:Angle()
     local position = client:GetEyeTrace().HitPos
-    if index and index >= 1 then position = door:GetBonePosition(index) end
+    if index and index >= 1 then
+        position = door:GetBonePosition(index)
+    end
+
     position = position + normal:Forward() * 7 + normal:Up() * 10
     normal:RotateAroundAxis(normal:Up(), 90)
     normal:RotateAroundAxis(normal:Forward(), 180)
     normal:RotateAroundAxis(normal:Right(), 180)
+
     return position, normal
 end
 
@@ -112,7 +135,16 @@ end
 function ENT:ping()
     self:SetErroring(true)
     self:EmitSound("npc/turret_floor/ping.wav")
-    timer.Create("liaPing" .. self:EntIndex(), 0.1, 1, function() if IsValid(self) then self:SetErroring(false) end end)
+    timer.Create(
+        "liaPing" .. self:EntIndex(),
+        0.1,
+        1,
+        function()
+            if IsValid(self) then
+                self:SetErroring(false)
+            end
+        end
+    )
 end
 
 --------------------------------------------------------------------------------------------------------------------------
@@ -121,6 +153,7 @@ function ENT:Think()
     local curTime = CurTime()
     if self.detonateEndTime <= curTime then
         self:explode()
+
         return
     end
 

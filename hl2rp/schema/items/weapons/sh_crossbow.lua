@@ -1,4 +1,4 @@
-﻿ITEM.name = "Crossbow"
+ITEM.name = "Crossbow"
 ITEM.desc = "A crossbow that fires a heated bolt."
 ITEM.model = "models/weapons/w_crossbow.mdl"
 ITEM.width = 3
@@ -9,7 +9,7 @@ ITEM.iconCam = {
     fov = 15.882352941176
 }
 
-ITEM.class = "weapon_crossbow"
+ITEM.class = "tfa_projecthl2_crossbow"
 ITEM.weaponCategory = "primary"
 ITEM.price = 750
 ITEM.flag = "Y"

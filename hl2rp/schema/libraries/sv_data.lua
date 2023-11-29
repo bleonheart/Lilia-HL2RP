@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
 function SCHEMA:saveObjectives()
     lia.data.set("objectives", self.objectives, false, true)
 end
@@ -48,7 +48,9 @@ function SCHEMA:loadDispensers()
         entity:SetPos(v[1])
         entity:SetAngles(v[2])
         entity:Spawn()
-        if v[3] then entity:SetDisabled(true) end
+        if v[3] then
+            entity:SetDisabled(true)
+        end
     end
 end
 --------------------------------------------------------------------------------------------------------

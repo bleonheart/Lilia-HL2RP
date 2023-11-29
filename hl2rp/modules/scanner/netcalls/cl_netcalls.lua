@@ -1,4 +1,5 @@
-﻿--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
 net.Receive(
     "liaScannerData",
     function()
@@ -7,7 +8,16 @@ net.Receive(
         if not data then return end
         if IsValid(CURRENT_PHOTO) then
             local panel = CURRENT_PHOTO
-            CURRENT_PHOTO:AlphaTo(0, 0.25, 0, function() if IsValid(panel) then panel:Remove() end end)
+            CURRENT_PHOTO:AlphaTo(
+                0,
+                0.25,
+                0,
+                function()
+                    if IsValid(panel) then
+                        panel:Remove()
+                    end
+                end
+            )
         end
 
         local html = Format([[
@@ -27,7 +37,24 @@ net.Receive(
         panel.body:DockMargin(4, 4, 4, 4)
         panel.body:SetHTML(html)
         panel:MoveTo(ScrW() - (panel:GetWide() + 8), 8, 0.5)
-        timer.Simple(15, function() if IsValid(panel) then panel:MoveTo(ScrW(), 8, 0.5, 0, -1, function() panel:Remove() end) end end)
+        timer.Simple(
+            15,
+            function()
+                if IsValid(panel) then
+                    panel:MoveTo(
+                        ScrW(),
+                        8,
+                        0.5,
+                        0,
+                        -1,
+                        function()
+                            panel:Remove()
+                        end
+                    )
+                end
+            end
+        )
+
         PHOTO_CACHE[#PHOTO_CACHE + 1] = {
             data = html,
             time = os.time()
@@ -38,5 +65,13 @@ net.Receive(
 )
 
 --------------------------------------------------------------------------------------------------------
-net.Receive("liaScannerClearPicture", function() if IsValid(CURRENT_PHOTO) then CURRENT_PHOTO:Remove() end end)
+net.Receive(
+    "liaScannerClearPicture",
+    function()
+        if IsValid(CURRENT_PHOTO) then
+            CURRENT_PHOTO:Remove()
+        end
+    end
+)
+
 --------------------------------------------------------------------------------------------------------

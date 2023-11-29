@@ -1,7 +1,7 @@
-﻿--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
 ITEM.name = "Shotgun"
 ITEM.desc = "A powerful pump-action shotgun."
-ITEM.class = "weapon_shotgun"
+ITEM.class = "tfa_projecthl2_spas12"
 ITEM.weaponCategory = "primary"
 ITEM.model = "models/weapons/w_shotgun.mdl"
 ITEM.width = 3

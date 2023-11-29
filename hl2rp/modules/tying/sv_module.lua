@@ -1,4 +1,4 @@
-﻿----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:PlayerBindPress(client, bind, pressed)
     bind = bind:lower()
     if IsHandcuffed(client) and (string.find(bind, "+speed") or string.find(bind, "gm_showhelp") or string.find(bind, "+jump") or string.find(bind, "+walk") or string.find(bind, "+use")) then return true end
@@ -12,6 +12,13 @@ end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:CanDeleteChar(client, char)
     if IsHandcuffed(client) then return true end
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function MODULE:simfphysUse(ent, client)
+    if IsHandcuffed(client) then return false end
+
+    return true
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -35,17 +42,12 @@ function MODULE:PostPlayerLoadout(client)
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function MODULE:PlayerUse(client, entity)
+    if IsHandcuffed(client) then return false end
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:ShouldWeaponBeRaised(client, weapon)
-    if IsHandcuffed(client) then return false end
-end
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function MODULE:CanPlayerUseDoor(client, entity)
-    if IsHandcuffed(client) then return false end
-end
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function MODULE:CanPlayerInteractItem(client, action, item)
     if IsHandcuffed(client) then return false end
 end
 
@@ -61,8 +63,7 @@ end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:PlayerUse(client, entity)
-    if IsHandcuffed(client) then return false end
-    if (IsHandcuffed(entity) and entity:IsPlayer()) and not entity.liaBeingUnTied then
+    if not IsHandcuffed(client) and (IsHandcuffed(entity) and entity:IsPlayer()) and not entity.liaBeingUnTied then
         entity.liaBeingUnTied = true
         entity:setAction("@beingUntied", 5)
         client:setAction("@unTying", 5)
@@ -87,6 +88,7 @@ end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:CanPlayerEnterVehicle(client)
     if IsHandcuffed(client) then return false end
+
     return true
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
