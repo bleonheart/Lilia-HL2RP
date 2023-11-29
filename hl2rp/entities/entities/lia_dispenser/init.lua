@@ -25,7 +25,6 @@ function ENT:Initialize()
     self:SetUseType(SIMPLE_USE)
     self:SetText("INSERT ID")
     self:DrawShadow(false)
-    self:SetDispColor(COLOR_GREEN)
     self.canUse = true
     self.dummy = ents.Create("prop_dynamic")
     self.dummy:SetModel("models/props_combine/combine_dispenser.mdl")
@@ -51,7 +50,6 @@ end
 function ENT:error(text)
     self:EmitSound("buttons/combine_button_locked.wav")
     self:SetText(text)
-    self:SetDispColor(COLOR_RED)
     timer.Create(
         "lia_DispenserError" .. self:EntIndex(),
         1.5,
@@ -59,7 +57,6 @@ function ENT:error(text)
         function()
             if IsValid(self) then
                 self:SetText("INSERT ID")
-                self:SetDispColor(COLOR_GREEN)
                 timer.Simple(
                     0.5,
                     function()
@@ -109,14 +106,12 @@ function ENT:dispense(amount)
                     self:dispense(amount - 1)
                 else
                     self:SetText("ARMING")
-                    self:SetDispColor(COLOR_ORANGE)
                     self:EmitSound("buttons/combine_button7.wav")
                     timer.Simple(
                         7,
                         function()
                             if not IsValid(self) then return end
                             self:SetText("INSERT ID")
-                            self:SetDispColor(COLOR_GREEN)
                             self:EmitSound("buttons/combine_button1.wav")
                             timer.Simple(
                                 0.75,
@@ -140,7 +135,6 @@ function ENT:Use(activator)
         if not self.canUse or self:GetDisabled() then return end
         self:setUseAllowed(false)
         self:SetText("CHECKING")
-        self:SetDispColor(COLOR_BLUE)
         self:EmitSound("ambient/machines/combine_terminal_idle2.wav")
         timer.Simple(
             1,
