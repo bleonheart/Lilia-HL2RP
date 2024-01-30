@@ -24,13 +24,3 @@ lia.config.SchemaYear = 2023 -- Year in the gamemode's schema
 lia.config.AmericanDates = true -- Use American date format
 lia.config.AmericanTimeStamp = true -- Use American timestamp format
 lia.config.MinDescLen = 16 -- How long the description has to be
-lia.config.DatabaseConfig = {
-    module = "sqlite", -- Database module
-    hostname = "127.0.0.1", -- Database hostname
-    username = "", -- Database username
-    password = "", -- Database password
-    database = "", -- Database name
-    port = 3306 -- Database port
-}
-
-lia.config.PlayerModelTposingFixer = {} -- Models to fix T-pose issues
