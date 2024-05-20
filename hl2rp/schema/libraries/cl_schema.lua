@@ -47,7 +47,7 @@ function SCHEMA:addDisplay(text, color)
     end
 end
 
-function SCHEMA:OnChatReceived(client, chatType, text, anonymous)
+function SCHEMA:OnChatReceived(client, chatType, text)
     local class = lia.chat.classes[chatType]
     if client:isCombine() and class and class.filter == "ic" then return "<:: " .. text .. " ::>" end
 end

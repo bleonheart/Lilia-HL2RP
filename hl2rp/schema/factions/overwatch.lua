@@ -5,7 +5,7 @@ FACTION.isDefault = false
 FACTION.pay = 0
 FACTION.isGloballyRecognized = true
 FACTION.models = {"models/nemez/combine_soldiers/combine_soldier_pm.mdl"}
-function FACTION:onGetDefaultName(client, digits)
+function FACTION:onGetDefaultName(_, digits)
     if SCHEMA.digitsLen >= 1 then
         digits = digits or math.random(tonumber("1" .. string.rep("0", SCHEMA.digitsLen - 1)), tonumber(string.rep("9", SCHEMA.digitsLen)))
         local name = SCHEMA.owPrefix .. SCHEMA.owDefaultRank .. "." .. digits

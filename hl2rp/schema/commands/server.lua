@@ -1,5 +1,5 @@
 ﻿lia.command.add("doorkick", {
-    onRun = function(client, arguments)
+    onRun = function(client)
         if client:Team() == FACTION_CP then
             local aimVector = client:GetAimVector()
             local data = {}
@@ -40,7 +40,7 @@ lia.command.add("data", {
 })
 
 lia.command.add("objectives", {
-    onRun = function(client, arguments)
+    onRun = function(client)
         if hook.Run("CanPlayerViewObjectives", client) then
             netstream.Start(client, "obj", SCHEMA.objectives, hook.Run("CanPlayerEditObjectives", client))
         else

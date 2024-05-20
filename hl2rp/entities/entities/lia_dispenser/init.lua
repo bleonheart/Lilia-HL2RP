@@ -1,7 +1,7 @@
 ﻿AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
-function ENT:SpawnFunction(client, trace)
+function ENT:SpawnFunction(_, trace)
     local entity = ents.Create("lia_dispenser")
     entity:SetPos(trace.HitPos)
     entity:SetAngles(trace.HitNormal:Angle())
@@ -110,7 +110,7 @@ function ENT:Use(activator)
             local found = false
             local amount = 0
             local item
-            for k, v in pairs(activator:getChar():getInv():getItems()) do
+            for _, v in pairs(activator:getChar():getInv():getItems()) do
                 if v.uniqueID == "cid" then
                     found = true
                     if v:getData("nextTime", 0) < os.time() then
@@ -127,7 +127,6 @@ function ENT:Use(activator)
             end
 
             local inventory = activator:getChar():getInv()
-            local item
             if inventory then
                 if inventory.getFirstItemOfType then
                     item = inventory:getFirstItemOfType("cid")

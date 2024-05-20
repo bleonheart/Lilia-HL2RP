@@ -5,7 +5,7 @@ end
 
 function SCHEMA:addDisplay(text, color)
     local receivers = {}
-    for k, v in ipairs(player.GetAll()) do
+    for _, v in ipairs(player.GetAll()) do
         if v:isCombine() then receivers[#receivers + 1] = v end
     end
 

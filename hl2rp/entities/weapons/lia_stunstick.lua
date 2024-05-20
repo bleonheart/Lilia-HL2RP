@@ -50,21 +50,22 @@ function SWEP:Initialize()
 end
 
 function SWEP:PrimaryAttack()
+    local owner = self:GetOwner()
     self:SetNextPrimaryFire(CurTime() + self.Primary.Delay)
-    if not self:GetOwner():isWepRaised() then return end
-    if self:GetOwner():KeyDown(IN_WALK) then
+    if not owner:isWepRaised() then return end
+    if owner:KeyDown(IN_WALK) then
         if SERVER then
             self:SetActivated(not self:GetActivated())
             local sequence = "deactivatebaton"
             if self:GetActivated() then
-                self:GetOwner():EmitSound("weapons/stunstick/spark3.wav", 100, math.random(90, 110))
+                owner:EmitSound("weapons/stunstick/spark3.wav", 100, math.random(90, 110))
                 sequence = "activatebaton"
             else
-                self:GetOwner():EmitSound("weapons/stunstick/spark" .. math.random(1, 2) .. ".wav", 100, math.random(90, 110))
+                owner:EmitSound("weapons/stunstick/spark" .. math.random(1, 2) .. ".wav", 100, math.random(90, 110))
             end
 
-            local model = string.lower(self:GetOwner():GetModel())
-            if lia.anim.getModelClass(model) == "metrocop" then self:GetOwner():forceSequence(sequence, nil, nil, true) end
+            local model = string.lower(owner:GetModel())
+            if lia.anim.getModelClass(model) == "metrocop" then owner:forceSequence(sequence, nil, nil, true) end
         end
         return
     end
@@ -73,15 +74,15 @@ function SWEP:PrimaryAttack()
     self:SendWeaponAnim(ACT_VM_HITCENTER)
     local damage = self.Primary.Damage
     if self:GetActivated() then damage = 5 end
-    self:GetOwner():SetAnimation(PLAYER_ATTACK1)
-    self:GetOwner():ViewPunch(Angle(1, 0, 0.125))
-    self:GetOwner():LagCompensation(true)
+    owner:SetAnimation(PLAYER_ATTACK1)
+    owner:ViewPunch(Angle(1, 0, 0.125))
+    owner:LagCompensation(true)
     local data = {}
-    data.start = self:GetOwner():GetShootPos()
-    data.endpos = data.start + self:GetOwner():GetAimVector() * 72
-    data.filter = self:GetOwner()
+    data.start = owner:GetShootPos()
+    data.endpos = data.start + owner:GetAimVector() * 72
+    data.filter = owner
     local trace = util.TraceLine(data)
-    self:GetOwner():LagCompensation(false)
+    owner:LagCompensation(false)
     if SERVER and trace.Hit then
         if self:GetActivated() then
             local effect = EffectData()
@@ -91,7 +92,7 @@ function SWEP:PrimaryAttack()
             util.Effect("StunstickImpact", effect, true, true)
         end
 
-        self:GetOwner():EmitSound("weapons/stunstick/stunstick_impact" .. math.random(1, 2) .. ".wav")
+        owner:EmitSound("weapons/stunstick/stunstick_impact" .. math.random(1, 2) .. ".wav")
         local entity = trace.Entity
         if IsValid(entity) then
             if entity:IsPlayer() then
@@ -101,7 +102,7 @@ function SWEP:PrimaryAttack()
                 end
 
                 entity:ViewPunch(Angle(-20, math.random(-15, 15), math.random(-10, 10)))
-                if self:GetActivated() and entity.liaStuns > (hook.Run("PlayerGetStunThreshold", entity, self:GetOwner()) or 3) then
+                if self:GetActivated() and entity.liaStuns > (hook.Run("PlayerGetStunThreshold", entity, owner) or 3) then
                     entity:setRagdolled(true, 60)
                     entity.liaStuns = 0
                     return
@@ -115,12 +116,12 @@ function SWEP:PrimaryAttack()
             end
 
             local damageInfo = DamageInfo()
-            damageInfo:SetAttacker(self:GetOwner())
+            damageInfo:SetAttacker(owner)
             damageInfo:SetInflictor(self)
             damageInfo:SetDamage(damage)
             damageInfo:SetDamageType(DMG_CLUB)
             damageInfo:SetDamagePosition(trace.HitPos)
-            damageInfo:SetDamageForce(self:GetOwner():GetAimVector() * 10000)
+            damageInfo:SetDamageForce(owner:GetAimVector() * 10000)
             entity:DispatchTraceAttack(damageInfo, data.start, data.endpos)
         end
     end
@@ -130,49 +131,49 @@ function SWEP:OnLowered()
     self:SetActivated(false)
 end
 
-function SWEP:Holster(nextWep)
+function SWEP:Holster()
     self:OnLowered()
     return true
 end
 
 function SWEP:SecondaryAttack()
-    self:GetOwner():LagCompensation(true)
+    local owner = self:GetOwner()
+    owner:LagCompensation(true)
     local data = {}
-    data.start = self:GetOwner():GetShootPos()
-    data.endpos = data.start + self:GetOwner():GetAimVector() * 72
-    data.filter = self:GetOwner()
+    data.start = owner:GetShootPos()
+    data.endpos = data.start + owner:GetAimVector() * 72
+    data.filter = owner
     data.mins = Vector(-8, -8, -30)
     data.maxs = Vector(8, 8, 10)
     local trace = util.TraceHull(data)
     local entity = trace.Entity
-    self:GetOwner():LagCompensation(false)
+    owner:LagCompensation(false)
     if SERVER and IsValid(entity) then
         local pushed
         if entity:isDoor() then
-            if hook.Run("PlayerCanKnock", self:GetOwner(), entity) == false then return end
-            self:GetOwner():ViewPunch(Angle(-1.3, 1.8, 0))
-            self:GetOwner():EmitSound("d1_trainstation_03.breakin_doorknock", 125)
-            self:GetOwner():SetAnimation(PLAYER_ATTACK1)
+            if hook.Run("PlayerCanKnock", owner, entity) == false then return end
+            owner:ViewPunch(Angle(-1.3, 1.8, 0))
+            owner:EmitSound("d1_trainstation_03.breakin_doorknock", 125)
+            owner:SetAnimation(PLAYER_ATTACK1)
             self:SetNextSecondaryFire(CurTime() + 0.3)
             self:SetNextPrimaryFire(CurTime() + 1)
         elseif entity:IsPlayer() then
-            local direction = self:GetOwner():GetAimVector() * (300 + (self:GetOwner():getChar():getAttrib("str", 0) * 3))
+            local direction = owner:GetAimVector() * (300 + (owner:getChar():getAttrib("str", 0) * 3))
             direction.z = 0
             entity:SetVelocity(direction)
             pushed = true
         else
             local physObj = entity:GetPhysicsObject()
-            if IsValid(physObj) then physObj:SetVelocity(self:GetOwner():GetAimVector() * 180) end
+            if IsValid(physObj) then physObj:SetVelocity(owner:GetAimVector() * 180) end
             pushed = true
         end
 
         if pushed then
             self:SetNextSecondaryFire(CurTime() + 1.5)
             self:SetNextPrimaryFire(CurTime() + 1.5)
-            self:GetOwner():EmitSound("weapons/crossbow/hitbod" .. math.random(1, 2) .. ".wav")
-            local model = string.lower(self:GetOwner():GetModel())
-            local owner = self:GetOwner()
-            if lia.anim.getModelClass(model) == "metrocop" then self:GetOwner():forceSequence("pushplayer") end
+            owner:EmitSound("weapons/crossbow/hitbod" .. math.random(1, 2) .. ".wav")
+            local model = string.lower(owner:GetModel())
+            if lia.anim.getModelClass(model) == "metrocop" then owner:forceSequence("pushplayer") end
         end
     end
 end

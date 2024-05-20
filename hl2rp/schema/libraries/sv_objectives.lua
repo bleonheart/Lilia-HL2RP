@@ -1,5 +1,5 @@
 ﻿SCHEMA.objectives = SCHEMA.objectives or ""
-concommand.Add("lia_setupnexusdoors", function(client, command, arguments)
+concommand.Add("lia_setupnexusdoors", function(client, _, arguments)
     if not IsValid(client) then
         if not lia.module.list.doors then return MsgN("[Lilia] Door module is missing!") end
         local name = table.concat(arguments, " ")

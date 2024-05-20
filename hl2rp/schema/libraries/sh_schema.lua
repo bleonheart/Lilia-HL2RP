@@ -1,4 +1,4 @@
-﻿function SCHEMA:CanPlayerEditData(client, target)
+﻿function SCHEMA:CanPlayerEditData(client)
     if client:isCombine() then return true end
     return false
 end

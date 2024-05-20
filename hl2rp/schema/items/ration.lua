@@ -20,7 +20,7 @@ ITEM.functions.Open = {
         local position = item.player:getItemDropPos()
         local client = item.player
         timer.Simple(0, function()
-            for k, v in pairs(item.items) do
+            for _, v in pairs(item.items) do
                 if IsValid(client) and client:getChar() and not client:getChar():getInv():add(v) then lia.item.spawn(v, position) end
             end
         end)

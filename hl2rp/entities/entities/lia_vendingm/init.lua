@@ -11,7 +11,7 @@ function ENT:SpawnFunction(client, trace)
     entity:SetAngles(angles)
     entity:Spawn()
     entity:Activate()
-    for k, v in pairs(ents.FindInBox(entity:LocalToWorld(entity:OBBMins()), entity:LocalToWorld(entity:OBBMaxs()))) do
+    for _, v in pairs(ents.FindInBox(entity:LocalToWorld(entity:OBBMins()), entity:LocalToWorld(entity:OBBMaxs()))) do
         if v:GetClass() ~= "lia_vendingm" and v:GetModel() == "models/props_interiors/vendingmachinesoda01a.mdl" then
             entity:SetPos(v:GetPos())
             entity:SetAngles(v:GetAngles())
@@ -43,7 +43,7 @@ function ENT:Initialize()
         physObj:Sleep()
     end
 
-    for k, v in pairs(ents.FindInBox(self:LocalToWorld(self:OBBMins()), self:LocalToWorld(self:OBBMaxs()))) do
+    for _, v in pairs(ents.FindInBox(self:LocalToWorld(self:OBBMins()), self:LocalToWorld(self:OBBMaxs()))) do
         if v:GetClass() ~= "lia_vendingm" and v:GetModel() == "models/props_interiors/vendingmachinesoda01a.mdl" then
             self:SetPos(v:GetPos())
             self:SetAngles(v:GetAngles())
@@ -106,7 +106,7 @@ function ENT:Use(activator)
 
         local position = self:GetPos()
         local f, r, u = self:GetForward(), self:GetRight(), self:GetUp()
-        lia.item.spawn(item, position + f * 19 + r * 4 + u * -26, function(item, entity)
+        lia.item.spawn(item, position + f * 19 + r * 4 + u * -26, function()
             stocks[button] = stocks[button] - 1
             if stocks[button] < 1 then self:EmitSound("buttons/button6.wav") end
             self:setNetVar("stocks", stocks)

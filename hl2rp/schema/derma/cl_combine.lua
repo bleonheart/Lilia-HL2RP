@@ -19,11 +19,11 @@ function PANEL:Init()
     self.alpha = self:Add("DAlphaBar")
     self.alpha:Dock(LEFT)
     self.alpha:SetValue(cookie.GetNumber("liaCombineAlpha", 1))
-    self.alpha.OnChange = function(this, value) self:SetAlpha(math.max(value * 255, 1)) end
+    self.alpha.OnChange = function(_, value) self:SetAlpha(math.max(value * 255, 1)) end
     self.multiplier = self:Add("DAlphaBar")
     self.multiplier:Dock(RIGHT)
     self.multiplier:SetValue(self.mult)
-    self.multiplier.OnChange = function(this, value) self.mult = value end
+    self.multiplier.OnChange = function(_, value) self.mult = value end
     self.clear = self:Add("DButton")
     self.clear:Dock(TOP)
     self.clear:SetText("Clear")
@@ -36,7 +36,7 @@ function PANEL:Init()
     end
 
     self.oldOnRelease = self.OnMouseReleased
-    self.OnMouseReleased = function(this)
+    self.OnMouseReleased = function()
         self:oldOnRelease()
         self:saveData()
     end

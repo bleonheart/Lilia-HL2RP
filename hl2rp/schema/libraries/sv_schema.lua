@@ -1,4 +1,4 @@
-﻿function SCHEMA:PlayerFootstep(client, position, foot, soundName, volume)
+﻿function SCHEMA:PlayerFootstep(client, _, _, _, volume)
     if client:isRunning() then
         if client:Team() == FACTION_CP then
             client:EmitSound("npc/metropolice/gear" .. math.random(1, 6) .. ".wav", volume * 130)
@@ -10,7 +10,7 @@
     end
 end
 
-function SCHEMA:OnCharCreated(client, character)
+function SCHEMA:OnCharCreated(_, character)
     local inventory = character:getInv()
     if inventory then
         if character:getFaction() == FACTION_CITIZEN then
@@ -48,7 +48,7 @@ function SCHEMA:PostPlayerLoadout(client)
     end
 end
 
-function SCHEMA:CanPlayerViewData(client, target)
+function SCHEMA:CanPlayerViewData(client)
     if client:isCombine() then return true end
 end
 
@@ -70,7 +70,7 @@ function SCHEMA:PlayerUseDoor(client, entity)
     end
 end
 
-function SCHEMA:PlayerSwitchFlashlight(client, enabled)
+function SCHEMA:PlayerSwitchFlashlight(client)
     if lia.module.list.scanner then return end
     if client:isCombine() then return true end
 end
@@ -101,9 +101,9 @@ function SCHEMA:PlayerRankChanged(client)
     end
 end
 
-function SCHEMA:OnCharVarChanged(character, key, oldValue, value)
+function SCHEMA:OnCharVarChanged(character, key)
     if key == "name" and IsValid(character:getPlayer()) and character:getPlayer():isCombine() then
-        for k, v in ipairs(lia.class.list) do
+        for k, _ in ipairs(lia.class.list) do
             if character:joinClass(k, true) then break end
         end
 
@@ -160,7 +160,7 @@ function SCHEMA:GetPlayerDeathSound(client)
     end
 end
 
-function SCHEMA:PlayerHurt(client, attacker, health, damage)
+function SCHEMA:PlayerHurt(client, _, health, damage)
     if client:isCombine() and damage > 5 then
         local word = "minor"
         if damage >= 75 then
@@ -210,7 +210,7 @@ function SCHEMA:PlayerTick(client)
     end
 end
 
-function SCHEMA:PlayerMessageSend(client, chatType, message, anonymous, receivers)
+function SCHEMA:PlayerMessageSend(client, chatType, message, _, receivers)
     if not lia.voice.chatTypes[chatType] then return end
     for _, definition in ipairs(lia.voice.getClass(client)) do
         local sounds, message = lia.voice.getVoiceList(definition.class, message)
@@ -228,7 +228,7 @@ function SCHEMA:PlayerMessageSend(client, chatType, message, anonymous, receiver
             else
                 netstream.Start(nil, "voicePlay", sounds, volume, client:EntIndex())
                 if chatType == "radio" and receivers then
-                    for k, v in pairs(receivers) do
+                    for _, v in pairs(receivers) do
                         if receivers == client then continue end
                         netstream.Start(nil, "voicePlay", sounds, volume * 0.5, v:EntIndex())
                     end
