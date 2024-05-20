@@ -1,10 +1,9 @@
-﻿
-function MODULE:LoadData()
+﻿function MODULE:LoadData()
     local savedTable = self:getData() or {}
     local noteItem = lia.item.list["note"]
-    WRITINGDATA = savedTable.noteData
+    self.WRITINGDATA = savedTable.noteData
     if savedTable.noteEntities then
-        for k, v in ipairs(savedTable.noteEntities) do
+        for _, v in ipairs(savedTable.noteEntities) do
             local note = ents.Create("lia_note")
             note:SetPos(v.pos)
             note:SetAngles(v.ang)
@@ -16,7 +15,6 @@ function MODULE:LoadData()
         end
     end
 end
-
 
 function MODULE:SaveData()
     local saveTable = {}
@@ -37,25 +35,22 @@ function MODULE:SaveData()
 
     local validNoteData = {}
     for _, v in ipairs(validNotes) do
-        validNoteData[v] = WRITINGDATA[v]
+        validNoteData[v] = self.WRITINGDATA[v]
     end
 
     saveTable.noteData = validNoteData
     self:setData(saveTable)
 end
 
-
 function FindNoteByID(id)
-    for k, v in ipairs(ents.GetAll()) do
+    for _, v in ipairs(ents.GetAll()) do
         if v:GetClass() == "lia_note" and v.id == id then return v end
     end
 end
 
-
 function MODULE:EntityRemoved(entity)
-    if not lia.shuttingDown and entity and IsValid(entity) and entity:GetClass() == "lia_note" and entity.id then if WRITINGDATA[entity.id] then WRITINGDATA[entity.id] = nil end end
+    if not lia.shuttingDown and entity and IsValid(entity) and entity:GetClass() == "lia_note" and entity.id then if self.WRITINGDATA[entity.id] then self.WRITINGDATA[entity.id] = nil end end
 end
-
 
 function MODULE:OnNoteSpawned(note, item, load)
     note:SetModel(item.model)
@@ -67,7 +62,6 @@ function MODULE:OnNoteSpawned(note, item, load)
     if item.player and IsValid(item.player) then note:setNetVar("ownerChar", item.player:getChar().id) end
     if load ~= true then
         note.id = os.time()
-        WRITINGDATA[note.id] = ""
+        self.WRITINGDATA[note.id] = ""
     end
 end
-

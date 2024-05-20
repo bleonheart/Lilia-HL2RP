@@ -1,6 +1,4 @@
-﻿
-local PANEL = {}
-
+﻿local PANEL = {}
 function PANEL:Init()
     self:SetSize(300, 400)
     self:MakePopup()
@@ -18,21 +16,20 @@ function PANEL:Init()
     self.confirm:Dock(RIGHT)
     self.confirm:SetDisabled(true)
     self.confirm:SetText(L("finish"))
-    self.controls.Paint = function(this, w, h)
+    self.controls.Paint = function(_, _, h)
         local text = self.contents:GetValue()
         draw.SimpleText(Format("Text Byte: %s/1000", string.len(text)), "DermaDefault", 10, h / 2, color_white, TEXT_ALIGN_LEFT, 1)
     end
 
-    self.confirm.DoClick = function(this)
+    self.confirm.DoClick = function()
         local text = self.contents:GetValue()
         netstream.Start("noteSendText", self.id, text)
         self:Close()
     end
 end
 
-
 function PANEL:allowEdit(bool)
-    if bool == true then
+    if bool then
         self.contents:SetEditable(true)
         self.confirm:SetDisabled(false)
     else
@@ -41,11 +38,8 @@ function PANEL:allowEdit(bool)
     end
 end
 
-
 function PANEL:setText(text)
     self.contents:SetValue(text)
 end
 
-
 vgui.Register("noteRead", PANEL, "DFrame")
-

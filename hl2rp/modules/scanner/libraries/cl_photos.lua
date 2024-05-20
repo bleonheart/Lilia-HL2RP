@@ -1,14 +1,8 @@
-﻿
-local PICTURE_WIDTH = MODULE.PICTURE_WIDTH
-
+﻿local PICTURE_WIDTH = MODULE.PICTURE_WIDTH
 local PICTURE_HEIGHT = MODULE.PICTURE_HEIGHT
-
 local PICTURE_WIDTH2 = PICTURE_WIDTH * 0.5
-
 local PICTURE_HEIGHT2 = PICTURE_HEIGHT * 0.5
-
 PHOTO_CACHE = PHOTO_CACHE or {}
-
 function MODULE:takePicture()
     if (self.lastPic or 0) < CurTime() then
         self.lastPic = CurTime() + lia.config.PictureDelay
@@ -17,7 +11,6 @@ function MODULE:takePicture()
         timer.Simple(0.1, function() self.startPicture = true end)
     end
 end
-
 
 function MODULE:PostRender()
     if self.startPicture then
@@ -38,7 +31,6 @@ function MODULE:PostRender()
     end
 end
 
-
 concommand.Add("lia_photocache", function()
     local frame = vgui.Create("DFrame")
     frame:SetTitle("Photo Cache")
@@ -48,7 +40,7 @@ concommand.Add("lia_photocache", function()
     frame.list = frame:Add("DScrollPanel")
     frame.list:Dock(FILL)
     frame.list:SetDrawBackground(true)
-    for k, v in ipairs(PHOTO_CACHE) do
+    for _, v in ipairs(PHOTO_CACHE) do
         local button = frame.list:Add("DButton")
         button:SetTall(28)
         button:Dock(TOP)
@@ -67,4 +59,3 @@ concommand.Add("lia_photocache", function()
         end
     end
 end)
-

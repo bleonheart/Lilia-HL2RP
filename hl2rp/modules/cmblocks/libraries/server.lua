@@ -1,17 +1,15 @@
-﻿
-function MODULE:SaveData()
+﻿function MODULE:SaveData()
     local data = {}
-    for k, v in ipairs(ents.FindByClass("lia_cmblock")) do
-        if IsValid(v.door) then data[#data + 1] = {v.door:MapCreationID(), v.door:WorldToLocal(v:GetPos()), v.door:WorldToLocalAngles(v:GetAngles()), v:GetLocked() == true and true or nil} end
+    for _, v in ipairs(ents.FindByClass("lia_cmblock")) do
+        if IsValid(v.door) then data[#data + 1] = {v.door:MapCreationID(), v.door:WorldToLocal(v:GetPos()), v.door:WorldToLocalAngles(v:GetAngles()), v:GetLocked() and true or nil} end
     end
 
     self:setData(data)
 end
 
-
 function MODULE:LoadData()
     local data = self:getData() or {}
-    for k, v in ipairs(data) do
+    for _, v in ipairs(data) do
         local door = ents.GetMapCreatedEntity(v[1])
         if IsValid(door) and door:isDoor() then
             local entity = ents.Create("lia_cmblock")
@@ -23,4 +21,3 @@ function MODULE:LoadData()
         end
     end
 end
-

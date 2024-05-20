@@ -1,6 +1,4 @@
-﻿
-local SCANNER_SOUNDS = {"npc/scanner/scanner_blip1.wav", "npc/scanner/scanner_scan1.wav", "npc/scanner/scanner_scan2.wav", "npc/scanner/scanner_scan4.wav", "npc/scanner/scanner_scan5.wav", "npc/scanner/combat_scan1.wav", "npc/scanner/combat_scan2.wav", "npc/scanner/combat_scan3.wav", "npc/scanner/combat_scan4.wav", "npc/scanner/combat_scan5.wav", "npc/scanner/cbot_servoscared.wav", "npc/scanner/cbot_servochatter.wav"}
-
+﻿local SCANNER_SOUNDS = {"npc/scanner/scanner_blip1.wav", "npc/scanner/scanner_scan1.wav", "npc/scanner/scanner_scan2.wav", "npc/scanner/scanner_scan4.wav", "npc/scanner/scanner_scan5.wav", "npc/scanner/combat_scan1.wav", "npc/scanner/combat_scan2.wav", "npc/scanner/combat_scan3.wav", "npc/scanner/combat_scan4.wav", "npc/scanner/combat_scan5.wav", "npc/scanner/cbot_servoscared.wav", "npc/scanner/cbot_servochatter.wav"}
 function MODULE:createScanner(client, isClawScanner)
     if IsValid(client.liaScn) then return end
     local entity = ents.Create("lia_scanner")
@@ -21,7 +19,6 @@ function MODULE:createScanner(client, isClawScanner)
     return entity
 end
 
-
 function MODULE:PlayerSpawn(client)
     if IsValid(client.liaScn) then
         client.liaScn.noRespawn = true
@@ -32,12 +29,10 @@ function MODULE:PlayerSpawn(client)
     end
 end
 
-
 function MODULE:PlayerLoadedChar(client)
     net.Start("liaScannerClearPicture")
     net.Send(client)
 end
-
 
 function MODULE:DoPlayerDeath(client)
     if IsValid(client.liaScn) then
@@ -46,14 +41,12 @@ function MODULE:DoPlayerDeath(client)
     end
 end
 
-
 function MODULE:PlayerDeath(client)
     if IsValid(client.liaScn) and client.liaScn.health > 0 then
         client.liaScn:die()
         client.liaScn = nil
     end
 end
-
 
 function MODULE:KeyPress(client, key)
     if IsValid(client.liaScn) and (client.liaScnDelay or 0) < CurTime() then
@@ -76,23 +69,19 @@ function MODULE:KeyPress(client, key)
     end
 end
 
-
 function MODULE:PlayerNoClip(client)
     if IsValid(client.liaScn) then return false end
 end
 
-
-function MODULE:PlayerUse(client, entity)
+function MODULE:PlayerUse(client)
     if IsValid(client.liaScn) then return false end
 end
 
-
-function MODULE:CanPlayerReceiveScan(client, photographer)
+function MODULE:CanPlayerReceiveScan(client)
     return client.isCombine and client:isCombine()
 end
 
-
-function MODULE:PlayerSwitchFlashlight(client, enabled)
+function MODULE:PlayerSwitchFlashlight(client)
     local scanner = client.liaScn
     if not IsValid(scanner) then return end
     if (scanner.nextLightToggle or 0) >= CurTime() then return false end
@@ -110,23 +99,18 @@ function MODULE:PlayerSwitchFlashlight(client, enabled)
     return false
 end
 
-
-function MODULE:PlayerCanPickupWeapon(client, weapon)
+function MODULE:PlayerCanPickupWeapon(client)
     if IsValid(client.liaScn) then return false end
 end
 
-
-function MODULE:PlayerCanPickupItem(client, item)
+function MODULE:PlayerCanPickupItem(client)
     if IsValid(client.liaScn) then return false end
 end
-
 
 function MODULE:PlayerFootstep(client)
     if IsValid(client.liaScn) then return true end
 end
 
-
 function MODULE:PlayerRankChanged(client)
     if IsValid(client.liaScn) then client:Spawn() end
 end
-

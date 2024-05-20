@@ -1,11 +1,7 @@
-﻿
-util.AddNetworkString("liaScannerData")
-
+﻿util.AddNetworkString("liaScannerData")
 util.AddNetworkString("liaScannerPicture")
-
 util.AddNetworkString("liaScannerClearPicture")
-
-net.Receive("liaScannerData", function(length, client)
+net.Receive("liaScannerData", function(_, client)
     if IsValid(client.liaScn) and client:GetViewEntity() == client.liaScn and (client.liaNextPic or 0) < CurTime() then
         local delay = lia.config.PictureDelay
         client.liaNextPic = CurTime() + delay - 1
@@ -13,7 +9,7 @@ net.Receive("liaScannerData", function(length, client)
         local data = net.ReadData(length)
         if length ~= #data then return end
         local receivers = {}
-        for k, v in ipairs(player.GetAll()) do
+        for _, v in ipairs(player.GetAll()) do
             if hook.Run("CanPlayerReceiveScan", v, client) then
                 receivers[#receivers + 1] = v
                 v:EmitSound("npc/overwatch/radiovoice/preparevisualdownload.wav")
@@ -30,12 +26,10 @@ net.Receive("liaScannerData", function(length, client)
     end
 end)
 
-
-net.Receive("liaScannerPicture", function(length, client)
+net.Receive("liaScannerPicture", function(_, client)
     if not IsValid(client.liaScn) then return end
     if client:GetViewEntity() ~= client.liaScn then return end
     if (client.liaNextFlash or 0) >= CurTime() then return end
     client.liaNextFlash = CurTime() + 1
     client.liaScn:flash()
 end)
-
