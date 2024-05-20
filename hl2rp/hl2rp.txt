@@ -1,7 +1,0 @@
-"hl2rp"
-{
-	"base"		"lilia"
-	"title"		"HL2RP"
-	"author"	"Leonheart"
-	"category"	"rp"
-}
