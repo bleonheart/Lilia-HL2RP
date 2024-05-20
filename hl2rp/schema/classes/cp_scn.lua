@@ -1,14 +1,9 @@
-﻿
-CLASS.name = "Civil Protection Scanner"
-
+﻿CLASS.name = "Civil Protection Scanner"
 CLASS.desc = "A robotic, metal scanner for observing the city."
-
 CLASS.faction = FACTION_CP
-
 function CLASS:onCanBe(client)
     return client:isCombineRank(SCHEMA.scnRanks)
 end
-
 
 function CLASS:onSet(client)
     local scanner = lia.module.list.scanner
@@ -18,7 +13,6 @@ function CLASS:onSet(client)
         client:ChatPrint("The server is missing the 'scanner' module.")
     end
 end
-
 
 function CLASS:onLeave(client)
     if IsValid(client.liaScn) then
@@ -32,6 +26,4 @@ function CLASS:onLeave(client)
     end
 end
 
-
 CLASS_CP_SCN = CLASS.index
-

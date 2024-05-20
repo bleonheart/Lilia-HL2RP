@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Crowbar"
+﻿ITEM.name = "Crowbar"
 ITEM.desc = "A tool made of a single metal bar with the ends curved."
 ITEM.model = "models/weapons/w_crowbar.mdl"
 ITEM.class = "tfa_projecthl2_crowbar"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 10.780103254469,
     pos = Vector(0, 200, 0)
 }
-

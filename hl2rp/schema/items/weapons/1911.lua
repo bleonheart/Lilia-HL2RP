@@ -1,5 +1,4 @@
-﻿
-ITEM.name = ".45 Pistol"
+﻿ITEM.name = ".45 Pistol"
 ITEM.desc = "A semi-automatic .45 handgun."
 ITEM.model = "models/weapons/w_pistol.mdl"
 ITEM.class = "tfa_nam_m1911"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 5.0470897275697,
     pos = Vector(0, 200, -1)
 }
-

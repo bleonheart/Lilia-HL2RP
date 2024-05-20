@@ -1,6 +1,4 @@
-﻿
-local PANEL = {}
-
+﻿local PANEL = {}
 function PANEL:Init()
     if IsValid(lia.gui.data) then lia.gui.data:Remove() end
     lia.gui.data = self
@@ -14,7 +12,6 @@ function PANEL:Init()
     self.text:SetEnabled(false)
 end
 
-
 function PANEL:setData(text, title, canEdit)
     self:SetTitle(title)
     self.text:SetText(text or SCHEMA.defaultData)
@@ -25,13 +22,10 @@ function PANEL:setData(text, title, canEdit)
     end
 end
 
-
 function PANEL:OnRemove()
     local text = not self.text:GetDisabled() and self.text:GetText():sub(1, 750) or nil
     if text and text:lower() == self.oldText then text = nil end
     netstream.Start("dataCls", text)
 end
 
-
 vgui.Register("liaData", PANEL, "DFrame")
-

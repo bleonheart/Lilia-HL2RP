@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Rocket"
+﻿ITEM.name = "Rocket"
 ITEM.model = "models/weapons/w_missile_closed.mdl"
 ITEM.price = 150
 ITEM.ammo = "rpg_round"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 12.085652091515,
     pos = Vector(7, 200, -2)
 }
-

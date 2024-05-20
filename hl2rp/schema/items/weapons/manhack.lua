@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Viscerator"
+﻿ITEM.name = "Viscerator"
 ITEM.desc = "The Manhack, referred to as Viscerator by the Overwatch, simply hacks Citizens and Rebels alike."
 ITEM.model = "models/manhack.mdl"
 ITEM.class = "weapon_controllable_manhack"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 5.0470897275697,
     pos = Vector(0, 200, -1)
 }
-

@@ -1,18 +1,10 @@
-﻿
-FACTION.name = "Overwatch Transhuman Arm"
-
+﻿FACTION.name = "Overwatch Transhuman Arm"
 FACTION.desc = "The OverWatch"
-
 FACTION.color = Color(181, 94, 94)
-
 FACTION.isDefault = false
-
 FACTION.pay = 0
-
 FACTION.isGloballyRecognized = true
-
 FACTION.models = {"models/nemez/combine_soldiers/combine_soldier_pm.mdl"}
-
 function FACTION:onGetDefaultName(client, digits)
     if SCHEMA.digitsLen >= 1 then
         digits = digits or math.random(tonumber("1" .. string.rep("0", SCHEMA.digitsLen - 1)), tonumber(string.rep("9", SCHEMA.digitsLen)))
@@ -22,7 +14,6 @@ function FACTION:onGetDefaultName(client, digits)
         return SCHEMA.owPrefix .. SCHEMA.owDefaultRank, true
     end
 end
-
 
 function FACTION:onTransfered(client, oldFaction)
     local digits
@@ -45,6 +36,4 @@ function FACTION:onTransfered(client, oldFaction)
     hook.Run("PlayerLoadout", client)
 end
 
-
 FACTION_OW = FACTION.index
-

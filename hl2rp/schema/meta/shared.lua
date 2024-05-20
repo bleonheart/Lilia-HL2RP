@@ -1,12 +1,8 @@
-﻿
-local SCHEMA = SCHEMA
-
+﻿local SCHEMA = SCHEMA
 local playerMeta = FindMetaTable("Player")
-
 function playerMeta:isCombine()
     return SCHEMA:isCombineFaction(self:Team())
 end
-
 
 function playerMeta:getCombineRank()
     local rankTables = SCHEMA.rankTables[self:Team()]
@@ -18,7 +14,6 @@ function playerMeta:getCombineRank()
         end
     end
 end
-
 
 function playerMeta:isCombineRank(rank)
     if type(rank) == "table" then
@@ -32,7 +27,6 @@ function playerMeta:isCombineRank(rank)
     end
 end
 
-
 function playerMeta:getDigits()
     if self:isCombine() then
         local name = self:Name():reverse()
@@ -41,4 +35,3 @@ function playerMeta:getDigits()
     end
     return "UNKNOWN"
 end
-

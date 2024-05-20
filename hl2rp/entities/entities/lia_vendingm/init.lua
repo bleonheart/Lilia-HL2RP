@@ -1,10 +1,6 @@
-﻿
-AddCSLuaFile("cl_init.lua")
-
+﻿AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
-
 include("shared.lua")
-
 function ENT:SpawnFunction(client, trace)
     local entity = ents.Create("lia_vendingm")
     entity:SetPos(trace.HitPos + Vector(0, 0, 48))
@@ -27,7 +23,6 @@ function ENT:SpawnFunction(client, trace)
     SCHEMA:saveVendingMachines()
     return entity
 end
-
 
 function ENT:Initialize()
     self.buttons = {}
@@ -57,7 +52,6 @@ function ENT:Initialize()
         end
     end
 end
-
 
 function ENT:Use(activator)
     activator:EmitSound("buttons/lightswitch2.wav", 55, 125)
@@ -124,8 +118,6 @@ function ENT:Use(activator)
     end
 end
 
-
 function ENT:OnRemove()
     if not lia.shuttingDown then SCHEMA:saveVendingMachines() end
 end
-

@@ -1,6 +1,4 @@
-﻿
-AddCSLuaFile()
-
+﻿AddCSLuaFile()
 SWEP.PrintName = "Stunstick"
 SWEP.Slot = 1
 SWEP.SlotPos = 2
@@ -33,11 +31,9 @@ SWEP.WorldModel = Model("models/weapons/w_stunbaton.mdl")
 SWEP.UseHands = true
 SWEP.LowerAngles = Angle(15, -10, -20)
 SWEP.FireWhenLowered = true
-
 function SWEP:SetupDataTables()
     self:NetworkVar("Bool", 0, "Activated")
 end
-
 
 function SWEP:Precache()
     util.PrecacheSound("weapons/stunstick/stunstick_swing1.wav")
@@ -49,11 +45,9 @@ function SWEP:Precache()
     util.PrecacheSound("weapons/stunstick/spark3.wav")
 end
 
-
 function SWEP:Initialize()
     self:SetHoldType(self.HoldType)
 end
-
 
 function SWEP:PrimaryAttack()
     self:SetNextPrimaryFire(CurTime() + self.Primary.Delay)
@@ -132,17 +126,14 @@ function SWEP:PrimaryAttack()
     end
 end
 
-
 function SWEP:OnLowered()
     self:SetActivated(false)
 end
-
 
 function SWEP:Holster(nextWep)
     self:OnLowered()
     return true
 end
-
 
 function SWEP:SecondaryAttack()
     self:GetOwner():LagCompensation(true)
@@ -186,15 +177,10 @@ function SWEP:SecondaryAttack()
     end
 end
 
-
 local STUNSTICK_GLOW_MATERIAL = Material("effects/stunstick")
-
 local STUNSTICK_GLOW_MATERIAL2 = Material("effects/blueflare1")
-
 local STUNSTICK_GLOW_MATERIAL_NOZ = Material("sprites/light_glow02_add_noz")
-
 local color_glow = Color(128, 128, 128)
-
 function SWEP:DrawWorldModel()
     self:DrawModel()
     if self:GetActivated() then
@@ -212,11 +198,8 @@ function SWEP:DrawWorldModel()
     end
 end
 
-
 local NUM_BEAM_ATTACHEMENTS = 9
-
 local BEAM_ATTACH_CORE_NAME = "sparkrear"
-
 function SWEP:PostDrawViewModel()
     if not self:GetActivated() then return end
     local viewModel = LocalPlayer():GetViewModel()
@@ -239,4 +222,3 @@ function SWEP:PostDrawViewModel()
 
     cam.End3D()
 end
-

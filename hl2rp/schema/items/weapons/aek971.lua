@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "AEK-971"
+﻿ITEM.name = "AEK-971"
 ITEM.desc = "A rare Stanislav Koksharov assault rifle."
 ITEM.model = "models/weapons/tfa_ins2/w_aek971.mdl"
 ITEM.class = "tfa_ins2_aek971"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 5.412494001838,
     pos = Vector(57.109928131104, 181.7945098877, -60.738327026367)
 }
-

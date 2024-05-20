@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Pipe"
+﻿ITEM.name = "Pipe"
 ITEM.desc = "Just a steel pipe."
 ITEM.model = "models/props_canal/mattpipe.mdl"
 ITEM.class = "weapon_hl2pipe"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 10.780103254469,
     pos = Vector(0, 200, 0)
 }
-

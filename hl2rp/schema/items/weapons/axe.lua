@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Axe"
+﻿ITEM.name = "Axe"
 ITEM.desc = "A tool for cutting trees."
 ITEM.model = "models/props_forest/axe.mdl"
 ITEM.class = "weapon_hl2axe"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 10.780103254469,
     pos = Vector(0, 200, 0)
 }
-

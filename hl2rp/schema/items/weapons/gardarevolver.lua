@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Garda Revolver"
+﻿ITEM.name = "Garda Revolver"
 ITEM.desc = "A reliable and rare revolver."
 ITEM.model = "models/weapons/w_357.mdl"
 ITEM.class = "tfa_bnw_revolver"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 5.412494001838,
     pos = Vector(57.109928131104, 181.7945098877, -60.738327026367)
 }
-

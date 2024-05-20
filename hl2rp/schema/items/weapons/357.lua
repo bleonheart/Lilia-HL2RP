@@ -1,5 +1,4 @@
-﻿
-ITEM.name = ".357 Magnum"
+﻿ITEM.name = ".357 Magnum"
 ITEM.desc = "A strong revolver."
 ITEM.model = "models/weapons/w_357.mdl"
 ITEM.class = "tfa_projecthl2_357"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 5.412494001838,
     pos = Vector(57.109928131104, 181.7945098877, -60.738327026367)
 }
-

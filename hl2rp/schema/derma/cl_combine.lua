@@ -1,6 +1,4 @@
-﻿
-local PANEL = {}
-
+﻿local PANEL = {}
 function PANEL:Init()
     if IsValid(lia.gui.combine) then
         lia.gui.combine:saveData()
@@ -44,14 +42,12 @@ function PANEL:Init()
     end
 end
 
-
 function PANEL:PaintOver(w, h)
     surface.SetDrawColor(255, 255, 255, 25)
     surface.DrawLine(0, 24, w, h)
     surface.DrawLine(w, 24, 0, h)
     surface.DrawOutlinedRect(0, 24, w, h - 24)
 end
-
 
 function PANEL:saveData()
     cookie.Set("liaCombineX", self.x)
@@ -60,7 +56,5 @@ function PANEL:saveData()
     cookie.Set("liaCombineMult", self.mult)
 end
 
-
 vgui.Register("liaCombineDisplay", PANEL, "DFrame")
 if IsValid(lia.gui.combine) then vgui.Create("liaCombineDisplay") end
-

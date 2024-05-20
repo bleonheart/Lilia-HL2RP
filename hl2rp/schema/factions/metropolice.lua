@@ -1,20 +1,11 @@
-﻿
-FACTION.name = "Civil Protection Forces"
-
+﻿FACTION.name = "Civil Protection Forces"
 FACTION.desc = "fCopDesc"
-
 FACTION.color = Color(25, 30, 180)
-
 FACTION.isDefault = false
-
 FACTION.models = {"models/dannio/pmcitizen/urbanmetrocop/male_merged.mdl"}
-
 FACTION.weapons = {"lia_stunstick"}
-
 FACTION.pay = 50
-
 FACTION.isGloballyRecognized = true
-
 function FACTION:onGetDefaultName(client, digits)
     if SCHEMA.digitsLen >= 1 then
         digits = digits or math.random(tonumber("1" .. string.rep("0", SCHEMA.digitsLen - 1)), tonumber(string.rep("9", SCHEMA.digitsLen)))
@@ -24,7 +15,6 @@ function FACTION:onGetDefaultName(client, digits)
         return SCHEMA.cpPrefix .. next(SCHEMA.rctRanks), true
     end
 end
-
 
 function FACTION:onTransfered(client, oldFaction)
     local digits
@@ -49,6 +39,4 @@ function FACTION:onTransfered(client, oldFaction)
     hook.Run("PlayerLoadout", client)
 end
 
-
 FACTION_CP = FACTION.index
-

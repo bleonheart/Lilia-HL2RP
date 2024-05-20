@@ -1,5 +1,4 @@
-﻿
-ENT.Type = "anim"
+﻿ENT.Type = "anim"
 ENT.PrintName = "Vending Machine"
 ENT.Author = "@liliaplayer > Discord"
 ENT.Category = "HL2 RP"
@@ -7,7 +6,6 @@ ENT.Spawnable = true
 ENT.AdminOnly = true
 ENT.PhysgunDisable = true
 ENT.PhysgunAllowAdmin = true
-
 function ENT:getNearestButton(client)
     client = client or (CLIENT and LocalPlayer())
     if self.buttons then
@@ -32,4 +30,3 @@ function ENT:getNearestButton(client)
         end
     end
 end
-

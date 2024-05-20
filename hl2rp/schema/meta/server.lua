@@ -1,10 +1,7 @@
-﻿
-local playerMeta = FindMetaTable("Player")
-
+﻿local playerMeta = FindMetaTable("Player")
 function playerMeta:addDisplay(text, color)
     if self:isCombine() then netstream.Start(self, "cDisp", text, color) end
 end
-
 
 function SCHEMA:addDisplay(text, color)
     local receivers = {}
@@ -14,4 +11,3 @@ function SCHEMA:addDisplay(text, color)
 
     netstream.Start(receivers, "cDisp", text, color)
 end
-

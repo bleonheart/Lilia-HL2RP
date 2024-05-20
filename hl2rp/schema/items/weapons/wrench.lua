@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Wrench"
+﻿ITEM.name = "Wrench"
 ITEM.desc = "Good ol' wrench."
 ITEM.model = "models/weapons/w_crowbar.mdl"
 ITEM.class = "tfa_projecthl2_wrench"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 10.780103254469,
     pos = Vector(0, 200, 0)
 }
-

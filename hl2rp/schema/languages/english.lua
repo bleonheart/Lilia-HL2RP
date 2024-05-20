@@ -1,5 +1,4 @@
-﻿
-LANGUAGE = {
+﻿LANGUAGE = {
     fCitizenName = "Citizen",
     fCitizenDesc = "A regular citizen within the streets.",
     fCopName = "Civil Protection",
@@ -14,4 +13,3 @@ LANGUAGE = {
     prioritySet = "You have changed the priority status of %s.",
     noReqDev = "You do not own a request device."
 }
-

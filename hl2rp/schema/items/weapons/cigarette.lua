@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Cigarette"
+﻿ITEM.name = "Cigarette"
 ITEM.desc = "A smoke, rare and expensive."
 ITEM.model = "models/mordeciga/mordes/oldcigshib.mdl"
 ITEM.class = "weapon_ciga"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 10.780103254469,
     pos = Vector(0, 200, 0)
 }
-

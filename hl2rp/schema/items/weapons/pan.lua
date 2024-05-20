@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Pan"
+﻿ITEM.name = "Pan"
 ITEM.desc = "A useful tool for cooking or smacking people."
 ITEM.model = "models/weapons/hl2meleepack/w_pan.mdl"
 ITEM.class = "weapon_hl2pan"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 10.780103254469,
     pos = Vector(0, 200, 0)
 }
-

@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Bottle"
+﻿ITEM.name = "Bottle"
 ITEM.desc = "A simple but sharp weapon."
 ITEM.model = "models/props_junk/garbage_glassbottle003a_chunk01.mdl"
 ITEM.class = "weapon_hl2brokenbottle"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 10.780103254469,
     pos = Vector(0, 200, 0)
 }
-

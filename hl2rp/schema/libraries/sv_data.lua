@@ -1,8 +1,6 @@
-﻿
-function SCHEMA:saveObjectives()
+﻿function SCHEMA:saveObjectives()
     lia.data.set("objectives", self.objectives, false, true)
 end
-
 
 function SCHEMA:saveVendingMachines()
     local data = {}
@@ -13,7 +11,6 @@ function SCHEMA:saveVendingMachines()
     lia.data.set("vendingm", data)
 end
 
-
 function SCHEMA:saveDispensers()
     local data = {}
     for k, v in ipairs(ents.FindByClass("lia_dispenser")) do
@@ -23,11 +20,9 @@ function SCHEMA:saveDispensers()
     lia.data.set("dispensers", data)
 end
 
-
 function SCHEMA:loadObjectives()
     self.objectives = lia.data.get("objectives", "", false, true)
 end
-
 
 function SCHEMA:loadVendingMachines()
     local data = lia.data.get("vendingm") or {}
@@ -41,7 +36,6 @@ function SCHEMA:loadVendingMachines()
     end
 end
 
-
 function SCHEMA:loadDispensers()
     for k, v in ipairs(lia.data.get("dispensers") or {}) do
         local entity = ents.Create("lia_dispenser")
@@ -51,4 +45,3 @@ function SCHEMA:loadDispensers()
         if v[3] then entity:SetDisabled(true) end
     end
 end
-

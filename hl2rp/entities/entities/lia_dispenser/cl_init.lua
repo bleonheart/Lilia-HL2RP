@@ -1,21 +1,14 @@
-﻿
-include("shared.lua")
-
+﻿include("shared.lua")
 local COLOR_RED = 1
-
 local COLOR_ORANGE = 2
-
 local COLOR_BLUE = 3
-
 local COLOR_GREEN = 4
-
 local colors = {
     [COLOR_RED] = Color(255, 50, 50),
     [COLOR_ORANGE] = Color(255, 80, 20),
     [COLOR_BLUE] = Color(50, 80, 230),
     [COLOR_GREEN] = Color(50, 240, 50)
 }
-
 
 function ENT:Draw()
     local position, angles = self:GetPos(), self:GetAngles()
@@ -35,4 +28,3 @@ function ENT:Draw()
     render.PopFilterMag()
     cam.End3D2D()
 end
-

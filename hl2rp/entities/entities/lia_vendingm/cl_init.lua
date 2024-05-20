@@ -1,16 +1,9 @@
-﻿
-include("shared.lua")
-
+﻿include("shared.lua")
 local draw_SimpleText = draw.SimpleText
-
 local glowMaterial = Material("sprites/glow04_noz")
-
 local color_green = Color(0, 255, 0, 255)
-
 local color_red = Color(255, 0, 0, 255)
-
 local color_orange = Color(255, 125, 0, 255)
-
 function ENT:Initialize()
     self.buttons = {}
     local position = self:GetPos()
@@ -19,7 +12,6 @@ function ENT:Initialize()
     self.buttons[2] = position + f * 18 + r * -24.4 + u * 3.35
     self.buttons[3] = position + f * 18 + r * -24.4 + u * 1.35
 end
-
 
 function ENT:Draw()
     self:DrawModel()
@@ -70,4 +62,3 @@ function ENT:Draw()
         end
     end
 end
-

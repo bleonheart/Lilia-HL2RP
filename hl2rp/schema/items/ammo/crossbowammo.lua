@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Crossbow Bolts"
+﻿ITEM.name = "Crossbow Bolts"
 ITEM.model = "models/crossbow_bolt.mdl"
 ITEM.price = 100
 ITEM.width = 1
@@ -14,4 +13,3 @@ ITEM.iconCam = {
     ang = Angle(0, 270, 0),
     fov = 8
 }
-

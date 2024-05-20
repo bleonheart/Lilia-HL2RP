@@ -1,5 +1,4 @@
-﻿
-ITEM.name = "Pickaxe"
+﻿ITEM.name = "Pickaxe"
 ITEM.desc = "A tool for mining ore."
 ITEM.model = "models/props_mining/pickaxe01.mdl"
 ITEM.class = "weapon_hl2pickaxe"
@@ -13,4 +12,3 @@ ITEM.iconCam = {
     fov = 10.780103254469,
     pos = Vector(0, 200, 0)
 }
-

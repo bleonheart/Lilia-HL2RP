@@ -1,20 +1,11 @@
-﻿
-ITEM.name = "Sparkling Water"
-
+﻿ITEM.name = "Sparkling Water"
 ITEM.desc = "A blue can of plain water."
-
 ITEM.model = "models/props_junk/popcan01a.mdl"
-
 ITEM.healthRestore = 15
-
 ITEM.restore = 67
-
 ITEM.category = "consumables"
-
 ITEM.skin = 2
-
 ITEM.price = 15
-
 ITEM.functions.Drink = {
     icon = "icon16/cup.png",
     sound = "items/battery_pickup.wav",
@@ -24,6 +15,4 @@ ITEM.functions.Drink = {
     end
 }
 
-
 ITEM.permit = "food"
-

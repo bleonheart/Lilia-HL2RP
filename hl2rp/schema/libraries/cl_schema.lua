@@ -1,6 +1,4 @@
-﻿
-SCHEMA.displays = {}
-
+﻿SCHEMA.displays = {}
 function SCHEMA:HUDPaint()
     if LocalPlayer():isCombine() and not IsValid(lia.gui.char) then
         if not self.overlay then
@@ -36,7 +34,6 @@ function SCHEMA:HUDPaint()
     end
 end
 
-
 function SCHEMA:addDisplay(text, color)
     if LocalPlayer():isCombine() then
         color = color or Color(0, 0, 0)
@@ -50,12 +47,10 @@ function SCHEMA:addDisplay(text, color)
     end
 end
 
-
 function SCHEMA:OnChatReceived(client, chatType, text, anonymous)
     local class = lia.chat.classes[chatType]
     if client:isCombine() and class and class.filter == "ic" then return "<:: " .. text .. " ::>" end
 end
-
 
 function SCHEMA:CharacterLoaded(character)
     if character == LocalPlayer():getChar() then
@@ -67,16 +62,13 @@ function SCHEMA:CharacterLoaded(character)
     end
 end
 
-
 function SCHEMA:OnContextMenuOpen()
     if IsValid(lia.gui.combine) then lia.gui.combine:SetVisible(true) end
 end
 
-
 function SCHEMA:OnContextMenuClose()
     if IsValid(lia.gui.combine) then lia.gui.combine:SetVisible(false) end
 end
-
 
 local color = {}
 color["$pp_colour_addr"] = 0
@@ -88,11 +80,8 @@ color["$pp_colour_colour"] = 0.65
 color["$pp_colour_mulr"] = 0
 color["$pp_colour_mulg"] = 0
 color["$pp_colour_mulb"] = 0
-
 function SCHEMA:RenderScreenspaceEffects()
     DrawColorModify(color)
 end
 
-
 timer.Create("CombineDisplayClear", 10, 0, function() if #SCHEMA.displays > 0 then table.remove(SCHEMA.displays, 1) end end)
-
