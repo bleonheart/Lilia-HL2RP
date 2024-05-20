@@ -1,6 +1,6 @@
-"lilia"
+"hl2rp"
 {
-	"base"		"sandbox"
+	"base"		"lilia"
 	"title"		"Lilia"
-	"author"	"Leonheart"
+	"author"	"Samael"
 }
