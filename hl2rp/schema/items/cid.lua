@@ -30,17 +30,7 @@ ITEM.functions.Assign = {
             end
 
             local x, y, itemID = entity:getChar():getInv():add(item.uniqueID)
-            -- New add method returns a promise (x) that resolves to the item.
-            if lia.version then
-                x:next(onSuccess):catch(onFail)
-                return true
-            end
-
-            if x == false then
-                onFail()
-            else
-                onSuccess(lia.item.instances[itemID])
-            end
+            x:next(onSuccess):catch(onFail)
             return true
         end
 
