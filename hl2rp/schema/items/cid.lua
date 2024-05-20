@@ -2,7 +2,7 @@
 ITEM.desc = "A flat piece of plastic for identification."
 ITEM.model = "models/gibs/metal_gib4.mdl"
 ITEM.price = 50
-ITEM.factions = {FACTION_CP, FACTION_STAFF}
+ITEM.factions = {FACTION_CP}
 ITEM.functions.Assign = {
     onRun = function(item)
         local client = item.player
@@ -36,8 +36,6 @@ ITEM.functions.Assign = {
                 return true
             end
 
-            -- Old call returns false if adding failed, otherwise it
-            -- returns the (x, y) coordinates and item ID.
             if x == false then
                 onFail()
             else

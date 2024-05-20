@@ -1,6 +1,6 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 SCHEMA.objectives = SCHEMA.objectives or ""
---------------------------------------------------------------------------------------------------------
+
 concommand.Add("lia_setupnexusdoors", function(client, command, arguments)
     if not IsValid(client) then
         if not lia.module.list.doors then return MsgN("[Lilia] Door module is missing!") end
@@ -16,4 +16,4 @@ concommand.Add("lia_setupnexusdoors", function(client, command, arguments)
         MsgN("[Lilia] Nexus doors have been set up.")
     end
 end)
---------------------------------------------------------------------------------------------------------
+

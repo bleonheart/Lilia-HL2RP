@@ -49,7 +49,6 @@ function ENT:enableSpotlight()
     local attachment = self:LookupAttachment(SCANNER_ATTACHMENT_LIGHT)
     local position = self:GetAttachment(attachment)
     if not position then return end
-    -- The volumetric light effect.
     self.spotlight = ents.Create("point_spotlight")
     self.spotlight:SetPos(position.Pos)
     self.spotlight:SetAngles(self:GetAngles())
@@ -60,11 +59,9 @@ function ENT:enableSpotlight()
     self.spotlight:SetKeyValue("spotlightlength", self.spotlightLength)
     self.spotlight:SetKeyValue("HDRColorScale", self.spotlightHDRColorScale)
     self.spotlight:SetKeyValue("color", "255 255 255")
-    -- On by default and disable dynamic light.
     self.spotlight:SetKeyValue("spawnflags", 3)
     self.spotlight:Spawn()
     self.spotlight:Activate()
-    -- The actual dynamic light.
     self.flashlight = ents.Create("env_projectedtexture")
     self.flashlight:SetPos(position.Pos)
     self.flashlight:SetParent(self)
@@ -227,7 +224,6 @@ function ENT:PhysicsUpdate(phys)
     self.accelAnglular.y = angDiff(self.faceAngles.p, angles.p) * self.turnSpeed * dt
     self.accelAnglular.z = angDiff(self.faceAngles.y, angles.y) * self.turnSpeed * dt
     phys:AddAngleVelocity(self.accelAnglular - phys:GetAngleVelocity() * self.angleDecay)
-    -- Makes the spotlight motion more smooth.
     if IsValid(self.spotlight) then self.spotlight:SetAngles(self:GetAngles()) end
     self.lastPhys = CurTime()
 end
@@ -270,7 +266,6 @@ function ENT:removeDamageSmoke()
 end
 
 function ENT:doDamageSound()
-    -- smoke trail when damaged (env_smoketrail)
     local critical = self.maxHealth * 0.25
     if self.lastHealth >= critical and self.health <= critical then
         self:createDamageSmoke()

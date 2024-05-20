@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 function MODULE:SaveData()
     local data = {}
     for k, v in ipairs(ents.FindByClass("lia_cmblock")) do
@@ -8,7 +8,7 @@ function MODULE:SaveData()
     self:setData(data)
 end
 
---------------------------------------------------------------------------------------------------------
+
 function MODULE:LoadData()
     local data = self:getData() or {}
     for k, v in ipairs(data) do
@@ -23,4 +23,4 @@ function MODULE:LoadData()
         end
     end
 end
---------------------------------------------------------------------------------------------------------
+

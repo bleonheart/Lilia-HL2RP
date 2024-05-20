@@ -1,6 +1,6 @@
-﻿--------------------------------------------------------------------------------------------------------------------------
+﻿
 AddCSLuaFile()
---------------------------------------------------------------------------------------------------------------------------
+
 SWEP.PrintName = "Suitcase"
 SWEP.Slot = 1
 SWEP.SlotPos = 3
@@ -29,17 +29,17 @@ SWEP.WorldModel = "models/weapons/w_pistol.mdl"
 SWEP.UseHands = true
 SWEP.LowerAngles = Angle(15, -10, -20)
 SWEP.IsAlwaysLowered = true
---------------------------------------------------------------------------------------------------------------------------
+
 function SWEP:Initialize()
     self:SetHoldType(self.HoldType)
 end
 
---------------------------------------------------------------------------------------------------------------------------
+
 function SWEP:GetViewModelPosition(position, angles)
     return position + angles:Right() * 10 + angles:Forward() * 20, angles
 end
 
---------------------------------------------------------------------------------------------------------------------------
+
 function SWEP:DrawWorldModel()
     if not self.dummy then
         self.dummy = ClientsideModel("models/weapons/w_suitcase_passenger.mdl")
@@ -62,4 +62,4 @@ function SWEP:DrawWorldModel()
     self.dummy:DrawModel()
     self.dummy:SetNoDraw(true)
 end
---------------------------------------------------------------------------------------------------------------------------
+

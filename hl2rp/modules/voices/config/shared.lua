@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 lia.voice.register("combine", "0", "Zero.", "npc/metropolice/vo/zero.wav")
 lia.voice.register("combine", "1", "One.", "npc/metropolice/vo/one.wav")
 lia.voice.register("combine", "10", "Ten.", "npc/metropolice/vo/ten.wav")
@@ -398,4 +398,4 @@ lia.voice.register("dispatch", "STATUS EVASION", "Attention, protection-team, st
 lia.voice.register("dispatch", "UNIDENTIFIED", "Attention, please: Unidentified person of interest, confirm your civil status with local protection-team immediately.", "npc/overwatch/cityvoice/f_confirmcivilstatus_1_spkr.wav")
 lia.voice.register("dispatch", "UNREST PROCEDURE", "Attention, community: Unrest procedure code is now in effect. INNOCULATE, SHIELD, PACIFY. Code: PRESSURE, SWORD, STERILIZE.", "npc/overwatch/cityvoice/f_unrestprocedure1_spkr.wav")
 lia.voice.register("dispatch", "UNREST STRUCTURE", "Alert, community ground-protection units, local unrest structure detected. ASSEMBLE, ADMINISTER, PACIFY.", "npc/overwatch/cityvoice/f_localunrest_spkr.wav")
---------------------------------------------------------------------------------------------------------
+

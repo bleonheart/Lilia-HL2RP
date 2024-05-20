@@ -13,5 +13,3 @@ ITEM.iconCam = {
 }
 
 ITEM.flag = "Y"
-ITEM.classes = {CLASS_CP_UNIT, CLASS_CP_ELITE}
-ITEM.factions = {FACTION_OW}

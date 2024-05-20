@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 function MODULE:saveForceFields()
     local buffer = {}
     for k, v in pairs(ents.FindByClass("lia_forcefield")) do
@@ -12,7 +12,7 @@ function MODULE:saveForceFields()
     self:setData(buffer)
 end
 
---------------------------------------------------------------------------------------------------------
+
 function MODULE:LoadData()
     local buffer = self:getData() or {}
     for k, v in ipairs(buffer) do
@@ -23,4 +23,4 @@ function MODULE:LoadData()
         entity.mode = v.mode or 1
     end
 end
---------------------------------------------------------------------------------------------------------
+

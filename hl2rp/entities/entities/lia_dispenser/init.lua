@@ -1,10 +1,10 @@
-﻿---------------------------------------------------------------------------------------------------------------------------------------------
+﻿
 AddCSLuaFile("cl_init.lua")
---------------------------------------------------------------------------------------------------------------------------
+
 AddCSLuaFile("shared.lua")
---------------------------------------------------------------------------------------------------------------------------
+
 include("shared.lua")
---------------------------------------------------------------------------------------------------------
+
 function ENT:SpawnFunction(client, trace)
     local entity = ents.Create("lia_dispenser")
     entity:SetPos(trace.HitPos)
@@ -15,7 +15,7 @@ function ENT:SpawnFunction(client, trace)
     return entity
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:Initialize()
     self:SetModel("models/props_junk/gascan001a.mdl")
     self:PhysicsInit(SOLID_VPHYSICS)
@@ -40,12 +40,12 @@ function ENT:Initialize()
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:setUseAllowed(state)
     self.canUse = state
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:error(text)
     self:EmitSound("buttons/combine_button_locked.wav")
     self:SetText(text)
@@ -60,7 +60,7 @@ function ENT:error(text)
     end)
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:createRation()
     local entity = ents.Create("prop_physics")
     entity:SetAngles(self:GetAngles())
@@ -78,7 +78,7 @@ function ENT:createRation()
     end)
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:dispense(amount)
     if amount < 1 then return end
     self:setUseAllowed(false)
@@ -107,7 +107,7 @@ function ENT:dispense(amount)
     end)
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:Use(activator)
     if (self.nextUse or 0) >= CurTime() then return end
     if activator:Team() == FACTION_CITIZEN then
@@ -164,8 +164,8 @@ function ENT:Use(activator)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:OnRemove()
     if not lia.shuttingDown then SCHEMA:saveDispensers() end
 end
---------------------------------------------------------------------------------------------------------
+

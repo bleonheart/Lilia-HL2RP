@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 ITEM.name = "Moonshine"
 ITEM.desc = "High-proof illegal liquor."
 ITEM.model = "models/props_junk/popcan01a.mdl"
@@ -7,7 +7,7 @@ ITEM.category = "consumables"
 ITEM.restore = 33
 ITEM.price = 100
 ITEM.permit = "food"
---------------------------------------------------------------------------------------------------------
+
 ITEM.functions.Drink = {
     icon = "icon16/cup.png",
     sound = "items/battery_pickup.wav",
@@ -16,4 +16,4 @@ ITEM.functions.Drink = {
         item.player:setLocalVar("stm", math.min(item.player:getLocalVar("stm", 100) + item.restore, 100))
     end
 }
---------------------------------------------------------------------------------------------------------
+

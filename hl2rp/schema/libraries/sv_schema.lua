@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 function SCHEMA:PlayerFootstep(client, position, foot, soundName, volume)
     if client:isRunning() then
         if client:Team() == FACTION_CP then
@@ -11,7 +11,7 @@ function SCHEMA:PlayerFootstep(client, position, foot, soundName, volume)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:OnCharCreated(client, character)
     local inventory = character:getInv()
     if inventory then
@@ -26,14 +26,14 @@ function SCHEMA:OnCharCreated(client, character)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:LoadData()
     self:loadVendingMachines()
     self:loadDispensers()
     self:loadObjectives()
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:PostPlayerLoadout(client)
     if client:isCombine() then
         if client:Team() == FACTION_CP then
@@ -52,14 +52,14 @@ function SCHEMA:PostPlayerLoadout(client)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:CanPlayerViewData(client, target)
     if client:isCombine() then return true end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:PlayerUseDoor(client, entity)
-    local isAdminFaction = client:Team() == FACTION_STAFF
+    local isAdminFaction = client:isStaffOnDuty()
     if client:isCombine() or isAdminFaction then
         local lock = entity.lock or (IsValid(entity:getDoorPartner()) and entity:getDoorPartner().lock)
         if IsValid(lock) then
@@ -76,13 +76,13 @@ function SCHEMA:PlayerUseDoor(client, entity)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:PlayerSwitchFlashlight(client, enabled)
     if lia.module.list.scanner then return end
     if client:isCombine() then return true end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:PlayerRankChanged(client)
     local rankModels = client:Team() == FACTION_CP and self.rankModels or self.owRankModels
     for k, v in pairs(rankModels) do
@@ -109,7 +109,7 @@ function SCHEMA:PlayerRankChanged(client)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:OnCharVarChanged(character, key, oldValue, value)
     if key == "name" and IsValid(character:getPlayer()) and character:getPlayer():isCombine() then
         for k, v in ipairs(lia.class.list) do
@@ -120,7 +120,7 @@ function SCHEMA:OnCharVarChanged(character, key, oldValue, value)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 local digitsToWords = {
     [0] = "zero",
     [1] = "one",
@@ -134,7 +134,7 @@ local digitsToWords = {
     [9] = "nine"
 }
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:GetPlayerDeathSound(client)
     if client:isCombine() then
         local sounds = self.deathSounds[client:Team()] or self.deathSounds[FACTION_CP]
@@ -171,7 +171,7 @@ function SCHEMA:GetPlayerDeathSound(client)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:PlayerHurt(client, attacker, health, damage)
     if client:isCombine() and damage > 5 then
         local word = "minor"
@@ -197,7 +197,7 @@ function SCHEMA:PlayerHurt(client, attacker, health, damage)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:GetPlayerPainSound(client)
     if client:isCombine() then
         local sounds = self.painSounds[client:Team()] or self.painSounds[FACTION_CP]
@@ -205,7 +205,7 @@ function SCHEMA:GetPlayerPainSound(client)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:PlayerTick(client)
     if client:isCombine() and client:Alive() and (client.liaHealthCheck or 0) < CurTime() then
         local delay = 60
@@ -224,7 +224,7 @@ function SCHEMA:PlayerTick(client)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:PlayerMessageSend(client, chatType, message, anonymous, receivers)
     if not lia.voice.chatTypes[chatType] then return end
     for _, definition in ipairs(lia.voice.getClass(client)) do
@@ -254,18 +254,18 @@ function SCHEMA:PlayerMessageSend(client, chatType, message, anonymous, receiver
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:PlayerStaminaLost(client)
     if client:isCombine() then client:addDisplay("Local unit energy has been exhausted") end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:CanPlayerViewObjectives(client)
     return client:isCombine()
 end
 
---------------------------------------------------------------------------------------------------------
+
 function SCHEMA:CanPlayerEditObjectives(client)
     return client:isCombine()
 end
---------------------------------------------------------------------------------------------------------
+

@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 function MODULE:EntityTakeDamage(entity, dmgInfo)
     if entity:GetClass() == "prop_door_rotating" and (entity.liaNextBreach or 0) < CurTime() then
         local handle = entity:LookupBone("handle")
@@ -41,4 +41,4 @@ function MODULE:EntityTakeDamage(entity, dmgInfo)
         end
     end
 end
---------------------------------------------------------------------------------------------------------
+

@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 lia.command.add("doorkick", {
     onRun = function(client, arguments)
         if client:Team() == FACTION_CP then
@@ -28,7 +28,7 @@ lia.command.add("doorkick", {
     end
 })
 
---------------------------------------------------------------------------------------------------------
+
 lia.command.add("data", {
     syntax = "<string name>",
     onRun = function(client, arguments)
@@ -41,7 +41,7 @@ lia.command.add("data", {
     end
 })
 
---------------------------------------------------------------------------------------------------------
+
 lia.command.add("objectives", {
     onRun = function(client, arguments)
         if hook.Run("CanPlayerViewObjectives", client) then
@@ -52,7 +52,7 @@ lia.command.add("objectives", {
     end
 })
 
---------------------------------------------------------------------------------------------------------
+
 lia.command.add("setpriority", {
     syntax = "<number id> [bool status]",
     onRun = function(client, arguments)
@@ -70,7 +70,7 @@ lia.command.add("setpriority", {
     end
 })
 
---------------------------------------------------------------------------------------------------------
+
 lia.command.add("request", {
     syntax = "<string text>",
     onRun = function(client, arguments)
@@ -92,4 +92,4 @@ lia.command.add("request", {
         end
     end
 })
---------------------------------------------------------------------------------------------------------
+

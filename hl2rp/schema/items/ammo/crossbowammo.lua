@@ -1,11 +1,11 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 ITEM.name = "Crossbow Bolts"
 ITEM.model = "models/crossbow_bolt.mdl"
 ITEM.price = 100
 ITEM.width = 1
 ITEM.height = 1
-ITEM.ammo = "XBowRounds" -- type of the ammo
-ITEM.ammoAmount = 5 -- amount of the ammo
+ITEM.ammo = "XBowRounds"
+ITEM.ammoAmount = 5
 ITEM.ammoDesc = "A Bundle of %s Crossbow Bolts"
 ITEM.category = "Ammunition"
 ITEM.flag = "Y"
@@ -14,4 +14,4 @@ ITEM.iconCam = {
     ang = Angle(0, 270, 0),
     fov = 8
 }
---------------------------------------------------------------------------------------------------------
+

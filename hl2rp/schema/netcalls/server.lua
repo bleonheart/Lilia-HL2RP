@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 netstream.Hook("dataCls", function(client, text)
     local target = client.liaDataTarget
     if text and IsValid(target) and target:getChar() and hook.Run("CanPlayerEditData", client, target) then
@@ -9,7 +9,7 @@ netstream.Hook("dataCls", function(client, text)
     client.liaDataTarget = nil
 end)
 
---------------------------------------------------------------------------------------------------------
+
 netstream.Hook("obj", function(client, text)
     if hook.Run("CanPlayerEditObjectives", client) then
         SCHEMA.objectives = text
@@ -17,4 +17,4 @@ netstream.Hook("obj", function(client, text)
         SCHEMA:saveObjectives()
     end
 end)
---------------------------------------------------------------------------------------------------------
+
