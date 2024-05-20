@@ -1,4 +1,4 @@
----------------------------------------------------------------------------------------------------------------------------------------------
+﻿---------------------------------------------------------------------------------------------------------------------------------------------
 AddCSLuaFile("cl_init.lua")
 --------------------------------------------------------------------------------------------------------------------------
 AddCSLuaFile("shared.lua")
@@ -12,7 +12,6 @@ function ENT:SpawnFunction(client, trace)
     entity:Spawn()
     entity:Activate()
     SCHEMA:saveDispensers()
-
     return entity
 end
 
@@ -50,23 +49,15 @@ end
 function ENT:error(text)
     self:EmitSound("buttons/combine_button_locked.wav")
     self:SetText(text)
-    timer.Create(
-        "lia_DispenserError" .. self:EntIndex(),
-        1.5,
-        1,
-        function()
-            if IsValid(self) then
-                self:SetText("INSERT ID")
-                timer.Simple(
-                    0.5,
-                    function()
-                        if not IsValid(self) then return end
-                        self:setUseAllowed(true)
-                    end
-                )
-            end
+    timer.Create("lia_DispenserError" .. self:EntIndex(), 1.5, 1, function()
+        if IsValid(self) then
+            self:SetText("INSERT ID")
+            timer.Simple(0.5, function()
+                if not IsValid(self) then return end
+                self:setUseAllowed(true)
+            end)
         end
-    )
+    end)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -79,15 +70,12 @@ function ENT:createRation()
     entity:SetNotSolid(true)
     entity:SetParent(self.dummy)
     entity:Fire("SetParentAttachment", "package_attachment")
-    timer.Simple(
-        1.2,
-        function()
-            if IsValid(self) and IsValid(entity) then
-                entity:Remove()
-                lia.item.spawn("ration", entity:GetPos(), nil, entity:GetAngles())
-            end
+    timer.Simple(1.2, function()
+        if IsValid(self) and IsValid(entity) then
+            entity:Remove()
+            lia.item.spawn("ration", entity:GetPos(), nil, entity:GetAngles())
         end
-    )
+    end)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -98,34 +86,25 @@ function ENT:dispense(amount)
     self:EmitSound("ambient/machines/combine_terminal_idle4.wav")
     self:createRation()
     self.dummy:Fire("SetAnimation", "dispense_package", 0)
-    timer.Simple(
-        3.5,
-        function()
-            if IsValid(self) then
-                if amount > 1 then
-                    self:dispense(amount - 1)
-                else
-                    self:SetText("ARMING")
-                    self:EmitSound("buttons/combine_button7.wav")
-                    timer.Simple(
-                        7,
-                        function()
-                            if not IsValid(self) then return end
-                            self:SetText("INSERT ID")
-                            self:EmitSound("buttons/combine_button1.wav")
-                            timer.Simple(
-                                0.75,
-                                function()
-                                    if not IsValid(self) then return end
-                                    self:setUseAllowed(true)
-                                end
-                            )
-                        end
-                    )
-                end
+    timer.Simple(3.5, function()
+        if IsValid(self) then
+            if amount > 1 then
+                self:dispense(amount - 1)
+            else
+                self:SetText("ARMING")
+                self:EmitSound("buttons/combine_button7.wav")
+                timer.Simple(7, function()
+                    if not IsValid(self) then return end
+                    self:SetText("INSERT ID")
+                    self:EmitSound("buttons/combine_button1.wav")
+                    timer.Simple(0.75, function()
+                        if not IsValid(self) then return end
+                        self:setUseAllowed(true)
+                    end)
+                end)
             end
         end
-    )
+    end)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -136,58 +115,48 @@ function ENT:Use(activator)
         self:setUseAllowed(false)
         self:SetText("CHECKING")
         self:EmitSound("ambient/machines/combine_terminal_idle2.wav")
-        timer.Simple(
-            1,
-            function()
-                if not IsValid(self) or not IsValid(activator) then return self:setUseAllowed(true) end
-                local found = false
-                local amount = 0
-                local item
-                for k, v in pairs(activator:getChar():getInv():getItems()) do
-                    if v.uniqueID == "cid" then
-                        found = true
-                        if v:getData("nextTime", 0) < os.time() then
-                            if v:getData("cwu") then
-                                amount = 2
-                            else
-                                amount = 1
-                            end
-
-                            item = v
-                            break
+        timer.Simple(1, function()
+            if not IsValid(self) or not IsValid(activator) then return self:setUseAllowed(true) end
+            local found = false
+            local amount = 0
+            local item
+            for k, v in pairs(activator:getChar():getInv():getItems()) do
+                if v.uniqueID == "cid" then
+                    found = true
+                    if v:getData("nextTime", 0) < os.time() then
+                        if v:getData("cwu") then
+                            amount = 2
+                        else
+                            amount = 1
                         end
-                    end
-                end
 
-                local inventory = activator:getChar():getInv()
-                local item
-                if inventory then
-                    if inventory.getFirstItemOfType then
-                        item = inventory:getFirstItemOfType("cid")
-                    else
-                        item = inventory:hasItem("cid")
+                        item = v
+                        break
                     end
-                end
-
-                if not found then
-                    return self:error("INVALID ID")
-                elseif found and amount == 0 then
-                    return self:error("TRY LATER")
-                else
-                    item:setData("nextTime", os.time() + 300)
-                    self:SetText("ID OKAY")
-                    self:EmitSound("buttons/button14.wav", 100, 50)
-                    timer.Simple(
-                        1,
-                        function()
-                            if IsValid(self) then
-                                self:dispense(amount)
-                            end
-                        end
-                    )
                 end
             end
-        )
+
+            local inventory = activator:getChar():getInv()
+            local item
+            if inventory then
+                if inventory.getFirstItemOfType then
+                    item = inventory:getFirstItemOfType("cid")
+                else
+                    item = inventory:hasItem("cid")
+                end
+            end
+
+            if not found then
+                return self:error("INVALID ID")
+            elseif found and amount == 0 then
+                return self:error("TRY LATER")
+            else
+                item:setData("nextTime", os.time() + 300)
+                self:SetText("ID OKAY")
+                self:EmitSound("buttons/button14.wav", 100, 50)
+                timer.Simple(1, function() if IsValid(self) then self:dispense(amount) end end)
+            end
+        end)
     elseif activator:isCombine() then
         self:SetDisabled(not self:GetDisabled())
         self:EmitSound(self:GetDisabled() and "buttons/combine_button1.wav" or "buttons/combine_button2.wav")
@@ -197,8 +166,6 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function ENT:OnRemove()
-    if not lia.shuttingDown then
-        SCHEMA:saveDispensers()
-    end
+    if not lia.shuttingDown then SCHEMA:saveDispensers() end
 end
 --------------------------------------------------------------------------------------------------------

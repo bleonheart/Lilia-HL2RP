@@ -1,4 +1,4 @@
-ITEM.name = "Sterling"
+﻿ITEM.name = "Sterling"
 ITEM.desc = "A cheap, fully automatic ww2-era smg."
 ITEM.model = "models/weapons/tfa_ins2/w_sterling.mdl"
 ITEM.class = "tfa_ins2_sterling"

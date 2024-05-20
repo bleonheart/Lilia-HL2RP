@@ -1,4 +1,4 @@
-ITEM.name = "MP7"
+﻿ITEM.name = "MP7"
 ITEM.desc = "A fully automatic sub-machine gun."
 ITEM.model = "models/weapons/w_smg1.mdl"
 ITEM.class = "tfa_projecthl2_smg"

@@ -1,4 +1,4 @@
-ITEM.name = "SKS"
+﻿ITEM.name = "SKS"
 ITEM.desc = "A old semi-automatic carbine."
 ITEM.model = "models/weapons/tfa_ins2/w_sks.mdl"
 ITEM.class = "tfa_ins2_sks"

@@ -1,4 +1,4 @@
-ITEM.name = "Mosin"
+﻿ITEM.name = "Mosin"
 ITEM.desc = "The legendary Mosin–Nagant."
 ITEM.model = "models/weapons/w_ins2_mosin_nagant.mdl"
 ITEM.class = "tfa_ins2_mosin_nagant"

@@ -1,4 +1,4 @@
-ITEM.name = "PPSH-41"
+﻿ITEM.name = "PPSH-41"
 ITEM.desc = "A cheap, fully automatic ww2-era sub-machine gun."
 ITEM.model = "models/weapons/w_ppsh.mdl"
 ITEM.class = "tfa_nam_ppsh41"

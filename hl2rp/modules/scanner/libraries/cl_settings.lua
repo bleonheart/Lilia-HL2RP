@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 local PICTURE_WIDTH = MODULE.PICTURE_WIDTH
 --------------------------------------------------------------------------------------------------------
 local PICTURE_HEIGHT = MODULE.PICTURE_HEIGHT
@@ -43,7 +43,6 @@ function MODULE:CalcView(client, origin, angles, fov)
             nextClick = RealTime() + 0.05
             client:EmitSound("common/talk.wav", 50, 180)
         end
-
         return view
     end
 end
@@ -65,10 +64,7 @@ function MODULE:PreDrawOpaqueRenderables()
 
     if IsValid(viewEntity) and viewEntity:GetClass():find("scanner") then
         viewEntity:SetNoDraw(true)
-        if self.lastViewEntity ~= viewEntity then
-            viewEntity:EmitSound(CLICK, 50, 140)
-        end
-
+        if self.lastViewEntity ~= viewEntity then viewEntity:EmitSound(CLICK, 50, 140) end
         self.lastViewEntity = viewEntity
         hidden = true
     elseif hidden then
@@ -153,7 +149,6 @@ function MODULE:PlayerBindPress(client, bind, pressed)
     bind = bind:lower()
     if bind:find("attack") and pressed and hidden and IsValid(self.lastViewEntity) then
         self:takePicture()
-
         return true
     end
 end
