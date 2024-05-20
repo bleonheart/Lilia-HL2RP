@@ -9,7 +9,7 @@
 end
 
 for _, v in pairs(SCHEMA.deathSounds) do
-    for _,, v2 in ipairs(v) do
+    for _, v2 in ipairs(v) do
         util.PrecacheSound(v2)
     end
 end
