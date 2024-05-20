@@ -1,11 +1,11 @@
 ﻿CLASS.name = "Civil Protection Scanner"
 CLASS.desc = "A robotic, metal scanner for observing the city."
 CLASS.faction = FACTION_CP
-function CLASS:onCanBe(client)
+function CLASS:OnCanBe(client)
     return client:isCombineRank(SCHEMA.scnRanks)
 end
 
-function CLASS:onSet(client)
+function CLASS:OnSet(client)
     local scanner = lia.module.list.scanner
     if scanner then
         scanner:createScanner(client, client:getCombineRank() == "CLAW.SCN")
@@ -14,7 +14,7 @@ function CLASS:onSet(client)
     end
 end
 
-function CLASS:onLeave(client)
+function CLASS:OnLeave(client)
     if IsValid(client.liaScn) then
         local data = {}
         data.start = client.liaScn:GetPos()

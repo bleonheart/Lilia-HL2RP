@@ -5,7 +5,7 @@ FACTION.isDefault = false
 FACTION.pay = 0
 FACTION.isGloballyRecognized = true
 FACTION.models = {"models/nemez/combine_soldiers/combine_soldier_pm.mdl"}
-function FACTION:onGetDefaultName(_, digits)
+function FACTION:OnGetDefaultName(_, digits)
     if SCHEMA.digitsLen >= 1 then
         digits = digits or math.random(tonumber("1" .. string.rep("0", SCHEMA.digitsLen - 1)), tonumber(string.rep("9", SCHEMA.digitsLen)))
         local name = SCHEMA.owPrefix .. SCHEMA.owDefaultRank .. "." .. digits
@@ -15,7 +15,7 @@ function FACTION:onGetDefaultName(_, digits)
     end
 end
 
-function FACTION:onTransfered(client, oldFaction)
+function FACTION:OnTransfered(client, oldFaction)
     local digits
     if oldFaction == nil then return end
     local inventory = client:getChar():getInv()
@@ -32,7 +32,7 @@ function FACTION:onTransfered(client, oldFaction)
         return
     end
 
-    client:getChar():setName(self:onGetDefaultName(client, digits))
+    client:getChar():setName(self:OnGetDefaultName(client, digits))
     hook.Run("PlayerLoadout", client)
 end
 

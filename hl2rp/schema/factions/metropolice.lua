@@ -6,7 +6,7 @@ FACTION.models = {"models/dannio/pmcitizen/urbanmetrocop/male_merged.mdl"}
 FACTION.weapons = {"lia_stunstick"}
 FACTION.pay = 50
 FACTION.isGloballyRecognized = true
-function FACTION:onGetDefaultName(_, digits)
+function FACTION:OnGetDefaultName(_, digits)
     if SCHEMA.digitsLen >= 1 then
         digits = digits or math.random(tonumber("1" .. string.rep("0", SCHEMA.digitsLen - 1)), tonumber(string.rep("9", SCHEMA.digitsLen)))
         local name = SCHEMA.cpPrefix .. next(SCHEMA.rctRanks) .. "." .. digits
@@ -16,7 +16,7 @@ function FACTION:onGetDefaultName(_, digits)
     end
 end
 
-function FACTION:onTransfered(client, oldFaction)
+function FACTION:OnTransfered(client, oldFaction)
     local digits
     if oldFaction == nil then return end
     if oldFaction.index == FACTION_CITIZEN then
@@ -35,7 +35,7 @@ function FACTION:onTransfered(client, oldFaction)
         return
     end
 
-    client:getChar():setName(self:onGetDefaultName(client, digits))
+    client:getChar():setName(self:OnGetDefaultName(client, digits))
     hook.Run("PlayerLoadout", client)
 end
 

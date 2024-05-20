@@ -1,7 +1,7 @@
 ﻿CLASS.name = "Civil Protection Elite"
 CLASS.desc = "The top officers of the Civil Protection."
 CLASS.faction = FACTION_CP
-function CLASS:onCanBe(client)
+function CLASS:OnCanBe(client)
     return client:isCombineRank(SCHEMA.eliteRanks)
 end
 

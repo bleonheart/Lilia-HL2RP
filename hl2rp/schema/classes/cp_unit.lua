@@ -1,7 +1,7 @@
 ﻿CLASS.name = "Civil Protection Unit"
 CLASS.desc = "A regular Civil Protection ground unit."
 CLASS.faction = FACTION_CP
-function CLASS:onCanBe(client)
+function CLASS:OnCanBe(client)
     return client:isCombineRank(SCHEMA.unitRanks)
 end
 
