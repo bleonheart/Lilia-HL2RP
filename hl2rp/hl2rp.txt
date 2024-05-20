@@ -1,0 +1,6 @@
+"lilia"
+{
+	"base"		"sandbox"
+	"title"		"Lilia"
+	"author"	"Leonheart"
+}
