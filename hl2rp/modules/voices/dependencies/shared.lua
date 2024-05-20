@@ -43,17 +43,17 @@ function lia.voice.getVoiceList(class, text, delay)
     local skip = 0
     local current = 0
     max = max or 5
-    for k, v in ipairded) do
-        if k < skip ttinue end
-        if current < n
-            local i =
-            local key
-            local nex nextKey
-            while tru
-                i = i
-                nextVexploded[i]
-                if noalue then break end
-                nextKy .. " " .. nextValue
+    for k, v in ipairs(exploded) do
+        if k < skip then continue end
+        if current < max then
+            local i = k
+            local key = v
+            local nextValue, nextKey
+            while true do
+                i = i + 1
+                nextValue = exploded[i]
+                if not nextValue then break end
+                nextKey = key .. " " .. nextValue
                 if not info[nextKey] then
                     i = i + 1
                     local nextValue2 = exploded[i]

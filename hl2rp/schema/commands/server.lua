@@ -56,7 +56,7 @@ lia.command.add("setpriority", {
         local id = tonumber(arguments[1])
         local status = tobool(arguments[2])
         if not status then status = nil end
-        for k2, v2 in pairs(lia.item.instances) do
+        for _, v2 in pairs(lia.item.instances) do
             if v2.uniqueID == "cid" and v2:getData("id", 0) == id then
                 v2:setData("cwu", status)
                 return "@prioritySet", v2:getData("name", "John Doe")

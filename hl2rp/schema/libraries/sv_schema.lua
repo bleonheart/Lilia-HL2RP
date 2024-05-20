@@ -33,7 +33,7 @@ end
 function SCHEMA:PostPlayerLoadout(client)
     if client:isCombine() then
         if client:Team() == FACTION_CP then
-            for k, v in ipairs(lia.class.list) do
+            for k, _ in ipairs(lia.class.list) do
                 if client:getChar():joinClass(k) then break end
             end
 
@@ -144,7 +144,7 @@ function SCHEMA:GetPlayerDeathSound(client)
             end
 
             queue[#queue + 1] = {table.Random(self.beepSounds[client:Team()] and self.beepSounds[client:Team()].off or self.beepSounds[FACTION_CP].off), nil, 0.25}
-            for k, v in ipairs(player.GetAll()) do
+            for _, v in ipairs(player.GetAll()) do
                 if v:isCombine() then lia.util.emitQueuedSounds(v, queue, 2, nil, v == client and 100 or 65) end
             end
         end
@@ -160,7 +160,7 @@ function SCHEMA:GetPlayerDeathSound(client)
     end
 end
 
-function SCHEMA:PlayerHurt(client, _, health, damage)
+function SCHEMA:PlayerHurt(client, _, _, damage)
     if client:isCombine() and damage > 5 then
         local word = "minor"
         if damage >= 75 then

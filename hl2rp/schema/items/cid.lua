@@ -29,7 +29,7 @@ ITEM.functions.Assign = {
                 lia.item.spawn(item.uniqueID, position, onSuccess)
             end
 
-            local x, y, _ = entity:getChar():getInv():add(item.uniqueID)
+            local x, _, _ = entity:getChar():getInv():add(item.uniqueID)
             x:next(onSuccess):catch(onFail)
             return true
         end
