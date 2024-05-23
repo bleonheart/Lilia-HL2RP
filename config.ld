@@ -1,5 +1,5 @@
 file = {
-	"hl2RP",
+	"hl2rp",
 }
 
 dir = "docs/html"
