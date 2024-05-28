@@ -1,5 +1,5 @@
 file = {
-	"skeleton",
+	"hl2rp",
 }
 
 module_file = {
