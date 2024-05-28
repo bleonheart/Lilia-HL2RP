@@ -3,12 +3,12 @@ file = {
 }
 
 module_file = {
-	Character = "lilia/gamemode/libraries/meta/character.lua",
+	Character = "hl2rp/schema/meta/sh_player.lua",
 }
 
 dir = "docs/html"
-project = "Skeleton"
-title = "Skeleton Documentation"
+project = "HL2RP"
+title = "HL2RP Documentation"
 no_space_before_args = true
 style = "docs/css"
 template = "docs/templates"
