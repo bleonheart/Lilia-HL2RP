@@ -14,13 +14,15 @@ HL2RP is a roleplay schema for [Lilia](https://github.com/LiliaFramework/Lilia).
 
 - Text Radios
   
-- Tying (Includes search functionality and custom animations)
-  
 - Combine Scanners
 
 - Shootable Locks
 
-- Text to Voice Messages
+- Tying
+
+- Tying Search
+
+- Text to Speech Voices 
 
 # Support
 
