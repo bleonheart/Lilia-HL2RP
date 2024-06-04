@@ -1,6 +1,6 @@
-# Lilia-HL2RP
+# HL2RP
 
-HL2RP is a roleplay schema for [Lilia](https://github.com/LiliaFramework/Lilia). Its aim is to provide a stable HL2RP schema to start your server creation with.
+HL2RP is a roleplay schema for [Lilia](https://github.com/LiliaFramework/Lilia).
 
 # Support
 
