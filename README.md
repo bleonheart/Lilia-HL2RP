@@ -1,7 +1,9 @@
-# HL2RP
+<h1 align="center">HL2RP Schema</h1>
 
-HL2RP is a roleplay schema for [Lilia](https://github.com/LiliaFramework/Lilia).
-
+<p align="center">
+  <img src="https://i.imgur.com/yY3wT30.png" alt="Lilia Icon">
+</p>
+ 
 # Contents
 
 - Combine Locks
