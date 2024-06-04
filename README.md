@@ -1,9 +1,9 @@
-<h1 align="center">HL2RP Schema</h1>
+<h1 align="center">Lilia - HL2RP Schema</h1>
 
 <p align="center">
   <img src="https://i.imgur.com/yY3wT30.png" alt="Lilia Icon">
 </p>
- 
+
 # Contents
 
 - Combine Locks
