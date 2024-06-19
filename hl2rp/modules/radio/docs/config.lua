@@ -1,6 +1,7 @@
-﻿--- Configuration for Protection Module.
--- @configuration Temp
---- This table defines the default settings for the Protection Module.
+--- Configuration for Radio Module.
+-- @configuration Radio
+
+--- This table defines the default settings for the Radio Module.
 -- @realm shared
 -- @table Configuration
--- @field TempValue TEMP VALUE | **bool**
+-- @field RadioChatColor color The color used for radio chat messages
