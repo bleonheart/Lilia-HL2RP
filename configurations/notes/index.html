@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>Temp - HL2RP Documentation</title>
+		<title>Notes - HL2RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Temp - HL2RP Documentation" />
+		<meta property="og:title" content="Notes - HL2RP Documentation" />
 		<meta property="og:site_name" content="Lilia Documentation" />
 
-			<meta property="og:description" content="Configuration for Protection Module." />
+			<meta property="og:description" content="Configuration for Notes Module." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -27,13 +27,96 @@
 	<section>
 				<details class="category" open>
 					<summary>
+						<h2>Libraries</h2>
+					</summary>
+
+					<ul>
+							<li>
+									<details >
+									<summary><a href="../../libraries/lia.voice/">lia.voice</a></summary>
+
+									<ul>
+
+
+										<li>
+											<span class="realm shared"></span>
+											<a href="../../libraries/lia.voice/#defineClass">
+defineClass											</a>
+										</li>
+										<li>
+											<span class="realm shared"></span>
+											<a href="../../libraries/lia.voice/#getClass">
+getClass											</a>
+										</li>
+										<li>
+											<span class="realm shared"></span>
+											<a href="../../libraries/lia.voice/#getVoiceList">
+getVoiceList											</a>
+										</li>
+										<li>
+											<span class="realm shared"></span>
+											<a href="../../libraries/lia.voice/#register">
+register											</a>
+										</li>
+
+									</ul>
+									</details>
+							</li>
+					</ul>
+				</details>
+				<details class="category" open>
+					<summary>
 						<h2>Configurations</h2>
 					</summary>
 
 					<ul>
 							<li>
 									<details >
+									<summary><a href="../../configurations/flashlight/">Flashlight</a></summary>
+
+									<ul>
+
+
+
+									</ul>
+									</details>
+							</li>
+							<li>
+									<details >
 									<summary><a href="../../configurations/lilia/">Lilia</a></summary>
+
+									<ul>
+
+
+
+									</ul>
+									</details>
+							</li>
+							<li>
+									<details open>
+									<summary><a href="../../configurations/notes/">Notes</a></summary>
+
+									<ul>
+
+
+
+									</ul>
+									</details>
+							</li>
+							<li>
+									<details >
+									<summary><a href="../../configurations/radio/">Radio</a></summary>
+
+									<ul>
+
+
+
+									</ul>
+									</details>
+							</li>
+							<li>
+									<details >
+									<summary><a href="../../configurations/scanner/">Scanner</a></summary>
 
 									<ul>
 
@@ -53,105 +136,6 @@
 									</ul>
 									</details>
 							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/temp/">Temp</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
 					</ul>
 				</details>
 	</section>
@@ -160,8 +144,8 @@
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>Temp</h1>
-	<h2>Configuration for Protection Module.</h2>
+	<h1>Notes</h1>
+	<h2>Configuration for Notes Module.</h2>
 </header>
 
 <p>
@@ -176,7 +160,7 @@
 					<h1><span class="realm shared"></span></span>Configuration</h1>
 				</a>
 
-					<p>This table defines the default settings for the Protection Module.</p>
+					<p>This table defines the default settings for the Notes Module.</p>
 			</header>
 
 
@@ -186,11 +170,11 @@
 					<ul>
 
 							<li>
-								<span class="tag parameter">TempValue</span>
+								<span class="tag parameter">NoteLimit</span>
 
 
 
-								<p> TEMP VALUE | <strong>bool</strong></p>
+								<p> The maximum number of characters a note can have | <strong>number</strong></p>
 							</li>
 					</ul>
 
