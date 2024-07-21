@@ -28,16 +28,15 @@ kind_names = {
    module = "Libraries",
 }
 custom_tags = {
-   {
-      "realm",
-      hidden = true
-   },
-   {
-      "internal",
-      hidden = true
-   }
+    {
+        "realm",
+        hidden = true
+    },
+    {
+        "internal",
+        hidden = true
+    }
 }
-
 
 custom_display_name_handler = function(item, default_handler)
     if item.type == "function" and item.module then
@@ -53,7 +52,7 @@ custom_display_name_handler = function(item, default_handler)
             elseif item.module.mod_name == "Inventory" then
                 return "inventoryMeta:" .. default_handler(item)
             end
-            return "MODULE:" .. default_handler(item)
+            return "meta:" .. default_handler(item)
         elseif item.module.type == "hooks" then
             if item.module.mod_name == "Class" then
                 return "CLASS:" .. default_handler(item)
