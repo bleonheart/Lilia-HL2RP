@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>Schema - HL2RP Documentation</title>
+		<title>ShootLock - HL2RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Schema - HL2RP Documentation" />
+		<meta property="og:title" content="ShootLock - HL2RP Documentation" />
 		<meta property="og:site_name" content="Lilia Documentation" />
 
-			<meta property="og:description" content="Schema configuration options." />
+			<meta property="og:description" content="Hook Documentation for ShootLock Module." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -135,7 +135,7 @@ CanPlayerReceiveScan											</a>
 									</details>
 							</li>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../hooks/shootlock/">ShootLock</a></summary>
 
 									<ul>
@@ -243,7 +243,7 @@ StartHandcuffAnim											</a>
 									</details>
 							</li>
 							<li>
-									<details open>
+									<details >
 									<summary><a href="../../configurations/schema/">Schema</a></summary>
 
 									<ul>
@@ -261,63 +261,50 @@ StartHandcuffAnim											</a>
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>Schema</h1>
-	<h2>Schema configuration options.</h2>
+	<h1>ShootLock</h1>
+	<h2>Hook Documentation for ShootLock Module.</h2>
 </header>
 
 <p>
 
-
-<pre><code>This is meant to define the Schema's default information.
-</code></pre>
 </p>
 
-	<h1 class="title">Tables</h1>
+	<h1 class="title">Functions</h1>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="Configurations">
-					<h1><span class="realm shared"></span></span>Configurations</h1>
+				<a class="anchor" id="CanPlayerBustLock">
+					<h1><span class="realm server"></span></span>MODULE:CanPlayerBustLock(client, entity)</h1>
 				</a>
 
-					<p>A list of schema fields that define the gamemode you are making.
- These options are defined by the 'SCHEMA' table.</p>
+					<p>Called to determine if a player is allowed to bust a lock on a specific entity.</p>
 			</header>
 
 
-					<h3>Fields</h3>
+					<h3>Parameters</h3>
 
 
 					<ul>
 
 							<li>
-								<span class="tag parameter">name</span>
+								<span class="tag parameter">client</span>
+
+									<span class="tag"><span class="type">Player</span></span>
 
 
-
-								<p> Controls the name of the schema | <strong>string</strong></p>
+								<p> Player The player who is attempting to bust the lock.</p>
 							</li>
 					</ul>
 
 					<ul>
 
 							<li>
-								<span class="tag parameter">author</span>
+								<span class="tag parameter">entity</span>
+
+									<span class="tag"><span class="type">Entity</span></span>
 
 
-
-								<p> Specifies the author of the schema | <strong>string</strong></p>
-							</li>
-					</ul>
-
-					<ul>
-
-							<li>
-								<span class="tag parameter">desc</span>
-
-
-
-								<p> Defines the description of the schema | <strong>string</strong></p>
+								<p> Entity The entity that the player is attempting to bust the lock on.</p>
 							</li>
 					</ul>
 
