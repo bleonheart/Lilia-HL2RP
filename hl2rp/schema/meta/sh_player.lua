@@ -43,7 +43,7 @@ if SERVER then
 
     function SCHEMA:addDisplay(text, color)
         local receivers = {}
-        for _, v in ipairs(player.GetAll()) do
+        for _, v in player.Iterator() do
             if v:isCombine() then receivers[#receivers + 1] = v end
         end
 
