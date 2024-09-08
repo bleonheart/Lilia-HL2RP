@@ -79,8 +79,8 @@ register											</a>
 
 										<li>
 											<span class="realm server"></span>
-											<a href="../../hooks/notes/#PlayerCanUseLock">
-PlayerCanUseLock											</a>
+											<a href="../../hooks/notes/#OnNoteSpawned">
+OnNoteSpawned											</a>
 										</li>
 
 									</ul>
@@ -95,8 +95,8 @@ PlayerCanUseLock											</a>
 
 										<li>
 											<span class="realm server"></span>
-											<a href="../../hooks/notes/#OnNoteSpawned">
-OnNoteSpawned											</a>
+											<a href="../../hooks/notes/#PlayerCanUseLock">
+PlayerCanUseLock											</a>
 										</li>
 
 									</ul>
@@ -273,14 +273,11 @@ StartHandcuffAnim											</a>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="OnNoteSpawned">
-					<h1><span class="realm server"></span></span>MODULE:OnNoteSpawned(note, item, load)</h1>
+				<a class="anchor" id="PlayerCanUseLock">
+					<h1><span class="realm server"></span></span>MODULE:PlayerCanUseLock(client)</h1>
 				</a>
 
-					<p>Updates the party tiers for all players.
- This function iterates through all players and updates their party tiers based on the current data.
- If a player has a character, the function retrieves their current party tier and updates it.
- The update is applied to all players by setting the party tier data with the specified tier value.</p>
+					<p>Called to determine if a player is allowed to use a lock entity.</p>
 			</header>
 
 
@@ -290,39 +287,12 @@ StartHandcuffAnim											</a>
 					<ul>
 
 							<li>
-								<span class="tag parameter">note</span>
+								<span class="tag parameter">client</span>
+
+									<span class="tag"><span class="type">Player</span></span>
 
 
-
-								<p>
-
-</p>
-							</li>
-					</ul>
-
-					<ul>
-
-							<li>
-								<span class="tag parameter">item</span>
-
-
-
-								<p>
-
-</p>
-							</li>
-					</ul>
-
-					<ul>
-
-							<li>
-								<span class="tag parameter">load</span>
-
-
-
-								<p>
-
-</p>
+								<p> Player The player who is attempting to use the lock entity.</p>
 							</li>
 					</ul>
 
