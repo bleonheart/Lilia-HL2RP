@@ -144,8 +144,8 @@ function SCHEMA:GetPlayerDeathSound(client)
             end
 
             queue[#queue + 1] = {table.Random(self.beepSounds[client:Team()] and self.beepSounds[client:Team()].off or self.beepSounds[FACTION_CP].off), nil, 0.25}
-            for _, v in ipairs(player.GetAll()) do
-                if v:isCombine() then lia.util.emitQueuedSounds(v, queue, 2, nil, v == client and 100 or 65) end
+            for _, v in player.Iterator() do
+                if v:isCombine() then EmitQueuedSounds(v, queue, 2, nil, v == client and 100 or 65) end
             end
         end
 
