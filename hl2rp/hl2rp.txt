@@ -4,4 +4,5 @@
 	"title"		"HL2RP"
 	"author"	"Samael"
 	"category"	"rp"
+	"menusystem"	"1"
 }
