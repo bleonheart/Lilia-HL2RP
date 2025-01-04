@@ -1,3 +1,5 @@
+---
+
 <h1 align="center">Lilia - HL2RP Schema</h1>
 
 <p align="center">
@@ -28,4 +30,9 @@
 
 # Support
 
-If you have any questions or need assistance with the schema, or if you would like to engage with the community, feel free to join our [Discord Server](https://discord.gg/52MSnh39vw). You can find us at this Discord invite link. We are ready to help and support you in any way we can.
+> **⚠️ Important Notice**  
+> This schema is no longer actively maintained and may be deprecated. It is provided as-is, and functionality is not guaranteed with newer versions of the Lilia framework or Garry's Mod updates. Users are encouraged to fork the repository and update it as needed.  
+
+If you would like to engage with the community, feel free to join our [Discord Server](https://discord.gg/52MSnh39vw). You can find us at this Discord invite link.
+
+--- 
