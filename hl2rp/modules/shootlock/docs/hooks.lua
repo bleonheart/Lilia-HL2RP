@@ -1,6 +1,5 @@
---- Hook Documentation for ShootLock Module.
+﻿--- Hook Documentation for ShootLock Module.
 -- @hooks ShootLock
-
 --- Called to determine if a player is allowed to bust a lock on a specific entity.
 -- @realm server
 -- @client client Player The player who is attempting to bust the lock.

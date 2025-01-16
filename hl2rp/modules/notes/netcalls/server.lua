@@ -1,5 +1,4 @@
 ﻿local MODULE = MODULE
-
 local function FindNoteByID(id)
     for _, v in ents.Iterator() do
         if v.isPaperNote and v.id == id then return v end

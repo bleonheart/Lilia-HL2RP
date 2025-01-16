@@ -1,6 +1,5 @@
---- Configuration for Notes Module.
+﻿--- Configuration for Notes Module.
 -- @configuration Notes
-
 --- This table defines the default settings for the Notes Module.
 -- @realm shared
 -- @table Configuration
